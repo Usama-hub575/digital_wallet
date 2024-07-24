@@ -1,4 +1,4 @@
-import 'package:dream_tech/export.dart';
+import 'package:digital_wallet/export.dart';
 
 Widget verticalSpacer(double value) => SizedBox(
       height: value.h,

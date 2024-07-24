@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primary_color">#1E60AA</color>
+    <color name="primary_color_light">#49B6F4</color>
+    <color name="primary_color">#364592</color>
+    <color name="pure_white">#FFFFFF</color>
+    <color name="light_grey_text">#343F52</color>
+    <color name="black">#032426</color>
+    <color name="grey">#878787</color>
 </resources>

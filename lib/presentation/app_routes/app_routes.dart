@@ -2,6 +2,7 @@ import 'package:digital_wallet/export.dart';
 
 class AppRoutes {
   static const initializer = '/';
+  static const signupScreen = '/signUpScreen';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     _currentRoute = settings.name;
@@ -10,7 +11,11 @@ class AppRoutes {
     switch (settings.name) {
       case initializer:
         return MaterialPageRoute(
-          builder: (_) => const LoginScreen(),
+          builder: (_) => SignInScreen(),
+        );
+      case signupScreen:
+        return MaterialPageRoute(
+          builder: (_) => SignUpScreen(),
         );
       default:
         return _errorRoute();

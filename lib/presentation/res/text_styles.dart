@@ -3,32 +3,33 @@ import 'package:digital_wallet/gen/colors.gen.dart';
 
 class TextStyles {
   final regular = const TextStyle(
-    fontWeight: FontWeight.w400,
     color: ColorName.primaryColor,
-    fontFamily: "montserratRegular",
+    fontFamily: FontFamily.plusJakartaSansRegular,
   );
 
-  final medium = TextStyle(
-    fontWeight: FontWeight.w500,
+  final medium = const TextStyle(
     color: ColorName.primaryColor,
-    fontFamily: "montserratMedium",
+    fontFamily: FontFamily.plusJakartaSansMedium,
   );
 
-  final semiBold = TextStyle(
-    fontWeight: FontWeight.w600,
-    color: ColorName.primaryColor,
-    fontFamily: "montserratBold",
+  final semiBold = const TextStyle(
+
+    color: ColorName.black,
+    fontFamily: FontFamily.plusJakartaSansSemiBold,
   );
 
-  final bold = TextStyle(
-    fontWeight: FontWeight.bold,
-    color: ColorName.primaryColor,
-    fontFamily: "montserratBold",
+  final bold = const TextStyle(
+    color: ColorName.black,
+    fontFamily: FontFamily.plusJakartaSansBold,
   );
 
-  final extraBold = TextStyle(
-    fontWeight: FontWeight.w900,
+  final extraBold = const TextStyle(
     color: ColorName.primaryColor,
-    fontFamily: "montserratExtraBold",
+    fontFamily: FontFamily.plusJakartaSansExtraBold,
+  );
+
+  final light = const TextStyle(
+    color: ColorName.black,
+    fontFamily: FontFamily.plusJakartaSansLight,
   );
 }

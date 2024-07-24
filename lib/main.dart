@@ -1,7 +1,7 @@
 import 'package:digital_wallet/export.dart';
-import 'package:digital_wallet/presentation/export.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await initializeDependencies();
   runApp(const MyApp());
 }
@@ -12,6 +12,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    initializeResources(context: context);
     return ScreenUtilInit(
       designSize: const Size(375, 800),
       minTextAdapt: true,
