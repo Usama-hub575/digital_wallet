@@ -5,6 +5,7 @@ class SignUpScreen extends StatelessWidget {
 
   TextEditingController signInController = TextEditingController();
 
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
