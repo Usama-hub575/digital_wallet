@@ -3,7 +3,7 @@ import 'package:digital_wallet/gen/colors.gen.dart';
 
 class TextStyles {
   final regular = const TextStyle(
-    color: ColorName.primaryColor,
+    color: ColorName.black,
     fontFamily: FontFamily.plusJakartaSansRegular,
   );
 
@@ -13,7 +13,6 @@ class TextStyles {
   );
 
   final semiBold = const TextStyle(
-
     color: ColorName.black,
     fontFamily: FontFamily.plusJakartaSansSemiBold,
   );

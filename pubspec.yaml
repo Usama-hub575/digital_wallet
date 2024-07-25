@@ -15,8 +15,10 @@ dependencies:
   dartz:
   http:
   shared_preferences:
+  animated_bottom_navigation_bar:
   get_it:
-  bloc:
+  flutter_svg:
+  flutter_bloc:
   equatable:
   flutter_screenutil:
 
@@ -50,61 +52,61 @@ flutter:
   fonts:
     - family: PlusJakartaSans-Bold
       fonts:
-        - asset: assets/fonts/PlusJakartaSans-Bold.ttf
+        - asset: assets/fonts/plus_jakarta_sans/PlusJakartaSans-Bold.ttf
 
     - family: PlusJakartaSans-BoldItalic
       fonts:
-        - asset: fonts/PlusJakartaSans-BoldItalic.ttf
+        - asset: assets/fonts/plus_jakarta_sans/PlusJakartaSans-BoldItalic.ttf
 
     - family: PlusJakartaSans-ExtraBold
       fonts:
-        - asset: fonts/PlusJakartaSans-ExtraBold.ttf
+        - asset: assets/fonts/plus_jakarta_sans/PlusJakartaSans-ExtraBold.ttf
 
     - family: PlusJakartaSans-ExtraBoldItalic
       fonts:
-        - asset: fonts/PlusJakartaSans-ExtraBoldItalic.ttf
+        - asset: assets/fonts/plus_jakarta_sans/PlusJakartaSans-ExtraBoldItalic.ttf
 
     - family: PlusJakartaSans-ExtraLight
       fonts:
-        - asset: fonts/PlusJakartaSans-ExtraLight.ttf
+        - asset: assets/fonts/plus_jakarta_sans/PlusJakartaSans-ExtraLight.ttf
 
     - family: PlusJakartaSans-ExtraLightItalic
       fonts:
-        - asset: fonts/PlusJakartaSans-ExtraLightItalic.ttf
+        - asset: assets/fonts/plus_jakarta_sans/PlusJakartaSans-ExtraLightItalic.ttf
 
     - family: PlusJakartaSans-Italic
       fonts:
-        - asset: fonts/PlusJakartaSans-Italic.ttf
+        - asset: assets/fonts/plus_jakarta_sans/PlusJakartaSans-Italic.ttf
 
     - family: PlusJakartaSans-Light
       fonts:
-        - asset: fonts/PlusJakartaSans-Light.ttf
+        - asset: assets/fonts/plus_jakarta_sans/PlusJakartaSans-Light.ttf
 
     - family: PlusJakartaSans-Light-Italic
       fonts:
-        - asset: fonts/PlusJakartaSans-LightItalic.ttf
+        - asset: assets/fonts/plus_jakarta_sans/PlusJakartaSans-LightItalic.ttf
 
 
     - family: PlusJakartaSans-Medium
       fonts:
-        - asset: fonts/PlusJakartaSans-Medium.ttf
+        - asset: assets/fonts/plus_jakarta_sans/PlusJakartaSans-Medium.ttf
 
 
     - family: PlusJakartaSans-MediumItalic
       fonts:
-        - asset: fonts/PlusJakartaSans-MediumItalic.ttf
+        - asset: assets/fonts/plus_jakarta_sans/PlusJakartaSans-MediumItalic.ttf
 
     - family: PlusJakartaSans-Regular
       fonts:
-        - asset: fonts/PlusJakartaSans-Regular.ttf
+        - asset: assets/fonts/plus_jakarta_sans/PlusJakartaSans-Regular.ttf
 
     - family: PlusJakartaSans-SemiBold
       fonts:
-        - asset: fonts/PlusJakartaSans-SemiBold.ttf
+        - asset: assets/fonts/plus_jakarta_sans/PlusJakartaSans-SemiBold.ttf
 
     - family: PlusJakartaSans-SemiBoldItalic
       fonts:
-        - asset: fonts/PlusJakartaSans-SemiBoldItalic.ttf
+        - asset: assets/fonts/plus_jakarta_sans/PlusJakartaSans-SemiBoldItalic.ttf
 
 
   #          style: italic

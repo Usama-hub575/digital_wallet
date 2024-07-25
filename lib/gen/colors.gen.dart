@@ -16,8 +16,20 @@ class ColorName {
   /// Color: #032426
   static const Color black = Color(0xFF032426);
 
+  /// Color: #E3F3FC
+  static const Color fadedBlue = Color(0xFFE3F3FC);
+
+  /// Color: #FDF4E8
+  static const Color fadedOrange = Color(0xFFFDF4E8);
+
+  /// Color: #FCFCE3
+  static const Color fadedYellow = Color(0xFFFCFCE3);
+
   /// Color: #878787
   static const Color grey = Color(0xFF878787);
+
+  /// Color: #AADDFA
+  static const Color lightBlue = Color(0xFFAADDFA);
 
   /// Color: #343F52
   static const Color lightGreyText = Color(0xFF343F52);
@@ -30,4 +42,7 @@ class ColorName {
 
   /// Color: #FFFFFF
   static const Color pureWhite = Color(0xFFFFFFFF);
+
+  /// Color: #FF0000
+  static const Color red = Color(0xFFFF0000);
 }

@@ -7,4 +7,10 @@ Future initializeRepoDependencies() async {
     sharedPreferences: await SharedPreferences.getInstance(),
   );
 
+  it.registerLazySingleton<AuthRepo>(
+    () => AuthRepoImpl( 
+      storage: storage,
+      networkHelper: it(),
+    ),
+  );
 }
