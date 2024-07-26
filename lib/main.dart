@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
           title: AppConstants.digitalWallet,
           debugShowCheckedModeBanner: false,
           onGenerateRoute: AppRoutes.generateRoute,
-          initialRoute: AppRoutes.initializer,
+          initialRoute: AppRoutes.hostPage,
         );
       },
     );

@@ -152,7 +152,7 @@ class NetworkHelperImpl extends NetworkHelper {
 
     if (statusCode >= 400) {
       Map<String, dynamic> errorJson = jsonDecode(response.body.toString());
-      final responseMessage = errorJson['message'] ?? 'Something went Wrong';
+      final responseMessage = errorJson['error'] ?? 'Something went Wrong';
       return Right(
         Failure(
           status: false,

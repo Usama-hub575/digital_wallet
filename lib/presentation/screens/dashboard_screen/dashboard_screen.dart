@@ -1,5 +1,4 @@
 import 'package:digital_wallet/export.dart';
-import 'package:digital_wallet/presentation/screens/dashboard_screen/widgets/export.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});

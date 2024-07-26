@@ -9,6 +9,7 @@ export 'widgets/export.dart';
 ///packages export
 
 export 'package:flutter_svg/flutter_svg.dart';
+export 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 export 'package:flutter/material.dart';
 export 'package:equatable/equatable.dart';
 export 'package:flutter_bloc/flutter_bloc.dart';

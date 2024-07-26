@@ -15,7 +15,7 @@ dependencies:
   dartz:
   http:
   shared_preferences:
-  animated_bottom_navigation_bar:
+  persistent_bottom_nav_bar:
   get_it:
   flutter_svg:
   flutter_bloc:

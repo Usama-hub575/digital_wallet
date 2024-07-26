@@ -5,6 +5,8 @@ class AppConstants {
   static const pleaseEnterYourName = 'Please enter your name';
   static const pleaseEnterYourEmail = 'Please enter your email';
   static const confirmPassword = 'Confirm Password';
+  static const passwordDonotMatch = 'Password doesnot match';
+  static const error = 'Error';
   static const emailRegExp =
       r"^[a-zA-Z0-9.a-zA-Z0-9!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+";
   static const pleaseEnterValidEmailAddress =

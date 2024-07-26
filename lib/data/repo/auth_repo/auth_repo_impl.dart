@@ -12,9 +12,62 @@ class AuthRepoImpl implements AuthRepo {
   EndPoints endPoints = EndPoints();
 
   @override
-  Future<Either<Success, Failure>> login() async {
-    return Left(
-      Success(),
+  Future<Either<Success, Failure>> login({
+    required String email,
+    required String password,
+  }) async {
+    final response = await networkHelper.post(
+      endPoints.getLoginEndPoint(),
+      body: {
+        "email": email,
+        "password": password,
+      },
+    );
+    return response.fold(
+      (success) {
+        return Left(
+          Success(),
+        );
+      },
+      (r) {
+        return Right(
+          Failure(
+            status: r.status,
+            message: r.message,
+          ),
+        );
+      },
+    );
+  }
+
+  @override
+  Future<Either<Success, Failure>> signUp({
+    required String username,
+    required String email,
+    required String password,
+  }) async {
+    final response = await networkHelper.post(
+      endPoints.getSignUpEndPoint(),
+      body: {
+        "username" : username,
+        "email" : email ,
+        "password" : password
+      }
+    );
+    return response.fold(
+      (success) {
+        return Left(
+          Success(),
+        );
+      },
+      (r) {
+        return Right(
+          Failure(
+            status: r.status,
+            message: r.message,
+          ),
+        );
+      },
     );
   }
 }

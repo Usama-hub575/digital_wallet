@@ -94,17 +94,17 @@ class SignUpScreen extends StatelessWidget {
                   BlocBuilder<AuthBloc, AuthState>(
                     builder: (context, state) {
                       return GenericTextField(
-                        obscureText: state.isObscure,
+                        obscureText: state.signUpObscure,
                         hintText: "Password",
                         controller: passwordController,
                         readOnly: true,
                         suffixIcon: IconButton(
                           onPressed: () {
                             context.read<AuthBloc>().add(
-                                  SignInToggle(),
+                                  SignUpToggle(),
                                 );
                           },
-                          icon: state.isObscure
+                          icon: state.signUpObscure
                               ? const Icon(
                                   Icons.visibility,
                                 )
@@ -136,17 +136,17 @@ class SignUpScreen extends StatelessWidget {
                   BlocBuilder<AuthBloc, AuthState>(
                     builder: (context, state) {
                       return GenericTextField(
-                        obscureText: state.isObscure,
+                        obscureText: state.confirmPasswordObscure,
                         hintText: "Confirm Password",
                         controller: confirmPasswordController,
                         readOnly: true,
                         suffixIcon: IconButton(
                           onPressed: () {
                             context.read<AuthBloc>().add(
-                                  SignInToggle(),
+                                  ConfirmPasswordToggle(),
                                 );
                           },
-                          icon: state.isObscure
+                          icon: state.confirmPasswordObscure
                               ? const Icon(
                                   Icons.visibility,
                                 )
@@ -156,7 +156,7 @@ class SignUpScreen extends StatelessWidget {
                         ),
                         validator: (value) {
                           context.read<AuthBloc>().add(
-                                IsPasswordValid(
+                                ConfirmPasswordValid(
                                   password: value,
                                 ),
                               );
@@ -165,9 +165,11 @@ class SignUpScreen extends StatelessWidget {
                           } else if (value.length < 6) {
                             return AppConstants
                                 .passwordLengthShouldBeMoreThanSixCharacters;
-                          } else if (!state.isPasswordValid) {
+                          } else if (!state.confirmPasswordValid) {
                             return AppConstants
                                 .passwordMustContainAtLeastOneSpecialCharacterOneNumberAndBothLowercaseAndUppercaseLetters;
+                          } else if (value != passwordController.text){
+                            return AppConstants.passwordDonotMatch;
                           }
                           return null;
                         },
@@ -203,14 +205,50 @@ class SignUpScreen extends StatelessWidget {
                     ],
                   ),
                   verticalSpacer(50),
-                  SmallButtonWidget(
-                    buttonColor: ColorName.primaryColorLight,
-                    buttonText: "Sign Up Now",
-                    onTap: () {
-                      if (signUpFormKey.currentState!.validate()) {
-                        FocusScope.of(context).requestFocus(
-                          FocusNode(),
-                        );
+                  BlocConsumer<AuthBloc, AuthState>(
+                    builder: (context, state) {
+                      return GenericButton(
+                        isLoading: state.signUpStatus == SignUpStatus.loading
+                            ? true
+                            : false,
+                        buttonColor: ColorName.primaryColorLight,
+                        buttonText: "Sign Up Now",
+                        onTap: () {
+                          if (signUpFormKey.currentState!.validate()) {
+                            FocusScope.of(context).requestFocus(
+                              FocusNode(),
+                            );
+                            context.read<AuthBloc>().add(
+                              SignUpLoading(),
+                            );
+                            context.read<AuthBloc>().add(
+                              SignUp(
+                                email: emailController.text,
+                                username: nameController.text,
+                                password: passwordController.text,
+                              ),
+                            );
+                          }
+                        },
+                      );
+                    },
+                    listener: (context, state) {
+                      switch (state.signUpStatus) {
+                        case SignUpStatus.init:
+                        // TODO: Handle this case.
+                          break;
+                        case SignUpStatus.loading:
+                        // TODO: Handle this case.
+                          break;
+                        case SignUpStatus.loaded:
+                        // TODO: Handle this case.
+                          break;
+                        case SignUpStatus.error:
+                          showErrorToast(
+                            message: state.errorMessage,
+                            context: context,
+                          );
+                          break;
                       }
                     },
                   ),

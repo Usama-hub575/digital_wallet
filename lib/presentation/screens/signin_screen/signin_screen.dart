@@ -141,23 +141,59 @@ class SignInScreen extends StatelessWidget {
                     ],
                   ),
                   verticalSpacer(50),
-                  SmallButtonWidget(
-                    onTap: () {
-                      Navigator.pushNamed(
-                        context,
-                        AppRoutes.dashboardScreen,
+                  BlocConsumer<AuthBloc, AuthState>(
+                    builder: (context, state) {
+                      return GenericButton(
+                        isLoading:
+                            state.status == SignInStatus.loading ? true : false,
+                        onTap: () {
+                          // context.read<AuthBloc>().add(
+                          //       SignInLoading(),
+                          //     );
+                          // context.read<AuthBloc>().add(
+                          //       SignIn(
+                          //         email: emailController.text,
+                          //         password: passwordController.text,
+                          //       ),
+                          //     );
+                          Navigator.pushNamed(
+                            context,
+                            AppRoutes.dashboardScreen,
+                          );
+                        },
+                        buttonColor: ColorName.primaryColorLight,
+                        buttonText: "Sign In",
                       );
-                      // if (loginFormKey.currentState!.validate()) {
-                      //   FocusScope.of(context).requestFocus(
-                      //     FocusNode(),
-                      //   );
-                      // }
                     },
-                    buttonColor: ColorName.primaryColorLight,
-                    buttonText: "Sign In",
+                    listener: (context, state) {
+                      switch (state.status) {
+                        case SignInStatus.init:
+                          // TODO: Handle this case.
+                          break;
+                        case SignInStatus.loading:
+                          // TODO: Handle this case.
+                          break;
+                        case SignInStatus.home:
+                          Navigator.pushNamed(
+                            context,
+                            AppRoutes.dashboardScreen,
+                          );
+                          break;
+                        case SignInStatus.loaded:
+                          // TODO: Handle this case.
+                          break;
+                        case SignInStatus.error:
+                          showErrorToast(
+                            message: state.errorMessage,
+                            context: context,
+                          );
+                          state.status = SignInStatus.init;
+                          break;
+                      }
+                    },
                   ),
                   verticalSpacer(20),
-                  const SmallButtonWidget(
+                  const GenericButton(
                     buttonColor: ColorName.primaryColor,
                     buttonText: "Sign Up",
                   ),

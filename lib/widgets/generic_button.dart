@@ -1,7 +1,7 @@
 import 'package:digital_wallet/export.dart';
 
-class SmallButtonWidget extends StatelessWidget {
-  const SmallButtonWidget({
+class GenericButton extends StatelessWidget {
+  const GenericButton({
     super.key,
     required this.buttonText,
     this.onTap,
