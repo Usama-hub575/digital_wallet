@@ -1,4 +1,5 @@
 import 'package:digital_wallet/export.dart';
+import 'package:digital_wallet/presentation/bloc/host_bloc/export.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -8,6 +9,9 @@ void main() async {
       providers: [
         BlocProvider.value(
           value: it<AuthBloc>(),
+        ),
+        BlocProvider.value(
+          value: it<HostBloc>(),
         ),
       ],
       child: const MyApp(),
@@ -32,7 +36,7 @@ class MyApp extends StatelessWidget {
           title: AppConstants.digitalWallet,
           debugShowCheckedModeBanner: false,
           onGenerateRoute: AppRoutes.generateRoute,
-          initialRoute: AppRoutes.hostPage,
+          initialRoute: AppRoutes.initializer,
         );
       },
     );

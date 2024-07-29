@@ -54,3 +54,5 @@ class SignUp extends AuthEvent {
     required this.password,
   });
 }
+
+class StartTimer extends AuthEvent {}

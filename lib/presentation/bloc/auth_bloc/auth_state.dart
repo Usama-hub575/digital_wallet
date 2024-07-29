@@ -6,6 +6,7 @@ class AuthState extends Equatable {
   bool confirmPasswordObscure;
   bool signUpObscure;
   bool isPasswordValid;
+  int start;
   bool checkBox;
   SignInStatus status;
   SignUpStatus signUpStatus;
@@ -17,6 +18,7 @@ class AuthState extends Equatable {
     this.confirmPasswordObscure = false,
     this.signUpStatus = SignUpStatus.init,
     this.isObscure = false,
+    this.start = 120,
     this.isPasswordValid = true,
     this.checkBox = true,
     this.signUpObscure = false,
@@ -28,6 +30,7 @@ class AuthState extends Equatable {
     bool? isObscure,
     bool? isPasswordValid,
     bool? checkBox,
+    int? start,
     SignInStatus? status,
     SignUpStatus? signUpStatus,
     bool? confirmPasswordObscure,
@@ -45,6 +48,7 @@ class AuthState extends Equatable {
           confirmPasswordObscure ?? this.confirmPasswordObscure,
       signUpStatus: signUpStatus ?? this.signUpStatus,
       signUpObscure: signUpObscure ?? this.signUpObscure,
+      start: start ?? this.start,
     );
   }
 
@@ -54,6 +58,7 @@ class AuthState extends Equatable {
         isObscure,
         isPasswordValid,
         checkBox,
+        start,
         status,
         signUpStatus,
         confirmPasswordObscure,

@@ -1,5 +1,6 @@
 import 'package:digital_wallet/export.dart';
 import 'package:digital_wallet/presentation/screens/host_page/export.dart';
+import 'package:digital_wallet/presentation/screens/otp_verification_screen/otp_verification_screen.dart';
 
 class AppRoutes {
   static const initializer = '/';
@@ -7,6 +8,7 @@ class AppRoutes {
   static const signupScreen = '/signUpScreen';
   static const dashboardScreen = '/dashboardScreen';
   static const hostPage = '/hostPage';
+  static const verificationScreen = '/verificationScreen';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     _currentRoute = settings.name;
@@ -20,6 +22,10 @@ class AppRoutes {
       case signupScreen:
         return MaterialPageRoute(
           builder: (_) => SignUpScreen(),
+        );
+      case verificationScreen:
+        return MaterialPageRoute(
+          builder: (_) => const OtpVerificationScreen(),
         );
       case dashboardScreen:
         return MaterialPageRoute(

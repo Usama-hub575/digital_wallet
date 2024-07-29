@@ -130,11 +130,17 @@ class SignInScreen extends StatelessWidget {
                         ),
                       ),
                       const Spacer(),
-                      Text(
-                        "Forgot Password",
-                        style: textStyles.light.copyWith(
-                          fontSize: 11.sp,
-                          fontWeight: FontWeight.w500,
+                      InkWell(
+                        onTap: () => Navigator.pushNamed(
+                          context,
+                          AppRoutes.verificationScreen,
+                        ),
+                        child: Text(
+                          "Forgot Password",
+                          style: textStyles.light.copyWith(
+                            fontSize: 11.sp,
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
                       ),
                       verticalSpacer(30),
@@ -158,7 +164,7 @@ class SignInScreen extends StatelessWidget {
                           //     );
                           Navigator.pushNamed(
                             context,
-                            AppRoutes.dashboardScreen,
+                            AppRoutes.hostPage,
                           );
                         },
                         buttonColor: ColorName.primaryColorLight,

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:digital_wallet/export.dart';
 
 part 'auth_event.dart';
@@ -20,6 +22,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<SignUpLoading>(_signUpLoading);
     on<SignUpToggle>(_signUpToggle);
     on<ConfirmPasswordToggle>(_confirmPasswordToggle);
+    on<StartTimer>(_startTimer);
   }
 
   final AuthUseCase authUseCase;
@@ -29,6 +32,28 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       state.copyWith(
         status: SignInStatus.loading,
       ),
+    );
+  }
+
+  _startTimer(StartTimer event, Emitter<AuthState>emit) {
+    Timer.periodic(
+      const Duration(
+        seconds: 1,
+      ),
+      (Timer timer) {
+        if (state.start < 2) {
+          emit(
+            state.copyWith(),
+          );
+          timer.cancel();
+        } else {
+          emit(
+            state.copyWith(
+              start: state.start--,
+            ),
+          );
+        }
+      },
     );
   }
 

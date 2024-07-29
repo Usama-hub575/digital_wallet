@@ -1,0 +1,88 @@
+import 'package:digital_wallet/export.dart';
+
+class OtpVerificationScreen extends StatefulWidget {
+  const OtpVerificationScreen({super.key});
+
+  @override
+  State<OtpVerificationScreen> createState() => _OtpVerificationScreenState();
+}
+
+class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
+  @override
+  void initState() {
+    context.read<AuthBloc>().add(
+          StartTimer(),
+        );
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: ColorName.pureWhite,
+      appBar: AppBar(
+        leading: IconButton(
+          onPressed: () => Navigator.pop(context),
+          icon: const Icon(
+            Icons.arrow_back_outlined,
+          ),
+        ),
+        title: Text(
+          "Enter Digit Verification",
+          style: textStyles.regular.copyWith(
+            color: ColorName.darkBlueText,
+            fontSize: 16.sp,
+            fontWeight: FontWeight.w400,
+          ),
+        ),
+      ),
+      body: Padding(
+        padding: EdgeInsets.symmetric(
+          horizontal: 50.w,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            verticalSpacer(80),
+            Text(
+              "Enter 4-digit",
+              style: textStyles.semiBold.copyWith(
+                color: ColorName.darkBlueText2,
+                fontSize: 30.sp,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            Text(
+              "Verification Code",
+              style: textStyles.semiBold.copyWith(
+                color: ColorName.darkBlueText2,
+                fontSize: 30.sp,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            verticalSpacer(10),
+            BlocBuilder<AuthBloc, AuthState>(builder: (context, state) {
+              return Text(
+                "Code send to +9282045**** . \n This code will expired in ${state.start}",
+                style: textStyles.regular.copyWith(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 14.sp,
+                  color: ColorName.darkBlueText2,
+                ),
+              );
+            }),
+            verticalSpacer(60),
+            OTPTextField(
+              width: double.infinity,
+              length: 4,
+              onCompleted: (otp) {
+                FocusScope.of(context).unfocus();
+                // Handle completed OTP input
+              },
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}

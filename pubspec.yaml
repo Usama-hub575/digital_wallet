@@ -16,6 +16,7 @@ dependencies:
   http:
   shared_preferences:
   persistent_bottom_nav_bar:
+  otp_text_field:
   get_it:
   flutter_svg:
   flutter_bloc:
