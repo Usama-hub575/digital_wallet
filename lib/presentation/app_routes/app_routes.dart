@@ -25,7 +25,9 @@ class AppRoutes {
         );
       case verificationScreen:
         return MaterialPageRoute(
-          builder: (_) => const OtpVerificationScreen(),
+          builder: (_) => OtpVerificationScreen(
+            email: args?['Email'],
+          ),
         );
       case dashboardScreen:
         return MaterialPageRoute(

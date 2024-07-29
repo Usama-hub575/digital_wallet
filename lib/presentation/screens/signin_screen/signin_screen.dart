@@ -153,19 +153,15 @@ class SignInScreen extends StatelessWidget {
                         isLoading:
                             state.status == SignInStatus.loading ? true : false,
                         onTap: () {
-                          // context.read<AuthBloc>().add(
-                          //       SignInLoading(),
-                          //     );
-                          // context.read<AuthBloc>().add(
-                          //       SignIn(
-                          //         email: emailController.text,
-                          //         password: passwordController.text,
-                          //       ),
-                          //     );
-                          Navigator.pushNamed(
-                            context,
-                            AppRoutes.hostPage,
-                          );
+                          context.read<AuthBloc>().add(
+                                SignInLoading(),
+                              );
+                          context.read<AuthBloc>().add(
+                                SignIn(
+                                  email: emailController.text,
+                                  password: passwordController.text,
+                                ),
+                              );
                         },
                         buttonColor: ColorName.primaryColorLight,
                         buttonText: "Sign In",
@@ -195,13 +191,24 @@ class SignInScreen extends StatelessWidget {
                           );
                           state.status = SignInStatus.init;
                           break;
+                        case SignInStatus.success:
+                          context.read<AuthBloc>().add(
+                                GetProfile(),
+                              );
+                          break;
                       }
                     },
                   ),
                   verticalSpacer(20),
-                  const GenericButton(
+                  GenericButton(
                     buttonColor: ColorName.primaryColor,
                     buttonText: "Sign Up",
+                    onTap: () {
+                      Navigator.pushNamed(
+                        context,
+                        AppRoutes.signupScreen,
+                      );
+                    },
                   ),
                   verticalSpacer(30),
                   Row(

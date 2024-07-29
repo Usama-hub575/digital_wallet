@@ -41,12 +41,50 @@ class AuthUseCase {
       username: username,
     );
     return response.fold(
-          (success) {
+      (success) {
         return Left(
           success,
         );
       },
-          (r) {
+      (r) {
+        return Right(
+          r,
+        );
+      },
+    );
+  }
+
+  Future<Either<Success, Failure>> verifyOTP({
+    required String email,
+    required String otp,
+  }) async {
+    final response = await authRepo.verifyOTP(
+      email: email,
+      otp: otp,
+    );
+    return response.fold(
+      (success) {
+        return Left(
+          success,
+        );
+      },
+      (r) {
+        return Right(
+          r,
+        );
+      },
+    );
+  }
+
+  Future<Either<Success, Failure>> getProfile() async {
+    final response = await authRepo.getProfile();
+    return response.fold(
+      (success) {
+        return Left(
+          success,
+        );
+      },
+      (r) {
         return Right(
           r,
         );

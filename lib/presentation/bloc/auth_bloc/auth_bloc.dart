@@ -23,6 +23,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<SignUpToggle>(_signUpToggle);
     on<ConfirmPasswordToggle>(_confirmPasswordToggle);
     on<StartTimer>(_startTimer);
+    on<VerifyOTP>(_verifyOTP);
+    on<VerifyOTPLoading>(_verifyOtpLoading);
+    on<GetProfile>(_getProfile);
   }
 
   final AuthUseCase authUseCase;
@@ -35,7 +38,15 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     );
   }
 
-  _startTimer(StartTimer event, Emitter<AuthState>emit) {
+  _verifyOtpLoading(VerifyOTPLoading event, emit) {
+    emit(
+      state.copyWith(
+        verifyOtpStatus: VerifyOtpStatus.loading,
+      ),
+    );
+  }
+
+  _startTimer(StartTimer event, Emitter<AuthState> emit) {
     Timer.periodic(
       const Duration(
         seconds: 1,
@@ -74,6 +85,28 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       (success) {
         emit(
           state.copyWith(
+            status: SignInStatus.success,
+          ),
+        );
+      },
+      (r) {
+        emit(
+          state.copyWith(
+            status: SignInStatus.error,
+            errorMessage: r.message,
+          ),
+        );
+      },
+    );
+  }
+
+  _getProfile(GetProfile event, emit) async {
+    final response = await authUseCase.getProfile(
+    );
+    return response.fold(
+      (success) {
+        emit(
+          state.copyWith(
             status: SignInStatus.home,
           ),
         );
@@ -83,6 +116,29 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           state.copyWith(
             status: SignInStatus.error,
             errorMessage: r.message,
+          ),
+        );
+      },
+    );
+  }
+
+  _verifyOTP(VerifyOTP event, emit) async {
+    final response = await authUseCase.verifyOTP(
+      email: event.email,
+      otp: event.otp,
+    );
+    return response.fold(
+      (success) {
+        emit(
+          state.copyWith(
+            verifyOtpStatus: VerifyOtpStatus.success,
+          ),
+        );
+      },
+      (r) {
+        emit(
+          state.copyWith(
+            verifyOtpStatus: VerifyOtpStatus.loaded,
           ),
         );
       },
@@ -99,7 +155,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       (success) {
         emit(
           state.copyWith(
-            signUpStatus: SignUpStatus.loaded,
+            signUpStatus: SignUpStatus.success,
           ),
         );
       },

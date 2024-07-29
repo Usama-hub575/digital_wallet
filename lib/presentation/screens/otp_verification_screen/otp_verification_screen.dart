@@ -1,18 +1,25 @@
 import 'package:digital_wallet/export.dart';
 
 class OtpVerificationScreen extends StatefulWidget {
-  const OtpVerificationScreen({super.key});
+  const OtpVerificationScreen({
+    required this.email,
+    super.key,
+  });
+
+  final String email;
 
   @override
   State<OtpVerificationScreen> createState() => _OtpVerificationScreenState();
 }
 
 class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
+  OtpFieldController otpFieldController = OtpFieldController();
+
   @override
   void initState() {
-    context.read<AuthBloc>().add(
-          StartTimer(),
-        );
+    // context.read<AuthBloc>().add(
+    //       StartTimer(),
+    //     );
     super.initState();
   }
 
@@ -63,7 +70,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
             verticalSpacer(10),
             BlocBuilder<AuthBloc, AuthState>(builder: (context, state) {
               return Text(
-                "Code send to +9282045**** . \n This code will expired in ${state.start}",
+                "Code send to +9282045**** . \n This code will expired in ",
                 style: textStyles.regular.copyWith(
                   fontWeight: FontWeight.w400,
                   fontSize: 14.sp,
@@ -73,13 +80,61 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
             }),
             verticalSpacer(60),
             OTPTextField(
+              controller: otpFieldController,
               width: double.infinity,
-              length: 4,
+              length: 6,
+              onChanged: (value) {},
               onCompleted: (otp) {
                 FocusScope.of(context).unfocus();
+                context.read<AuthBloc>().add(
+                      VerifyOTPLoading(),
+                    );
+                context.read<AuthBloc>().add(
+                      VerifyOTP(
+                        email: widget.email,
+                        otp: otp,
+                      ),
+                    );
                 // Handle completed OTP input
               },
-            )
+            ),
+            verticalSpacer(40),
+            BlocConsumer<AuthBloc, AuthState>(
+              builder: (context, state) {
+                return GenericButton(
+                  isLoading: state.verifyOtpStatus == VerifyOtpStatus.loading
+                      ? true
+                      : false,
+                  onTap: () {
+                    Navigator.pushNamed(
+                      context,
+                      AppRoutes.hostPage,
+                    );
+                  },
+                  buttonColor: ColorName.primaryColorLight,
+                  buttonText: "Verify",
+                );
+              },
+              listener: (context, state) {
+                switch (state.verifyOtpStatus) {
+                  case VerifyOtpStatus.init:
+                    // TODO: Handle this case.
+                    break;
+                  case VerifyOtpStatus.loading:
+                    // TODO: Handle this case.
+                    break;
+                  case VerifyOtpStatus.loaded:
+                    // TODO: Handle this case.
+                    break;
+                  case VerifyOtpStatus.success:
+                    Navigator.pushNamed(
+                      context,
+                      AppRoutes.initializer,
+                    );
+                    break;
+                }
+              },
+            ),
           ],
         ),
       ),

@@ -1,8 +1,6 @@
-enum SignInStatus {
+enum VerifyOtpStatus {
   init,
   loading,
   loaded,
   success,
-  home,
-  error,
 }

@@ -33,6 +33,8 @@ class SignUpLoading extends AuthEvent {}
 
 class SignInCheckBoxToggle extends AuthEvent {}
 
+class GetProfile extends AuthEvent {}
+
 class SignIn extends AuthEvent {
   final String email;
   final String password;
@@ -56,3 +58,15 @@ class SignUp extends AuthEvent {
 }
 
 class StartTimer extends AuthEvent {}
+
+class VerifyOTPLoading extends AuthEvent {}
+
+class VerifyOTP extends AuthEvent {
+  final String email;
+  final String otp;
+
+  VerifyOTP({
+    required this.email,
+    required this.otp,
+  });
+}

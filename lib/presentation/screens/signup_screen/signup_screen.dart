@@ -168,7 +168,7 @@ class SignUpScreen extends StatelessWidget {
                           } else if (!state.confirmPasswordValid) {
                             return AppConstants
                                 .passwordMustContainAtLeastOneSpecialCharacterOneNumberAndBothLowercaseAndUppercaseLetters;
-                          } else if (value != passwordController.text){
+                          } else if (value != passwordController.text) {
                             return AppConstants.passwordDonotMatch;
                           }
                           return null;
@@ -219,15 +219,15 @@ class SignUpScreen extends StatelessWidget {
                               FocusNode(),
                             );
                             context.read<AuthBloc>().add(
-                              SignUpLoading(),
-                            );
+                                  SignUpLoading(),
+                                );
                             context.read<AuthBloc>().add(
-                              SignUp(
-                                email: emailController.text,
-                                username: nameController.text,
-                                password: passwordController.text,
-                              ),
-                            );
+                                  SignUp(
+                                    email: emailController.text,
+                                    username: nameController.text,
+                                    password: passwordController.text,
+                                  ),
+                                );
                           }
                         },
                       );
@@ -235,19 +235,27 @@ class SignUpScreen extends StatelessWidget {
                     listener: (context, state) {
                       switch (state.signUpStatus) {
                         case SignUpStatus.init:
-                        // TODO: Handle this case.
+                          // TODO: Handle this case.
                           break;
                         case SignUpStatus.loading:
-                        // TODO: Handle this case.
+                          // TODO: Handle this case.
                           break;
                         case SignUpStatus.loaded:
-                        // TODO: Handle this case.
+                          // TODO: Handle this case.
                           break;
                         case SignUpStatus.error:
                           showErrorToast(
                             message: state.errorMessage,
                             context: context,
                           );
+                          state.signUpStatus = SignUpStatus.init;
+                          break;
+                        case SignUpStatus.success:
+                          Navigator.pushNamed(
+                              context, AppRoutes.verificationScreen,
+                              arguments: {
+                                "Email": emailController.text,
+                              });
                           break;
                       }
                     },
