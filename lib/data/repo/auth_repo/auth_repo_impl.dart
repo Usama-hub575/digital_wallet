@@ -116,9 +116,37 @@ class AuthRepoImpl implements AuthRepo {
   }
 
   @override
-  Future<Either<Success, Failure>> getProfile() async {
+  Future<Either<dynamic, Failure>> getProfile() async {
     final response = await networkHelper.get(
       endPoints.getProfileEndPoint(),
+    );
+    return response.fold(
+      (success) {
+        final decodedResponse = jsonDecode(success);
+        return Left(
+          decodedResponse,
+        );
+      },
+      (r) {
+        return Right(
+          Failure(
+            status: r.status,
+            message: r.message,
+          ),
+        );
+      },
+    );
+  }
+
+  @override
+  Future<Either<dynamic, Failure>> setSecretKey({
+    required String secretKey,
+  }) async {
+    final response = await networkHelper.post(
+      endPoints.getSecretKeyEndPoint(),
+      body: {
+        "secret_key": secretKey,
+      },
     );
     return response.fold(
       (success) {

@@ -76,7 +76,27 @@ class AuthUseCase {
     );
   }
 
-  Future<Either<Success, Failure>> getProfile() async {
+  Future<Either<Success, Failure>> setSecretKey({
+    required String secretKey,
+  }) async {
+    final response = await authRepo.setSecretKey(
+      secretKey: secretKey,
+    );
+    return response.fold(
+      (success) {
+        return Left(
+          success,
+        );
+      },
+      (r) {
+        return Right(
+          r,
+        );
+      },
+    );
+  }
+
+  Future<Either<dynamic, Failure>> getProfile() async {
     final response = await authRepo.getProfile();
     return response.fold(
       (success) {

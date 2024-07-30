@@ -12,6 +12,8 @@ class AuthState extends Equatable {
   SignUpStatus signUpStatus;
   bool confirmPasswordValid;
   VerifyOtpStatus verifyOtpStatus;
+  GetProfileResponseModel getProfileResponseModel =
+      GetProfileResponseModel.empty();
 
   AuthState({
     this.errorMessage = '',
@@ -25,6 +27,7 @@ class AuthState extends Equatable {
     this.signUpObscure = false,
     this.confirmPasswordValid = false,
     this.verifyOtpStatus = VerifyOtpStatus.init,
+    required this.getProfileResponseModel,
   });
 
   AuthState copyWith({
@@ -39,8 +42,11 @@ class AuthState extends Equatable {
     bool? signUpObscure,
     bool? confirmPasswordValid,
     VerifyOtpStatus? verifyOtpStatus,
+    GetProfileResponseModel? getProfileResponseModel,
   }) {
     return AuthState(
+      getProfileResponseModel:
+          getProfileResponseModel ?? this.getProfileResponseModel,
       errorMessage: errorMessage ?? this.errorMessage,
       isObscure: isObscure ?? this.isObscure,
       isPasswordValid: isPasswordValid ?? this.isPasswordValid,
@@ -58,6 +64,7 @@ class AuthState extends Equatable {
 
   @override
   List<Object?> get props => [
+        getProfileResponseModel,
         errorMessage,
         isObscure,
         verifyOtpStatus,

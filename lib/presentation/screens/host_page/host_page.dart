@@ -1,6 +1,4 @@
 import 'package:digital_wallet/export.dart';
-import 'package:digital_wallet/presentation/bloc/host_bloc/export.dart';
-import 'package:digital_wallet/presentation/screens/send_money/export.dart';
 
 class HostPage extends StatelessWidget {
   HostPage({super.key});
@@ -10,6 +8,7 @@ class HostPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: ColorName.pureWhite,
       body: SafeArea(
         child: BlocBuilder<HostBloc, HostState>(builder: (context, state) {
@@ -17,17 +16,16 @@ class HostPage extends StatelessWidget {
             context,
             controller: controller,
             screens: [
-              DashboardScreen(),
-              SendMoney(),
-              Container(),
-              Container(),
-              Container(),
+              state.currentIndex == 0 ? DashboardScreen() : SizedBox.shrink(),
+              state.currentIndex == 1 ? SendMoney() : SizedBox.shrink(),
+              state.currentIndex == 2 ? Container() : SizedBox.shrink(),
+              state.currentIndex == 3 ? Container() : SizedBox.shrink(),
+              state.currentIndex == 4 ? Container() : SizedBox.shrink(),
             ],
             onItemSelected: (index) {
               context.read<HostBloc>().add(
                     CurrentIndex(currentIndex: index),
                   );
-              print(index.toString());
             },
             items: [
               PersistentBottomNavBarItem(

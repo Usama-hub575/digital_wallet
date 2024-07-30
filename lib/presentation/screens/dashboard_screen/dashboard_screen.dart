@@ -1,7 +1,24 @@
 import 'package:digital_wallet/export.dart';
 
-class DashboardScreen extends StatelessWidget {
+class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
+
+  @override
+  State<DashboardScreen> createState() => _DashboardScreenState();
+}
+
+class _DashboardScreenState extends State<DashboardScreen> {
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    if (context.read<AuthBloc>().state.getProfileResponseModel.secretKeySet ==
+        false) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        showAlertDialog(context);
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -267,7 +284,7 @@ class DashboardScreen extends StatelessWidget {
                           Text(
                             '-Rs 600.000',
                             style: textStyles.semiBold.copyWith(
-                                color: ColorName.red,
+                              color: ColorName.red,
                               fontWeight: FontWeight.w600,
                               fontSize: 13.sp,
                             ),

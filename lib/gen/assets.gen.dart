@@ -13,8 +13,14 @@ class $AssetsSvgGen {
   /// File path: assets/svg/add_icon.svg
   String get addIcon => 'assets/svg/add_icon.svg';
 
+  /// File path: assets/svg/authentication.svg
+  String get authentication => 'assets/svg/authentication.svg';
+
   /// File path: assets/svg/contact_book.svg
   String get contactBook => 'assets/svg/contact_book.svg';
+
+  /// File path: assets/svg/cross_icon.svg
+  String get crossIcon => 'assets/svg/cross_icon.svg';
 
   /// File path: assets/svg/deposit_money.svg
   String get depositMoney => 'assets/svg/deposit_money.svg';
@@ -82,7 +88,9 @@ class $AssetsSvgGen {
   /// List of all assets
   List<String> get values => [
         addIcon,
+        authentication,
         contactBook,
+        crossIcon,
         depositMoney,
         dummy,
         education,

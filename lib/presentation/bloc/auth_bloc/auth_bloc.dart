@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:digital_wallet/export.dart';
 
 part 'auth_event.dart';
@@ -10,7 +9,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc({
     required this.authUseCase,
   }) : super(
-          AuthState(),
+          AuthState(
+            getProfileResponseModel: GetProfileResponseModel.empty(),
+          ),
         ) {
     on<SignInToggle>(_toggle);
     on<IsPasswordValid>(_isPasswordValid);
@@ -26,6 +27,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<VerifyOTP>(_verifyOTP);
     on<VerifyOTPLoading>(_verifyOtpLoading);
     on<GetProfile>(_getProfile);
+    on<SetSecretKey>(_setSecretKey);
   }
 
   final AuthUseCase authUseCase;
@@ -100,14 +102,24 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     );
   }
 
-  _getProfile(GetProfile event, emit) async {
-    final response = await authUseCase.getProfile(
+  _setSecretKey(SetSecretKey event, emit) async {
+    final response = await authUseCase.setSecretKey(
+      secretKey: event.secretKey,
     );
+    return response.fold(
+      (success) {},
+      (r) {},
+    );
+  }
+
+  _getProfile(GetProfile event, emit) async {
+    final response = await authUseCase.getProfile();
     return response.fold(
       (success) {
         emit(
           state.copyWith(
             status: SignInStatus.home,
+            getProfileResponseModel: GetProfileResponseModel.fromJson(success),
           ),
         );
       },

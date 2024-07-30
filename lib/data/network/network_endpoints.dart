@@ -1,10 +1,10 @@
 class EndPoints {
-  final _baseUrl =
-      'https://3182-182-177-46-237.ngrok-free.app/';
+  final _baseUrl = 'https://0d8b-182-177-46-237.ngrok-free.app/';
   final String _login = 'login/';
   final String _signup = 'signup/';
   final String _getProfile = 'GetProfile/';
   final String _verifyOTP = 'verifyOTP/';
+  final String _setSecretKey = 'setSecretKey/';
 
   ///Getters
 
@@ -15,4 +15,6 @@ class EndPoints {
   String getProfileEndPoint() => '$_baseUrl$_getProfile';
 
   String getVerifyOTPEndPoint() => '$_baseUrl$_verifyOTP';
+
+  String getSecretKeyEndPoint() => '$_baseUrl$_setSecretKey';
 }

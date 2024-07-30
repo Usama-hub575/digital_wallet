@@ -1,5 +1,4 @@
 import 'package:digital_wallet/export.dart';
-import 'package:digital_wallet/presentation/bloc/host_bloc/export.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
