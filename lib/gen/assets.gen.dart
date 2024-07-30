@@ -10,6 +10,12 @@
 class $AssetsSvgGen {
   const $AssetsSvgGen();
 
+  /// File path: assets/svg/add_icon.svg
+  String get addIcon => 'assets/svg/add_icon.svg';
+
+  /// File path: assets/svg/contact_book.svg
+  String get contactBook => 'assets/svg/contact_book.svg';
+
   /// File path: assets/svg/deposit_money.svg
   String get depositMoney => 'assets/svg/deposit_money.svg';
 
@@ -27,6 +33,9 @@ class $AssetsSvgGen {
 
   /// File path: assets/svg/gas.svg
   String get gas => 'assets/svg/gas.svg';
+
+  /// File path: assets/svg/help.svg
+  String get help => 'assets/svg/help.svg';
 
   /// File path: assets/svg/history.svg
   String get history => 'assets/svg/history.svg';
@@ -64,17 +73,23 @@ class $AssetsSvgGen {
   /// File path: assets/svg/send_money.svg
   String get sendMoney => 'assets/svg/send_money.svg';
 
+  /// File path: assets/svg/send_to_wallet.svg
+  String get sendToWallet => 'assets/svg/send_to_wallet.svg';
+
   /// File path: assets/svg/water.svg
   String get water => 'assets/svg/water.svg';
 
   /// List of all assets
   List<String> get values => [
+        addIcon,
+        contactBook,
         depositMoney,
         dummy,
         education,
         electricity,
         floatingActionButton,
         gas,
+        help,
         history,
         home,
         internet,
@@ -87,6 +102,7 @@ class $AssetsSvgGen {
         report,
         requestMoney,
         sendMoney,
+        sendToWallet,
         water
       ];
 }

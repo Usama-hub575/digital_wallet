@@ -1,5 +1,6 @@
 import 'package:digital_wallet/export.dart';
 import 'package:digital_wallet/presentation/bloc/host_bloc/export.dart';
+import 'package:digital_wallet/presentation/screens/send_money/export.dart';
 
 class HostPage extends StatelessWidget {
   HostPage({super.key});
@@ -17,7 +18,7 @@ class HostPage extends StatelessWidget {
             controller: controller,
             screens: [
               DashboardScreen(),
-              Container(),
+              SendMoney(),
               Container(),
               Container(),
               Container(),

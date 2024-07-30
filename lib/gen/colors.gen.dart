@@ -22,6 +22,9 @@ class ColorName {
   /// Color: #0C192C
   static const Color darkBlueText2 = Color(0xFF0C192C);
 
+  /// Color: #F9F5FE
+  static const Color dullWhite = Color(0xFFF9F5FE);
+
   /// Color: #E3F3FC
   static const Color fadedBlue = Color(0xFFE3F3FC);
 

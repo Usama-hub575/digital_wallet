@@ -153,15 +153,19 @@ class SignInScreen extends StatelessWidget {
                         isLoading:
                             state.status == SignInStatus.loading ? true : false,
                         onTap: () {
-                          context.read<AuthBloc>().add(
-                                SignInLoading(),
-                              );
-                          context.read<AuthBloc>().add(
-                                SignIn(
-                                  email: emailController.text,
-                                  password: passwordController.text,
-                                ),
-                              );
+                          // context.read<AuthBloc>().add(
+                          //       SignInLoading(),
+                          //     );
+                          // context.read<AuthBloc>().add(
+                          //       SignIn(
+                          //         email: emailController.text,
+                          //         password: passwordController.text,
+                          //       ),
+                          //     );
+                          Navigator.pushNamed(
+                            context,
+                            AppRoutes.hostPage,
+                          );
                         },
                         buttonColor: ColorName.primaryColorLight,
                         buttonText: "Sign In",
