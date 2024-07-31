@@ -9,6 +9,7 @@ export 'widgets/export.dart';
 ///packages export
 
 export 'package:flutter_svg/flutter_svg.dart';
+export 'dart:convert';
 export 'package:otp_text_field/otp_text_field.dart';
 export 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 export 'package:flutter/material.dart';

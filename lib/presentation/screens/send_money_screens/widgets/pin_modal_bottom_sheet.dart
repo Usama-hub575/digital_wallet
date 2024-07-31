@@ -2,7 +2,9 @@ import 'package:digital_wallet/export.dart';
 
 Future<void> showPinModalBottomSheet(
   BuildContext context, {
-  bool? confirmPin = false,
+  bool? sendMoney = false,
+  String? amount,
+  String? email,
 }) async {
   showModalBottomSheet(
     isDismissible: false,
@@ -68,12 +70,20 @@ Future<void> showPinModalBottomSheet(
                 ),
                 keyboardType: TextInputType.number,
                 onCompleted: (value) {
-                  // Handle the completed PIN input here
-                  context.read<AuthBloc>().add(
-                        SetSecretKey(
-                          secretKey: value,
-                        ),
-                      );
+                  Navigator.pop(context);
+                  sendMoney == true
+                      ? context.read<DashboardBloc>().add(
+                            SendMoney(
+                              email: email ?? '',
+                              amount: amount ?? '',
+                              secretKey: value,
+                            ),
+                          )
+                      : context.read<DashboardBloc>().add(
+                            SetSecretKey(
+                              secretKey: value,
+                            ),
+                          );
                 },
                 onChanged: (value) {
                   print(value);

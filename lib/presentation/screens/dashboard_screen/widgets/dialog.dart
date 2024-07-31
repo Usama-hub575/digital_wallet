@@ -1,7 +1,9 @@
 import 'package:digital_wallet/export.dart';
-import 'package:digital_wallet/presentation/export.dart';
 
-void showAlertDialog(BuildContext context) {
+void showAlertDialog(
+  BuildContext context, {
+  bool? emailVerified = true,
+}) {
   showDialog(
     context: context,
     builder: (BuildContext context) {
@@ -22,7 +24,9 @@ void showAlertDialog(BuildContext context) {
           ],
         ),
         content: Text(
-          'Your secret key is not set. Please set it now.',
+          emailVerified == false
+              ? 'Your secret key is not set. Please set it now.'
+              : 'Your email is not verified',
           style: textStyles.light,
         ),
         actions: <Widget>[
@@ -42,20 +46,34 @@ void showAlertDialog(BuildContext context) {
                   // Navigate to the key setting screen or perform an action
                 },
               ),
-              TextButton(
-                child: Text(
-                  'Set Key',
-                  style: textStyles.light.copyWith(
-                    color: ColorName.primaryColor,
+              BlocBuilder<AuthBloc, AuthState>(builder: (context, state) {
+                return TextButton(
+                  child: Text(
+                    emailVerified == false ? 'Set Key' : 'Verify Email',
+                    style: textStyles.light.copyWith(
+                      color: ColorName.primaryColor,
+                    ),
                   ),
-                ),
-                onPressed: () {
-                  // Handle "Set Key" action
-                  Navigator.pop(context);
-                  showPinModalBottomSheet(context,confirmPin: true);
-                  // Navigate to the key setting screen or perform an action
-                },
-              ),
+                  onPressed: () {
+                    // Handle "Set Key" action
+                    Navigator.pop(context);
+                    if (emailVerified == false) {
+                      showPinModalBottomSheet(
+                        context,
+                      );
+                    } else {
+                      Navigator.pushNamed(
+                        context,
+                        AppRoutes.verificationScreen,
+                        arguments: {
+                          'Email': state.getProfileResponseModel.email,
+                          'Route': false,
+                        },
+                      );
+                    }
+                  },
+                );
+              }),
             ],
           ),
         ],

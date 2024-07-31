@@ -1,7 +1,12 @@
 import 'package:digital_wallet/export.dart';
 
 class SendToWalletWidget extends StatelessWidget {
-  const SendToWalletWidget({super.key});
+  SendToWalletWidget({
+    required this.controller,
+    super.key,
+  });
+
+  final PageController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +21,7 @@ class SendToWalletWidget extends StatelessWidget {
             ),
             width: double.infinity,
             height: double.infinity,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: ColorName.pureWhite,
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(20),
@@ -32,24 +37,29 @@ class SendToWalletWidget extends StatelessWidget {
                     color: ColorName.dullWhite,
                     borderRadius: BorderRadius.circular(8),
                   ),
-                  child: Column(
-                    children: [
-                      verticalSpacer(10),
-                      SvgPicture.asset(
-                        Assets.svg.sendToWallet,
-                        width: 30.w,
-                        height: 30.h,
-                      ),
-                      verticalSpacer(10),
-                      Text(
-                        'Send to Wallet',
-                        style: textStyles.regular.copyWith(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 15.sp,
+                  child: InkWell(
+                    onTap: () {
+                      controller.jumpToPage(1);
+                    },
+                    child: Column(
+                      children: [
+                        verticalSpacer(10),
+                        SvgPicture.asset(
+                          Assets.svg.sendToWallet,
+                          width: 30.w,
+                          height: 30.h,
                         ),
-                      ),
-                      verticalSpacer(10),
-                    ],
+                        verticalSpacer(10),
+                        Text(
+                          'Send to Wallet',
+                          style: textStyles.regular.copyWith(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 15.sp,
+                          ),
+                        ),
+                        verticalSpacer(10),
+                      ],
+                    ),
                   ),
                 ),
                 verticalSpacer(20),
@@ -64,8 +74,7 @@ class SendToWalletWidget extends StatelessWidget {
                 ListView.separated(
                   physics: const BouncingScrollPhysics(),
                   shrinkWrap: true,
-                  separatorBuilder: (context, index) =>
-                      verticalSpacer(20),
+                  separatorBuilder: (context, index) => verticalSpacer(20),
                   itemCount: 3,
                   itemBuilder: (context, index) {
                     return Row(
@@ -89,8 +98,7 @@ class SendToWalletWidget extends StatelessWidget {
                               style: textStyles.regular.copyWith(
                                 fontSize: 11.sp,
                                 fontWeight: FontWeight.w400,
-                                color: ColorName.lightGreyText
-                                    .withOpacity(0.5),
+                                color: ColorName.lightGreyText.withOpacity(0.5),
                               ),
                             ),
                           ],

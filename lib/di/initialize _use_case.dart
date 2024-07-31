@@ -10,4 +10,10 @@ Future initializeAuthUseCase() async {
       authRepo: it<AuthRepo>(),
     ),
   );
+
+  it.registerLazySingleton<DashboardUseCase>(
+        () => DashboardUseCase(
+      dashboardRepo: it<DashboardRepo>(),
+    ),
+  );
 }

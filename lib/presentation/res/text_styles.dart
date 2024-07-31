@@ -1,5 +1,4 @@
 import 'package:digital_wallet/export.dart';
-import 'package:digital_wallet/gen/colors.gen.dart';
 
 class TextStyles {
   final regular = const TextStyle(

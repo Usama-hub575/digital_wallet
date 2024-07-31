@@ -3,10 +3,12 @@ import 'package:digital_wallet/export.dart';
 class OtpVerificationScreen extends StatefulWidget {
   const OtpVerificationScreen({
     required this.email,
+    this.dashboardRoute = false,
     super.key,
   });
 
   final String email;
+  final bool? dashboardRoute;
 
   @override
   State<OtpVerificationScreen> createState() => _OtpVerificationScreenState();
@@ -36,10 +38,10 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
         ),
         title: Text(
           "Enter Digit Verification",
-          style: textStyles.regular.copyWith(
-            color: ColorName.darkBlueText,
-            fontSize: 16.sp,
-            fontWeight: FontWeight.w400,
+          style: textStyles.light.copyWith(
+            fontWeight: FontWeight.w600,
+            fontSize: 15.54.sp,
+            color: ColorName.lightGreyText,
           ),
         ),
       ),
@@ -68,16 +70,18 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
               ),
             ),
             verticalSpacer(10),
-            BlocBuilder<AuthBloc, AuthState>(builder: (context, state) {
-              return Text(
-                "Code send to +9282045**** . \n This code will expired in ",
-                style: textStyles.regular.copyWith(
-                  fontWeight: FontWeight.w400,
-                  fontSize: 14.sp,
-                  color: ColorName.darkBlueText2,
-                ),
-              );
-            }),
+            BlocBuilder<AuthBloc, AuthState>(
+              builder: (context, state) {
+                return Text(
+                  "Code send to ${widget.email}. \n This code will expired in ",
+                  style: textStyles.regular.copyWith(
+                    fontWeight: FontWeight.w400,
+                    fontSize: 14.sp,
+                    color: ColorName.darkBlueText2,
+                  ),
+                );
+              },
+            ),
             verticalSpacer(60),
             OTPTextField(
               controller: otpFieldController,
@@ -127,10 +131,12 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                     // TODO: Handle this case.
                     break;
                   case VerifyOtpStatus.success:
-                    Navigator.pushNamed(
-                      context,
-                      AppRoutes.initializer,
-                    );
+                    widget.dashboardRoute == true
+                        ? Navigator.pop(context)
+                        : Navigator.pushNamed(
+                            context,
+                            AppRoutes.initializer,
+                          );
                     break;
                 }
               },

@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:dartz/dartz.dart';
 import 'package:digital_wallet/export.dart';
 
@@ -21,6 +19,11 @@ class AuthRepoImpl implements AuthRepo {
       storage.saveString(
         key: key,
         value: value ?? '',
+      );
+
+  @override
+  String? getString({required String key}) => storage.getString(
+        key: key,
       );
 
   @override
@@ -73,6 +76,11 @@ class AuthRepoImpl implements AuthRepo {
     );
     return response.fold(
       (success) {
+        final decodedResponse = jsonDecode(success);
+        saveString(
+          key: StorageKeys.accessToken,
+          value: decodedResponse['Token'],
+        );
         return Left(
           Success(),
         );
@@ -93,11 +101,16 @@ class AuthRepoImpl implements AuthRepo {
     required String email,
     required String otp,
   }) async {
-    final response =
-        await networkHelper.post(endPoints.getVerifyOTPEndPoint(), body: {
-      "email": email,
-      "otp": otp,
-    });
+    final response = await networkHelper.post(
+      endPoints.getVerifyOTPEndPoint(),
+      body: {
+        "email": email,
+        "otp": otp,
+        "token": getString(
+          key: StorageKeys.accessToken,
+        ),
+      },
+    );
     return response.fold(
       (success) {
         return Left(
@@ -125,33 +138,6 @@ class AuthRepoImpl implements AuthRepo {
         final decodedResponse = jsonDecode(success);
         return Left(
           decodedResponse,
-        );
-      },
-      (r) {
-        return Right(
-          Failure(
-            status: r.status,
-            message: r.message,
-          ),
-        );
-      },
-    );
-  }
-
-  @override
-  Future<Either<dynamic, Failure>> setSecretKey({
-    required String secretKey,
-  }) async {
-    final response = await networkHelper.post(
-      endPoints.getSecretKeyEndPoint(),
-      body: {
-        "secret_key": secretKey,
-      },
-    );
-    return response.fold(
-      (success) {
-        return Left(
-          Success(),
         );
       },
       (r) {

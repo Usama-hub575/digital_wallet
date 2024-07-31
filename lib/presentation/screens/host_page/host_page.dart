@@ -16,11 +16,13 @@ class HostPage extends StatelessWidget {
             context,
             controller: controller,
             screens: [
-              state.currentIndex == 0 ? DashboardScreen() : SizedBox.shrink(),
-              state.currentIndex == 1 ? SendMoney() : SizedBox.shrink(),
-              state.currentIndex == 2 ? Container() : SizedBox.shrink(),
-              state.currentIndex == 3 ? Container() : SizedBox.shrink(),
-              state.currentIndex == 4 ? Container() : SizedBox.shrink(),
+              state.currentIndex == 0
+                  ? const DashboardScreen()
+                  : const SizedBox.shrink(),
+              state.currentIndex == 1 ? Container() : const SizedBox.shrink(),
+              state.currentIndex == 2 ? Container() : const SizedBox.shrink(),
+              state.currentIndex == 3 ? Container() : const SizedBox.shrink(),
+              state.currentIndex == 4 ? Container() : const SizedBox.shrink(),
             ],
             onItemSelected: (index) {
               context.read<HostBloc>().add(
@@ -29,13 +31,17 @@ class HostPage extends StatelessWidget {
             },
             items: [
               PersistentBottomNavBarItem(
+                inactiveColorPrimary: ColorName.grey,
+                activeColorPrimary: ColorName.primaryColorLight,
+                activeColorSecondary: ColorName.primaryColorLight,
                 icon: SvgPicture.asset(
                   Assets.svg.home,
+                  color: state.currentIndex == 0
+                      ? ColorName.primaryColorLight
+                      : ColorName.grey,
                 ),
               ),
               PersistentBottomNavBarItem(
-                // inactiveColorPrimary: ColorName.pureWhite,
-                // inactiveColorSecondary: ColorName.pureWhite,
                 inactiveColorPrimary: ColorName.grey,
                 activeColorPrimary: ColorName.primaryColorLight,
                 activeColorSecondary: ColorName.primaryColorLight,

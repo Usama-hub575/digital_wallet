@@ -7,6 +7,9 @@ void main() async {
     MultiBlocProvider(
       providers: [
         BlocProvider.value(
+          value: it<DashboardBloc>(),
+        ),
+        BlocProvider.value(
           value: it<AuthBloc>(),
         ),
         BlocProvider.value(

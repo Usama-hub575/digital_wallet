@@ -35,14 +35,6 @@ class SignInCheckBoxToggle extends AuthEvent {}
 
 class GetProfile extends AuthEvent {}
 
-class SetSecretKey extends AuthEvent {
-  final String secretKey;
-
-  SetSecretKey({
-    required this.secretKey,
-  });
-}
-
 class SignIn extends AuthEvent {
   final String email;
   final String password;

@@ -18,286 +18,232 @@ class _DashboardScreenState extends State<DashboardScreen> {
         showAlertDialog(context);
       });
     }
+    if (context
+            .read<AuthBloc>()
+            .state
+            .getProfileResponseModel
+            .emailVerfication ==
+        false) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        showAlertDialog(context);
+      });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorName.pureWhite,
-      body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: 15.w,
-            vertical: 10.h,
-          ),
-          child: Column(
-            children: [
-              Row(
+      body: Column(
+        children: [
+          Container(
+            padding: EdgeInsets.symmetric(
+              vertical: 10.h,
+            ),
+            width: double.infinity,
+            decoration: const BoxDecoration(
+              color: ColorName.primaryColorLight,
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(10),
+                bottomRight: Radius.circular(10),
+              ),
+            ),
+            child: Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: 20.w,
+              ),
+              child: Column(
                 children: [
-                  CircleAvatar(
-                    backgroundColor: Colors.transparent,
-                    child: SvgPicture.asset(
-                      Assets.svg.dummy,
-                    ),
-                  ),
-                  horizontalSpacer(5),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  Row(
                     children: [
-                      Text(
-                        'Hi, Abdullah',
-                        style: textStyles.semiBold.copyWith(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 16.sp,
+                      CircleAvatar(
+                        backgroundColor: Colors.transparent,
+                        child: SvgPicture.asset(
+                          Assets.svg.dummy,
                         ),
                       ),
-                      Text(
-                        'Welcome Back👋',
-                        style: textStyles.regular.copyWith(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 12.sp,
-                        ),
+                      horizontalSpacer(5),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          BlocBuilder<AuthBloc, AuthState>(
+                              builder: (context, state) {
+                            return Text(
+                              'Hi, ${state.getProfileResponseModel.username}',
+                              style: textStyles.semiBold.copyWith(
+                                fontWeight: FontWeight.w500,
+                                fontSize: 16.sp,
+                              ),
+                            );
+                          }),
+                          Text(
+                            'Welcome Back👋',
+                            style: textStyles.regular.copyWith(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 12.sp,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const Spacer(),
+                      SvgPicture.asset(
+                        Assets.svg.notification,
                       ),
                     ],
                   ),
-                  const Spacer(),
-                  SvgPicture.asset(
-                    Assets.svg.myRewards,
-                  ),
-                ],
-              ),
-              verticalSpacer(30),
-              Container(
-                width: double.infinity,
-                decoration: const BoxDecoration(
-                  color: ColorName.primaryColorLight,
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(10),
-                  ),
-                ),
-                child: Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    Positioned(
-                      top: 20,
-                      right: 55,
-                      child: IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          color: ColorName.pureWhite,
-                          Icons.visibility_off,
-                        ),
+                  verticalSpacer(30),
+                  Container(
+                    width: double.infinity,
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 15.w,
+                      vertical: 20.h,
+                    ),
+                    decoration: const BoxDecoration(
+                      color: ColorName.pureWhite,
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(15),
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 30.w,
-                        vertical: 20.h,
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(
-                            'Your Balance',
-                            style: textStyles.regular.copyWith(
-                              fontSize: 16.sp,
-                              fontWeight: FontWeight.w500,
-                              color: ColorName.lightBlue,
+                    child: Stack(
+                      alignment: Alignment.centerLeft,
+                      children: [
+                        Positioned(
+                          top: 20,
+                          right: 105,
+                          child: IconButton(
+                            onPressed: () {},
+                            icon: const Icon(
+                              color: ColorName.black,
+                              Icons.visibility_off,
                             ),
                           ),
-                          Text(
-                            'Rs. 24.321.90',
-                            style: textStyles.regular.copyWith(
-                              fontSize: 28.sp,
-                              fontWeight: FontWeight.w700,
-                              color: ColorName.pureWhite,
-                            ),
-                          ),
-                          verticalSpacer(10),
-                          Container(
-                            padding: EdgeInsets.symmetric(
-                              horizontal: 15.w,
-                              vertical: 20.h,
-                            ),
-                            decoration: const BoxDecoration(
-                              color: ColorName.pureWhite,
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(15),
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Align(
+                              alignment: Alignment.topRight,
+                              child: SvgPicture.asset(
+                                Assets.svg.myRewards,
                               ),
                             ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                IconWithTextWidget(
-                                  icon: Assets.svg.depositMoney,
-                                  title: 'Deposit\n Money',
-                                ),
-                                IconWithTextWidget(
-                                  icon: Assets.svg.sendMoney,
-                                  title: 'Send\n Money',
-                                ),
-                                IconWithTextWidget(
-                                  icon: Assets.svg.requestMoney,
-                                  title: 'Request\n Money',
-                                ),
-                                IconWithTextWidget(
-                                  icon: Assets.svg.recentHistory,
-                                  title: 'Recent\n History',
-                                ),
-                              ],
+                            Text(
+                              'Total Balance',
+                              style: textStyles.regular.copyWith(
+                                fontSize: 16.sp,
+                                fontWeight: FontWeight.w500,
+                              ),
                             ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              verticalSpacer(20),
-              Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 10,
-                ),
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        IconWithTextWidget(
-                          showBackgroundColor: true,
-                          icon: Assets.svg.electricity,
-                          title: 'Electricity',
-                        ),
-                        IconWithTextWidget(
-                          showBackgroundColor: true,
-                          icon: Assets.svg.internet,
-                          title: 'Internet',
-                        ),
-                        IconWithTextWidget(
-                          showBackgroundColor: true,
-                          icon: Assets.svg.education,
-                          title: 'Education',
-                          backGroundColor:
-                              ColorName.fadedOrange.withOpacity(0.4),
-                        ),
-                        IconWithTextWidget(
-                          showBackgroundColor: true,
-                          icon: Assets.svg.water,
-                          title: 'Water',
+                            verticalSpacer(10),
+                            BlocBuilder<AuthBloc, AuthState>(
+                                builder: (context, state) {
+                              return Text(
+                                'Rs. ${state.getProfileResponseModel.money}',
+                                style: textStyles.regular.copyWith(
+                                  fontSize: 28.sp,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              );
+                            }),
+                          ],
                         ),
                       ],
                     ),
-                    verticalSpacer(20),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        IconWithTextWidget(
-                          showBackgroundColor: true,
-                          icon: Assets.svg.mobilePostPaid,
-                          title: 'Mobile\n PostPaid',
-                        ),
-                        IconWithTextWidget(
-                          showBackgroundColor: true,
-                          icon: Assets.svg.gas,
-                          title: 'Gas',
-                          backGroundColor:
-                              ColorName.fadedYellow.withOpacity(0.4),
-                        ),
-                        IconWithTextWidget(
-                          showBackgroundColor: true,
-                          icon: Assets.svg.mobileCredit,
-                          title: 'Mobile Credit',
-                        ),
-                        IconWithTextWidget(
-                          showBackgroundColor: true,
-                          icon: Assets.svg.more,
-                          title: 'More',
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              verticalSpacer(20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Latest Transaction',
-                    style: textStyles.semiBold.copyWith(
-                      fontWeight: FontWeight.w700,
-                      fontSize: 16.sp,
-                    ),
                   ),
-                  InkWell(
-                    child: Text(
-                      'See All →',
-                      style: textStyles.regular.copyWith(
-                        fontWeight: FontWeight.w400,
-                        fontSize: 13.sp,
+                  verticalSpacer(10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          Navigator.of(context, rootNavigator: true).pushNamed(
+                            AppRoutes.sendMoney,
+                          );
+                        },
+                        child: SvgPicture.asset(
+                          Assets.svg.sendMoney,
+                        ),
                       ),
-                    ),
+                      SvgPicture.asset(
+                        Assets.svg.requestMoney,
+                      ),
+                      SvgPicture.asset(
+                        Assets.svg.pendingPayments,
+                      ),
+                      SvgPicture.asset(
+                        Assets.svg.recentHistory,
+                      ),
+                    ],
                   ),
                 ],
               ),
-              verticalSpacer(20),
-              Expanded(
-                child: Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 20.w,
-                  ),
-                  child: ListView.separated(
-                    physics: const BouncingScrollPhysics(),
-                    shrinkWrap: true,
-                    separatorBuilder: (context, index) => verticalSpacer(20),
-                    itemCount: 3,
-                    itemBuilder: (context, index) {
-                      return Row(
-                        children: [
-                          SvgPicture.asset(
-                            Assets.svg.depositMoney,
-                          ),
-                          horizontalSpacer(20),
-                          Column(
-                            children: [
-                              Text(
-                                'Send Money',
-                                style: textStyles.regular.copyWith(
-                                  fontSize: 15.sp,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                              verticalSpacer(5),
-                              Text(
-                                'Yesterday. 19:12',
-                                style: textStyles.regular.copyWith(
-                                  fontSize: 11.sp,
-                                  fontWeight: FontWeight.w400,
-                                  color:
-                                      ColorName.lightGreyText.withOpacity(0.5),
-                                ),
-                              ),
-                            ],
-                          ),
-                          const Spacer(),
-                          Text(
-                            '-Rs 600.000',
-                            style: textStyles.semiBold.copyWith(
-                              color: ColorName.red,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 13.sp,
-                            ),
-                          )
-                        ],
-                      );
-                    },
-                  ),
-                ),
-              )
-            ],
+            ),
           ),
-        ),
+          verticalSpacer(20),
+          Container(
+            padding: EdgeInsets.symmetric(
+              horizontal: 10.w,
+            ),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    SvgPicture.asset(
+                      Assets.svg.electricity,
+                    ),
+                    SvgPicture.asset(
+                      Assets.svg.internet,
+                    ),
+                    SvgPicture.asset(
+                      Assets.svg.education,
+                    ),
+                    SvgPicture.asset(
+                      Assets.svg.water,
+                    ),
+                  ],
+                ),
+                verticalSpacer(20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    SvgPicture.asset(
+                      Assets.svg.mobilePostpaid,
+                    ),
+                    SvgPicture.asset(
+                      Assets.svg.gas,
+                    ),
+                    SvgPicture.asset(
+                      Assets.svg.mobileCredit,
+                    ),
+                    SvgPicture.asset(
+                      Assets.svg.healthInsurance,
+                    ),
+                  ],
+                ),
+                verticalSpacer(20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    SvgPicture.asset(
+                      Assets.svg.mobilePostpaid2,
+                    ),
+                    SvgPicture.asset(
+                      Assets.svg.creditCard,
+                    ),
+                    SvgPicture.asset(
+                      Assets.svg.bankingFinance,
+                    ),
+                    SvgPicture.asset(
+                      Assets.svg.more,
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

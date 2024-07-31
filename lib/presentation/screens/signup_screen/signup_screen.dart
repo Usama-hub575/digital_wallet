@@ -252,10 +252,12 @@ class SignUpScreen extends StatelessWidget {
                           break;
                         case SignUpStatus.success:
                           Navigator.pushNamed(
-                              context, AppRoutes.verificationScreen,
-                              arguments: {
-                                "Email": emailController.text,
-                              });
+                            context,
+                            AppRoutes.verificationScreen,
+                            arguments: {
+                              "Email": emailController.text,
+                            },
+                          );
                           break;
                       }
                     },

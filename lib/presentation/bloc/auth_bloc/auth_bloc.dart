@@ -27,7 +27,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<VerifyOTP>(_verifyOTP);
     on<VerifyOTPLoading>(_verifyOtpLoading);
     on<GetProfile>(_getProfile);
-    on<SetSecretKey>(_setSecretKey);
   }
 
   final AuthUseCase authUseCase;
@@ -99,16 +98,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           ),
         );
       },
-    );
-  }
-
-  _setSecretKey(SetSecretKey event, emit) async {
-    final response = await authUseCase.setSecretKey(
-      secretKey: event.secretKey,
-    );
-    return response.fold(
-      (success) {},
-      (r) {},
     );
   }
 

@@ -5,14 +5,14 @@ class IconWithTextWidget extends StatelessWidget {
     required this.icon,
     required this.title,
     this.showBackgroundColor = false,
-    this.backGroundColor,
+    this.backgroundColor,
     super.key,
   });
 
   final String icon;
   final String title;
   final bool? showBackgroundColor;
-  final Color? backGroundColor;
+  final Color? backgroundColor;
 
   @override
   Widget build(BuildContext context) {
@@ -21,14 +21,14 @@ class IconWithTextWidget extends StatelessWidget {
       children: [
         showBackgroundColor == true
             ? Container(
-                height: 40.h,
-                width: 40.w,
+                height: 50.h,
+                width: 50.w,
                 padding: EdgeInsets.symmetric(
                   horizontal: 8.w,
                   vertical: 8.h,
                 ),
                 decoration: BoxDecoration(
-                  color: backGroundColor ?? ColorName.fadedBlue.withOpacity(0.2),
+                  color: backgroundColor ?? ColorName.fadedBlue.withOpacity(0.5),
                   borderRadius: BorderRadius.circular(14),
                 ),
                 child: SvgPicture.asset(

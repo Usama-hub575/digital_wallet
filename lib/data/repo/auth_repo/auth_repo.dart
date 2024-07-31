@@ -13,6 +13,8 @@ mixin AuthRepo {
     required String password,
   });
 
+  String? getString({required String key});
+
   Future<Either<Success, Failure>> verifyOTP({
     required String email,
     required String otp,
@@ -21,8 +23,4 @@ mixin AuthRepo {
   Future? saveString({required String key, String? value});
 
   Future<Either<dynamic, Failure>> getProfile();
-
-  Future<Either<dynamic, Failure>> setSecretKey({
-    required String secretKey,
-  });
 }

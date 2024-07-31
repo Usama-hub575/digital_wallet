@@ -56,18 +56,18 @@ class GetProfileResponseModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['token_type'] = this.tokenType;
-    data['exp'] = this.exp;
-    data['iat'] = this.iat;
-    data['jti'] = this.jti;
-    data['user_id'] = this.userId;
-    data['email'] = this.email;
-    data['username'] = this.username;
-    data['money'] = this.money;
-    data['id'] = this.id;
-    data['email_verfication'] = this.emailVerfication;
-    data['secret_key_set'] = this.secretKeySet;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['token_type'] = tokenType;
+    data['exp'] = exp;
+    data['iat'] = iat;
+    data['jti'] = jti;
+    data['user_id'] = userId;
+    data['email'] = email;
+    data['username'] = username;
+    data['money'] = money;
+    data['id'] = id;
+    data['email_verfication'] = emailVerfication;
+    data['secret_key_set'] = secretKeySet;
     return data;
   }
 }

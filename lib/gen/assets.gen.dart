@@ -16,8 +16,14 @@ class $AssetsSvgGen {
   /// File path: assets/svg/authentication.svg
   String get authentication => 'assets/svg/authentication.svg';
 
+  /// File path: assets/svg/banking_&_finance.svg
+  String get bankingFinance => 'assets/svg/banking_&_finance.svg';
+
   /// File path: assets/svg/contact_book.svg
   String get contactBook => 'assets/svg/contact_book.svg';
+
+  /// File path: assets/svg/credit_card.svg
+  String get creditCard => 'assets/svg/credit_card.svg';
 
   /// File path: assets/svg/cross_icon.svg
   String get crossIcon => 'assets/svg/cross_icon.svg';
@@ -40,6 +46,9 @@ class $AssetsSvgGen {
   /// File path: assets/svg/gas.svg
   String get gas => 'assets/svg/gas.svg';
 
+  /// File path: assets/svg/health_insurance.svg
+  String get healthInsurance => 'assets/svg/health_insurance.svg';
+
   /// File path: assets/svg/help.svg
   String get help => 'assets/svg/help.svg';
 
@@ -55,14 +64,23 @@ class $AssetsSvgGen {
   /// File path: assets/svg/mobile_credit.svg
   String get mobileCredit => 'assets/svg/mobile_credit.svg';
 
-  /// File path: assets/svg/mobile_post_paid.svg
-  String get mobilePostPaid => 'assets/svg/mobile_post_paid.svg';
+  /// File path: assets/svg/mobile_postpaid.svg
+  String get mobilePostpaid => 'assets/svg/mobile_postpaid.svg';
+
+  /// File path: assets/svg/mobile_postpaid2.svg
+  String get mobilePostpaid2 => 'assets/svg/mobile_postpaid2.svg';
 
   /// File path: assets/svg/more.svg
   String get more => 'assets/svg/more.svg';
 
   /// File path: assets/svg/my_rewards.svg
   String get myRewards => 'assets/svg/my_rewards.svg';
+
+  /// File path: assets/svg/notification.svg
+  String get notification => 'assets/svg/notification.svg';
+
+  /// File path: assets/svg/pending_payments.svg
+  String get pendingPayments => 'assets/svg/pending_payments.svg';
 
   /// File path: assets/svg/profile.svg
   String get profile => 'assets/svg/profile.svg';
@@ -89,7 +107,9 @@ class $AssetsSvgGen {
   List<String> get values => [
         addIcon,
         authentication,
+        bankingFinance,
         contactBook,
+        creditCard,
         crossIcon,
         depositMoney,
         dummy,
@@ -97,14 +117,18 @@ class $AssetsSvgGen {
         electricity,
         floatingActionButton,
         gas,
+        healthInsurance,
         help,
         history,
         home,
         internet,
         mobileCredit,
-        mobilePostPaid,
+        mobilePostpaid,
+        mobilePostpaid2,
         more,
         myRewards,
+        notification,
+        pendingPayments,
         profile,
         recentHistory,
         report,
