@@ -35,6 +35,26 @@ class SignInCheckBoxToggle extends AuthEvent {}
 
 class GetProfile extends AuthEvent {}
 
+class ResetPassword extends AuthEvent {
+  final String otp;
+  final String newPassword;
+
+  ResetPassword({
+    required this.otp,
+    required this.newPassword,
+  });
+}
+
+class ForgetPasswordLoading extends AuthEvent {}
+
+class ForgetPassword extends AuthEvent {
+  final String email;
+
+  ForgetPassword({
+    required this.email,
+  });
+}
+
 class SignIn extends AuthEvent {
   final String email;
   final String password;

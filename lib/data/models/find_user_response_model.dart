@@ -12,10 +12,10 @@ class FindUserResponseModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['email'] = this.email;
-    data['username'] = this.username;
-    data['id'] = this.id;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['email'] = email;
+    data['username'] = username;
+    data['id'] = id;
     return data;
   }
 

@@ -54,6 +54,48 @@ class AuthUseCase {
     );
   }
 
+  Future<Either<dynamic, Failure>> forgetPassword({
+    required String email,
+  }) async {
+    final response = await authRepo.forgetPassword(
+      email: email,
+    );
+    return response.fold(
+      (success) {
+        return Left(
+          success,
+        );
+      },
+      (r) {
+        return Right(
+          r,
+        );
+      },
+    );
+  }
+
+  Future<Either<dynamic, Failure>> resetPassword({
+    required String newPassword,
+    required String otp,
+  }) async {
+    final response = await authRepo.resetPassword(
+      newPassword: newPassword,
+      otp: otp,
+    );
+    return response.fold(
+      (success) {
+        return Left(
+          success,
+        );
+      },
+      (r) {
+        return Right(
+          r,
+        );
+      },
+    );
+  }
+
   Future<Either<Success, Failure>> verifyOTP({
     required String email,
     required String otp,

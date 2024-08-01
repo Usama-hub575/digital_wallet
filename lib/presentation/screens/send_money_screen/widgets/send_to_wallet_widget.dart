@@ -1,7 +1,7 @@
 import 'package:digital_wallet/export.dart';
 
 class SendToWalletWidget extends StatelessWidget {
-  SendToWalletWidget({
+  const SendToWalletWidget({
     required this.controller,
     super.key,
   });

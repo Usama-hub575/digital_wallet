@@ -10,6 +10,7 @@ export 'widgets/export.dart';
 
 export 'package:flutter_svg/flutter_svg.dart';
 export 'dart:convert';
+export 'package:pin_code_fields/pin_code_fields.dart';
 export 'package:otp_text_field/otp_text_field.dart';
 export 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 export 'package:flutter/material.dart';

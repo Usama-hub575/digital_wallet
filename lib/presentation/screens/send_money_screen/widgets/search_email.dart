@@ -76,14 +76,18 @@ class SearchEmailWidget extends StatelessWidget {
                             ? true
                             : false,
                         onTap: () {
-                          context.read<DashboardBloc>().add(
-                                ProceedButtonLoading(),
-                              );
-                          context.read<DashboardBloc>().add(
-                                FindUser(
-                                  email: emailController.text,
-                                ),
-                              );
+                          Navigator.pushNamed(
+                            context,
+                            AppRoutes.requestDetailsScreen,
+                          );
+                          // context.read<DashboardBloc>().add(
+                          //       ProceedButtonLoading(),
+                          //     );
+                          // context.read<DashboardBloc>().add(
+                          //       FindUser(
+                          //         email: emailController.text,
+                          //       ),
+                          //     );
                         },
                       ),
                     );

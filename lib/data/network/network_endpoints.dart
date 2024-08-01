@@ -1,5 +1,5 @@
 class EndPoints {
-  final _baseUrl = 'https://3528-182-177-39-208.ngrok-free.app/';
+  final _baseUrl = 'https://e46a-182-177-39-208.ngrok-free.app/';
   final String _login = 'login/';
   final String _signup = 'signup/';
   final String _getProfile = 'GetProfile/';
@@ -7,6 +7,8 @@ class EndPoints {
   final String _setSecretKey = 'setSecretKey/';
   final String _sendMoney = 'sendMoney/';
   final String _findUser = 'findUser/';
+  final String _forgetPassword = 'forgetPassword/';
+  final String _resetPassword = 'resetPassword/';
 
   ///Getters
 
@@ -23,4 +25,8 @@ class EndPoints {
   String getSendMoneyEndPoint() => '$_baseUrl$_sendMoney';
 
   String getFindUserEndPoint() => '$_baseUrl$_findUser';
+
+  String getForgetPasswordEndPoint() => '$_baseUrl$_forgetPassword';
+
+  String getResetPasswordEndPoint() => '$_baseUrl$_resetPassword';
 }

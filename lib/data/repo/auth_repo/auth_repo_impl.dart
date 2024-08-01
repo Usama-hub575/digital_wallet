@@ -150,4 +150,77 @@ class AuthRepoImpl implements AuthRepo {
       },
     );
   }
+
+  @override
+  Future<Either<dynamic, Failure>> forgetPassword({
+    required String email,
+  }) async {
+    final response = await networkHelper.post(
+      endPoints.getForgetPasswordEndPoint(),
+      body: {
+        "email": email,
+      },
+    );
+    return response.fold(
+      (success) {
+        final decodedResponse = jsonDecode(
+          success,
+        );
+        saveString(
+          key: StorageKeys.forgetPasswordToken,
+          value: decodedResponse['token'],
+        );
+        return Left(
+          Success(),
+        );
+      },
+      (r) {
+        return Right(
+          Failure(
+            status: r.status,
+            message: r.message,
+          ),
+        );
+      },
+    );
+  }
+
+  @override
+  Future<Either<dynamic, Failure>> resetPassword({
+    required String newPassword,
+    required String otp,
+  }) async {
+    final response = await networkHelper.post(
+      endPoints.getResetPasswordEndPoint(),
+      modifyHeader: false,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: {
+        "token": getString(
+          key: StorageKeys.forgetPasswordToken,
+        ),
+        "otp": otp,
+        "new_password": newPassword,
+      },
+    );
+    return response.fold(
+      (success) {
+        final decodedResponse = jsonDecode(
+          success,
+        );
+        return Left(
+          Success(),
+        );
+      },
+      (r) {
+        return Right(
+          Failure(
+            status: r.status,
+            message: r.message,
+          ),
+        );
+      },
+    );
+  }
 }

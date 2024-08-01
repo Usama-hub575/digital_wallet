@@ -16,7 +16,6 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
     on<SendMoney>(_sendMoney);
     on<FindUser>(_findUser);
     on<ProceedButtonLoading>(_loading);
-    on<ProceedButtonLoading>(_loading);
   }
 
   final DashboardUseCase dashboardUseCase;

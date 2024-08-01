@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:digital_wallet/export.dart';
+import 'package:digital_wallet/presentation/export.dart';
 
 part 'auth_event.dart';
 
@@ -27,6 +28,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<VerifyOTP>(_verifyOTP);
     on<VerifyOTPLoading>(_verifyOtpLoading);
     on<GetProfile>(_getProfile);
+    on<ForgetPassword>(_forgetPassword);
+    on<ForgetPasswordLoading>(_forgetPasswordLoading);
+    on<ResetPassword>(_resetPassword);
   }
 
   final AuthUseCase authUseCase;
@@ -35,6 +39,14 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     emit(
       state.copyWith(
         status: SignInStatus.loading,
+      ),
+    );
+  }
+
+  _forgetPasswordLoading(ForgetPasswordLoading event, emit) {
+    emit(
+      state.copyWith(
+        forgotPasswordStatus: ForgotPasswordStatus.loading,
       ),
     );
   }
@@ -116,6 +128,54 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         emit(
           state.copyWith(
             status: SignInStatus.error,
+            errorMessage: r.message,
+          ),
+        );
+      },
+    );
+  }
+
+  _resetPassword(ResetPassword event, emit) async {
+    final response = await authUseCase.resetPassword(
+      otp: event.otp,
+      newPassword: event.newPassword,
+    );
+    return response.fold(
+      (success) {
+        emit(
+          state.copyWith(
+            forgotPasswordStatus:
+                ForgotPasswordStatus.passwordSuccessfullyReset,
+          ),
+        );
+      },
+      (r) {
+        emit(
+          state.copyWith(
+            forgotPasswordStatus: ForgotPasswordStatus.error,
+            errorMessage: r.message,
+          ),
+        );
+      },
+    );
+  }
+
+  _forgetPassword(ForgetPassword event, emit) async {
+    final response = await authUseCase.forgetPassword(
+      email: event.email,
+    );
+    return response.fold(
+      (success) {
+        emit(
+          state.copyWith(
+            forgotPasswordStatus: ForgotPasswordStatus.success,
+          ),
+        );
+      },
+      (r) {
+        emit(
+          state.copyWith(
+            forgotPasswordStatus: ForgotPasswordStatus.error,
             errorMessage: r.message,
           ),
         );

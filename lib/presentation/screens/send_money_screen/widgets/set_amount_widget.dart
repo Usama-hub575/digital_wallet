@@ -2,10 +2,12 @@ import 'package:digital_wallet/export.dart';
 
 class SetAmountWidget extends StatelessWidget {
   SetAmountWidget({
+    this.requestMoney = false,
     super.key,
   });
 
   TextEditingController amountController = TextEditingController();
+  final bool? requestMoney;
 
   @override
   Widget build(BuildContext context) {
@@ -190,12 +192,14 @@ class SetAmountWidget extends StatelessWidget {
                   builder: (context, state) {
                     return ProceedButton(
                       onTap: () {
-                        showPinModalBottomSheet(
-                          context,
-                          amount: '30',
-                          sendMoney: true,
-                          email: state.findUserResponseModel.email,
-                        );
+                        requestMoney == true
+                            ? () {}
+                            : showPinModalBottomSheet(
+                                context,
+                                amount: '30',
+                                sendMoney: true,
+                                email: state.findUserResponseModel.email,
+                              );
                       },
                     );
                   },

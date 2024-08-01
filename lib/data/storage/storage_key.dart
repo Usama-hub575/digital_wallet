@@ -29,6 +29,7 @@ class StorageKeys {
 
   ///Using///
   static const String accessToken = "accessToken";
+  static const String forgetPasswordToken = "forgetPasswordToken";
   static const String attempts = "attempts";
   static const String timeLimit = "timeLimit";
 }

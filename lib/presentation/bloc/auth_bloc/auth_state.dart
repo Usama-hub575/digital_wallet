@@ -10,6 +10,7 @@ class AuthState extends Equatable {
   bool checkBox;
   SignInStatus status;
   SignUpStatus signUpStatus;
+  ForgotPasswordStatus forgotPasswordStatus;
   bool confirmPasswordValid;
   VerifyOtpStatus verifyOtpStatus;
   GetProfileResponseModel getProfileResponseModel =
@@ -23,6 +24,7 @@ class AuthState extends Equatable {
     this.isObscure = false,
     this.start = 120,
     this.isPasswordValid = true,
+    this.forgotPasswordStatus = ForgotPasswordStatus.init,
     this.checkBox = true,
     this.signUpObscure = false,
     this.confirmPasswordValid = false,
@@ -37,6 +39,7 @@ class AuthState extends Equatable {
     bool? checkBox,
     int? start,
     SignInStatus? status,
+    ForgotPasswordStatus? forgotPasswordStatus,
     SignUpStatus? signUpStatus,
     bool? confirmPasswordObscure,
     bool? signUpObscure,
@@ -45,6 +48,7 @@ class AuthState extends Equatable {
     GetProfileResponseModel? getProfileResponseModel,
   }) {
     return AuthState(
+      forgotPasswordStatus: forgotPasswordStatus ?? this.forgotPasswordStatus,
       getProfileResponseModel:
           getProfileResponseModel ?? this.getProfileResponseModel,
       errorMessage: errorMessage ?? this.errorMessage,
@@ -66,6 +70,7 @@ class AuthState extends Equatable {
   List<Object?> get props => [
         getProfileResponseModel,
         errorMessage,
+        forgotPasswordStatus,
         isObscure,
         verifyOtpStatus,
         isPasswordValid,

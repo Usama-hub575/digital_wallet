@@ -14,4 +14,6 @@
     <color name="dark_blue_text">#29315B</color>
     <color name="dark_blue_text2">#0C192C</color>
     <color name="dull_white">#F9F5FE</color>
+    <color name="green">#03B961</color>
+    <color name="text_grey">#999999</color>
 </resources>

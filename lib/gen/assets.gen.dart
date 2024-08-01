@@ -16,8 +16,14 @@ class $AssetsSvgGen {
   /// File path: assets/svg/authentication.svg
   String get authentication => 'assets/svg/authentication.svg';
 
+  /// File path: assets/svg/bank_transfer.svg
+  String get bankTransfer => 'assets/svg/bank_transfer.svg';
+
   /// File path: assets/svg/banking_&_finance.svg
   String get bankingFinance => 'assets/svg/banking_&_finance.svg';
+
+  /// File path: assets/svg/cnic_transfer.svg
+  String get cnicTransfer => 'assets/svg/cnic_transfer.svg';
 
   /// File path: assets/svg/contact_book.svg
   String get contactBook => 'assets/svg/contact_book.svg';
@@ -79,11 +85,17 @@ class $AssetsSvgGen {
   /// File path: assets/svg/notification.svg
   String get notification => 'assets/svg/notification.svg';
 
+  /// File path: assets/svg/other_wallets.svg
+  String get otherWallets => 'assets/svg/other_wallets.svg';
+
   /// File path: assets/svg/pending_payments.svg
   String get pendingPayments => 'assets/svg/pending_payments.svg';
 
   /// File path: assets/svg/profile.svg
   String get profile => 'assets/svg/profile.svg';
+
+  /// File path: assets/svg/raast_payment.svg
+  String get raastPayment => 'assets/svg/raast_payment.svg';
 
   /// File path: assets/svg/recent_history.svg
   String get recentHistory => 'assets/svg/recent_history.svg';
@@ -94,11 +106,17 @@ class $AssetsSvgGen {
   /// File path: assets/svg/request_money.svg
   String get requestMoney => 'assets/svg/request_money.svg';
 
+  /// File path: assets/svg/scan_qr.svg
+  String get scanQr => 'assets/svg/scan_qr.svg';
+
   /// File path: assets/svg/send_money.svg
   String get sendMoney => 'assets/svg/send_money.svg';
 
   /// File path: assets/svg/send_to_wallet.svg
   String get sendToWallet => 'assets/svg/send_to_wallet.svg';
+
+  /// File path: assets/svg/successful_tick.svg
+  String get successfulTick => 'assets/svg/successful_tick.svg';
 
   /// File path: assets/svg/water.svg
   String get water => 'assets/svg/water.svg';
@@ -107,7 +125,9 @@ class $AssetsSvgGen {
   List<String> get values => [
         addIcon,
         authentication,
+        bankTransfer,
         bankingFinance,
+        cnicTransfer,
         contactBook,
         creditCard,
         crossIcon,
@@ -128,13 +148,17 @@ class $AssetsSvgGen {
         more,
         myRewards,
         notification,
+        otherWallets,
         pendingPayments,
         profile,
+        raastPayment,
         recentHistory,
         report,
         requestMoney,
+        scanQr,
         sendMoney,
         sendToWallet,
+        successfulTick,
         water
       ];
 }

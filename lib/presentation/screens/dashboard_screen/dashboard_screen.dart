@@ -1,4 +1,5 @@
 import 'package:digital_wallet/export.dart';
+import 'package:digital_wallet/presentation/screens/dashboard_screen/widgets/send_money_dialog.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -157,16 +158,21 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     children: [
                       InkWell(
                         onTap: () {
-                          Navigator.of(context, rootNavigator: true).pushNamed(
-                            AppRoutes.sendMoney,
-                          );
+                          sendMoneyDialog(context);
                         },
                         child: SvgPicture.asset(
                           Assets.svg.sendMoney,
                         ),
                       ),
-                      SvgPicture.asset(
-                        Assets.svg.requestMoney,
+                      InkWell(
+                        onTap: (){
+                          Navigator.of(context, rootNavigator: true).pushNamed(
+                            AppRoutes.requestMoneyScreen,
+                          );
+                        },
+                        child: SvgPicture.asset(
+                          Assets.svg.requestMoney,
+                        ),
                       ),
                       SvgPicture.asset(
                         Assets.svg.pendingPayments,

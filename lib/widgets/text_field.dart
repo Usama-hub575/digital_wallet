@@ -7,7 +7,7 @@ class GenericTextField extends StatelessWidget {
     this.obscureText = false,
     this.suffixIcon,
     this.validator,
-    required this.readOnly,
+    this.readOnly = true,
     super.key,
   });
 
@@ -16,7 +16,7 @@ class GenericTextField extends StatelessWidget {
   final String hintText;
   final Widget? suffixIcon;
   final bool obscureText;
-  final bool readOnly;
+  final bool? readOnly;
 
   @override
   Widget build(BuildContext context) {

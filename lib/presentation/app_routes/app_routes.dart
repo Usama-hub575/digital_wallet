@@ -1,4 +1,5 @@
 import 'package:digital_wallet/export.dart';
+import 'package:digital_wallet/presentation/screens/request_money_screen/export.dart';
 
 class AppRoutes {
   static const initializer = '/';
@@ -8,6 +9,12 @@ class AppRoutes {
   static const hostPage = '/hostPage';
   static const sendMoney = '/sendMoney';
   static const verificationScreen = '/verificationScreen';
+  static const paymentDetailScreen = '/paymentDetailScreen';
+  static const forgetPasswordScreen = '/forgetPasswordScreen';
+  static const verifyAccountScreen = '/verifyAccountScreen';
+  static const createNewPasswordScreen = '/createNewPasswordScreen';
+  static const requestMoneyScreen = '/requestMoney';
+  static const requestDetailsScreen = '/requestDetailsScreen';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     _currentRoute = settings.name;
@@ -18,13 +25,43 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: (_) => SignInScreen(),
         );
+      case signIn:
+        return MaterialPageRoute(
+          builder: (_) => SignInScreen(),
+        );
       case signupScreen:
         return MaterialPageRoute(
           builder: (_) => SignUpScreen(),
         );
+      case verifyAccountScreen:
+        return MaterialPageRoute(
+          builder: (_) => VerifyAccountScreen(),
+        );
+      case requestDetailsScreen:
+        return MaterialPageRoute(
+          builder: (_) => const RequestMoneyDetailsScreen(),
+        );
       case sendMoney:
         return MaterialPageRoute(
           builder: (_) => SendMoneyScreen(),
+        );
+      case requestMoneyScreen:
+        return MaterialPageRoute(
+          builder: (_) => RequestMoneyScreen(),
+        );
+      case createNewPasswordScreen:
+        return MaterialPageRoute(
+          builder: (_) => CreateNewPasswordScreen(
+            otp: args?["otp"],
+          ),
+        );
+      case paymentDetailScreen:
+        return MaterialPageRoute(
+          builder: (_) => const PaymentDetailScreen(),
+        );
+      case forgetPasswordScreen:
+        return MaterialPageRoute(
+          builder: (_) => ForgotPasswordScreen(),
         );
       case verificationScreen:
         return MaterialPageRoute(

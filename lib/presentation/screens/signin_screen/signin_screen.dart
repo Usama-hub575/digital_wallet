@@ -133,7 +133,7 @@ class SignInScreen extends StatelessWidget {
                       InkWell(
                         onTap: () => Navigator.pushNamed(
                           context,
-                          AppRoutes.verificationScreen,
+                          AppRoutes.forgetPasswordScreen,
                         ),
                         child: Text(
                           "Forgot Password",
