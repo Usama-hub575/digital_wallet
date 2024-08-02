@@ -70,6 +70,37 @@ class DashboardRepoImpl implements DashboardRepo {
   }
 
   @override
+  Future<Either<dynamic, Failure>> requestMoney({
+    required String email,
+    required String amount,
+    required String secretKey,
+  }) async {
+    final response = await networkHelper.post(
+      endPoints.getRequestMoneyEndPoint(),
+      body: {
+        "receiver_email": email,
+        "amount": amount,
+        "secret_key": secretKey
+      },
+    );
+    return response.fold(
+          (success) {
+        return Left(
+          Success(),
+        );
+      },
+          (r) {
+        return Right(
+          Failure(
+            status: r.status,
+            message: r.message,
+          ),
+        );
+      },
+    );
+  }
+
+  @override
   Future<Either<dynamic, Failure>> findUser({
     required String email,
   }) async {

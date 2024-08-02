@@ -12,6 +12,12 @@ mixin DashboardRepo {
     required String secretKey,
   });
 
+  Future<Either<dynamic, Failure>> requestMoney({
+    required String email,
+    required String amount,
+    required String secretKey,
+  });
+
   Future<Either<dynamic, Failure>> findUser({
     required String email,
   });

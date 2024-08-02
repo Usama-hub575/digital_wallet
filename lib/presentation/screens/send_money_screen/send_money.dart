@@ -40,9 +40,6 @@ class SendMoneyScreen extends StatelessWidget {
         controller: pageController,
         physics: const NeverScrollableScrollPhysics(),
         children: [
-          SendToWalletWidget(
-            controller: pageController,
-          ),
           SearchEmailWidget(
             controller: pageController,
           ),

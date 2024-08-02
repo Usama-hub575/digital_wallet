@@ -9,8 +9,10 @@ export 'widgets/export.dart';
 ///packages export
 
 export 'package:flutter_svg/flutter_svg.dart';
+export 'package:flutter/foundation.dart';
 export 'dart:convert';
 export 'package:pin_code_fields/pin_code_fields.dart';
+export 'package:qr_code_scanner/qr_code_scanner.dart';
 export 'package:otp_text_field/otp_text_field.dart';
 export 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 export 'package:flutter/material.dart';

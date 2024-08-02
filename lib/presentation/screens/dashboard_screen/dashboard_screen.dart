@@ -9,10 +9,10 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
+  bool alertDialogShown = false;
 
+  @override
+  void initState() {
     if (context.read<AuthBloc>().state.getProfileResponseModel.secretKeySet ==
         false) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -20,15 +20,20 @@ class _DashboardScreenState extends State<DashboardScreen> {
       });
     }
     if (context
-            .read<AuthBloc>()
-            .state
-            .getProfileResponseModel
-            .emailVerfication ==
-        false) {
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        showAlertDialog(context);
-      });
+                .read<AuthBloc>()
+                .state
+                .getProfileResponseModel
+                .emailVerfication ==
+            false &&
+        alertDialogShown == true) {
+      WidgetsBinding.instance.addPostFrameCallback(
+        (_) {
+          showAlertDialog(context);
+          alertDialogShown = true;
+        },
+      );
     }
+    super.initState();
   }
 
   @override
@@ -165,7 +170,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         ),
                       ),
                       InkWell(
-                        onTap: (){
+                        onTap: () {
                           Navigator.of(context, rootNavigator: true).pushNamed(
                             AppRoutes.requestMoneyScreen,
                           );

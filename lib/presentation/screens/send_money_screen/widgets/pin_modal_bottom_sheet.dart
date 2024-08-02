@@ -2,7 +2,8 @@ import 'package:digital_wallet/export.dart';
 
 Future<void> showPinModalBottomSheet(
   BuildContext context, {
-  bool? sendMoney = false,
+  bool? requestMoney = false,
+  bool? sendMoney = true,
   String? amount,
   String? email,
 }) async {
@@ -70,20 +71,31 @@ Future<void> showPinModalBottomSheet(
                 ),
                 keyboardType: TextInputType.number,
                 onCompleted: (value) {
+                  FocusScope.of(context).unfocus();
                   Navigator.pop(context);
-                  sendMoney == true
-                      ? context.read<DashboardBloc>().add(
-                            SendMoney(
-                              email: email ?? '',
-                              amount: amount ?? '',
-                              secretKey: value,
-                            ),
-                          )
-                      : context.read<DashboardBloc>().add(
-                            SetSecretKey(
-                              secretKey: value,
-                            ),
-                          );
+                  if (requestMoney == true) {
+                    context.read<DashboardBloc>().add(
+                          RequestMoney(
+                            email: email ?? '',
+                            amount: amount ?? '',
+                            secretKey: value,
+                          ),
+                        );
+                  } else if (sendMoney == true) {
+                    context.read<DashboardBloc>().add(
+                          SendMoney(
+                            email: email ?? '',
+                            amount: amount ?? '',
+                            secretKey: value,
+                          ),
+                        );
+                  } else {
+                    context.read<DashboardBloc>().add(
+                          SetSecretKey(
+                            secretKey: value,
+                          ),
+                        );
+                  }
                 },
                 onChanged: (value) {
                   print(value);

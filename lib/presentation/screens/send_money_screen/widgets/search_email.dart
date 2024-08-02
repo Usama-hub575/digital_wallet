@@ -76,18 +76,14 @@ class SearchEmailWidget extends StatelessWidget {
                             ? true
                             : false,
                         onTap: () {
-                          Navigator.pushNamed(
-                            context,
-                            AppRoutes.requestDetailsScreen,
-                          );
-                          // context.read<DashboardBloc>().add(
-                          //       ProceedButtonLoading(),
-                          //     );
-                          // context.read<DashboardBloc>().add(
-                          //       FindUser(
-                          //         email: emailController.text,
-                          //       ),
-                          //     );
+                          context.read<DashboardBloc>().add(
+                                ProceedButtonLoading(),
+                              );
+                          context.read<DashboardBloc>().add(
+                                FindUser(
+                                  email: emailController.text,
+                                ),
+                              );
                         },
                       ),
                     );
@@ -96,9 +92,10 @@ class SearchEmailWidget extends StatelessWidget {
                     switch (state.status) {
                       case DashboardStatus.error:
                         showErrorToast(
-                          message: "Something went wrong",
+                          message: state.errorMessage,
                           context: context,
                         );
+                        state.status = DashboardStatus.init;
                         break;
                       case DashboardStatus.init:
                         break;
@@ -108,7 +105,12 @@ class SearchEmailWidget extends StatelessWidget {
                         break;
                       case DashboardStatus.success:
                         controller.jumpToPage(2);
+                        state.status = DashboardStatus.init;
                         break;
+                      case DashboardStatus.sendMoneySuccess:
+                      // TODO: Handle this case.
+                      case DashboardStatus.requestMoneySuccess:
+                        // TODO: Handle this case.
                     }
                   },
                 ),

@@ -6,4 +6,6 @@ export 'signin_screen/export.dart';
 export 'signup_screen/export.dart';
 export 'send_money_screen/export.dart';
 export 'forgot_password_screens/export.dart';
+export 'qr_code_screen/export.dart';
+export 'profile_screen/export.dart';
 export 'request_details_screen/export.dart';

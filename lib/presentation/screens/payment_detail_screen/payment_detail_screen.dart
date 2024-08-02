@@ -1,10 +1,21 @@
 import 'package:digital_wallet/export.dart';
+import 'package:intl/intl.dart';
 
 class PaymentDetailScreen extends StatelessWidget {
-  const PaymentDetailScreen({super.key});
+  const PaymentDetailScreen({
+    required this.amount,
+    required this.email,
+    super.key,
+  });
+
+  final String amount;
+  final String email;
 
   @override
   Widget build(BuildContext context) {
+    DateTime now = DateTime.now();
+    String formattedDate = DateFormat('dd-MM-yy').format(now);
+    String formattedTime = DateFormat('HH:mm:ss').format(now);
     return Scaffold(
       backgroundColor: ColorName.primaryColorLight,
       appBar: AppBar(
@@ -18,13 +29,13 @@ class PaymentDetailScreen extends StatelessWidget {
           ),
         ],
         centerTitle: true,
-        leading: IconButton(
-          onPressed: () => Navigator.pop(context),
-          icon: const Icon(
-            Icons.arrow_back_sharp,
-            color: ColorName.pureWhite,
-          ),
-        ),
+        // leading: IconButton(
+        //   onPressed: () => Navigator.pop(context),
+        //   icon: const Icon(
+        //     Icons.arrow_back_sharp,
+        //     color: ColorName.pureWhite,
+        //   ),
+        // ),
         title: Text(
           "Payment Details",
           style: textStyles.semiBold.copyWith(
@@ -80,7 +91,7 @@ class PaymentDetailScreen extends StatelessWidget {
                             ),
                             verticalSpacer(30),
                             Text(
-                              "Rs 200",
+                              "Rs $amount",
                               style: textStyles.semiBold.copyWith(
                                 color: ColorName.black,
                                 fontWeight: FontWeight.w700,
@@ -107,30 +118,34 @@ class PaymentDetailScreen extends StatelessWidget {
                                   ),
                                 ),
                                 horizontalSpacer(5),
-                                BlocBuilder<DashboardBloc, DashboardState>(
-                                  builder: (context, state) {
-                                    return Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          'Abdul Mustakim',
-                                          style: textStyles.semiBold.copyWith(
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 16.sp,
+                                Expanded(
+                                  child: BlocBuilder<DashboardBloc, DashboardState>(
+                                    builder: (context, state) {
+                                      return Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            email,
+                                            style: textStyles.semiBold.copyWith(
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 16.sp,
+                                            ),
                                           ),
-                                        ),
-                                        Text(
-                                          'Acc ${state.findUserResponseModel.id ?? ''}',
-                                          style: textStyles.regular.copyWith(
-                                            fontWeight: FontWeight.w400,
-                                            fontSize: 12.sp,
-                                            color: ColorName.textGrey,
+                                          FittedBox(
+                                            child: Text(
+                                              'Acc ${state.findUserResponseModel.id ?? ''}',
+                                              style: textStyles.regular.copyWith(
+                                                fontWeight: FontWeight.w400,
+                                                fontSize: 12.sp,
+                                                color: ColorName.textGrey,
+                                              ),
+                                            ),
                                           ),
-                                        ),
-                                      ],
-                                    );
-                                  },
+                                        ],
+                                      );
+                                    },
+                                  ),
                                 ),
                               ],
                             ),
@@ -159,7 +174,7 @@ class PaymentDetailScreen extends StatelessWidget {
                                   ),
                                 ),
                                 Text(
-                                  "Rp 200.000",
+                                  "Rs $amount",
                                   style: textStyles.semiBold.copyWith(
                                     color: ColorName.black,
                                     fontWeight: FontWeight.w700,
@@ -181,7 +196,7 @@ class PaymentDetailScreen extends StatelessWidget {
                                   ),
                                 ),
                                 Text(
-                                  'July 22, 2024',
+                                  formattedDate,
                                   style: textStyles.semiBold.copyWith(
                                     color: ColorName.black,
                                     fontWeight: FontWeight.w700,
@@ -203,7 +218,7 @@ class PaymentDetailScreen extends StatelessWidget {
                                   ),
                                 ),
                                 Text(
-                                  "20:32",
+                                  formattedTime,
                                   style: textStyles.semiBold.copyWith(
                                     color: ColorName.black,
                                     fontWeight: FontWeight.w700,
@@ -269,7 +284,7 @@ class PaymentDetailScreen extends StatelessWidget {
                                   ),
                                 ),
                                 Text(
-                                  "Rs 200",
+                                  "Rs $amount",
                                   style: textStyles.semiBold.copyWith(
                                     color: ColorName.primaryColorLight,
                                     fontWeight: FontWeight.w500,
@@ -289,9 +304,14 @@ class PaymentDetailScreen extends StatelessWidget {
                         titleColor: ColorName.pureWhite,
                       ),
                       verticalSpacer(10),
-                      const OutlinedGenericButton(
+                      OutlinedGenericButton(
                         buttonTitle: "Back to home",
                         titleColor: ColorName.primaryColorLight,
+                        onTap: () => Navigator.pushNamedAndRemoveUntil(
+                          context,
+                          AppRoutes.hostPage,
+                          (route) => false,
+                        ),
                       ),
                     ],
                   ),

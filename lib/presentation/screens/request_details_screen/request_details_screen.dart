@@ -1,12 +1,21 @@
 import 'package:digital_wallet/export.dart';
+import 'package:intl/intl.dart';
 
 class RequestMoneyDetailsScreen extends StatelessWidget {
   const RequestMoneyDetailsScreen({
+    required this.amount,
+    required this.email,
     super.key,
   });
 
+  final String amount;
+  final String email;
+
   @override
   Widget build(BuildContext context) {
+    DateTime now = DateTime.now();
+    String formattedDate = DateFormat('dd-MM-yy').format(now);
+    String formattedTime = DateFormat('HH:mm:ss').format(now);
     return Scaffold(
       backgroundColor: ColorName.primaryColorLight,
       appBar: AppBar(
@@ -20,13 +29,13 @@ class RequestMoneyDetailsScreen extends StatelessWidget {
           ),
         ],
         centerTitle: true,
-        leading: IconButton(
-          onPressed: () => Navigator.pop(context),
-          icon: const Icon(
-            Icons.arrow_back_sharp,
-            color: ColorName.pureWhite,
-          ),
-        ),
+        // leading: IconButton(
+        //   onPressed: () => Navigator.pop(context),
+        //   icon: const Icon(
+        //     Icons.arrow_back_sharp,
+        //     color: ColorName.pureWhite,
+        //   ),
+        // ),
         title: Text(
           "Request Details",
           style: textStyles.semiBold.copyWith(
@@ -64,7 +73,7 @@ class RequestMoneyDetailsScreen extends StatelessWidget {
                         child: Column(
                           children: [
                             Text(
-                              "Rs 200",
+                              "Rs $amount",
                               style: textStyles.semiBold.copyWith(
                                 color: ColorName.black,
                                 fontWeight: FontWeight.w700,
@@ -73,7 +82,7 @@ class RequestMoneyDetailsScreen extends StatelessWidget {
                             ),
                             verticalSpacer(30),
                             Text(
-                              "You requested to Abdul Mustaqim \n adbdul@gmail.com",
+                              "You requested to \n $email",
                               textAlign: TextAlign.center,
                               style: textStyles.light.copyWith(
                                 color: ColorName.textGrey,
@@ -106,7 +115,7 @@ class RequestMoneyDetailsScreen extends StatelessWidget {
                                   ),
                                 ),
                                 Text(
-                                  "Rs 200.000",
+                                  "Rs $amount",
                                   style: textStyles.semiBold.copyWith(
                                     color: ColorName.black,
                                     fontWeight: FontWeight.w700,
@@ -128,7 +137,7 @@ class RequestMoneyDetailsScreen extends StatelessWidget {
                                   ),
                                 ),
                                 Text(
-                                  'abdul@gmail.com',
+                                  email,
                                   style: textStyles.semiBold.copyWith(
                                     color: ColorName.black,
                                     fontWeight: FontWeight.w700,
@@ -156,7 +165,7 @@ class RequestMoneyDetailsScreen extends StatelessWidget {
                                   ),
                                   color: ColorName.red,
                                   child: Text(
-                                    'Unpaid',
+                                    'Paid',
                                     style: textStyles.semiBold.copyWith(
                                       color: ColorName.pureWhite,
                                       fontWeight: FontWeight.w700,
@@ -179,7 +188,7 @@ class RequestMoneyDetailsScreen extends StatelessWidget {
                                   ),
                                 ),
                                 Text(
-                                  'July 22, 2024',
+                                  formattedDate,
                                   style: textStyles.semiBold.copyWith(
                                     color: ColorName.black,
                                     fontWeight: FontWeight.w700,
@@ -201,7 +210,7 @@ class RequestMoneyDetailsScreen extends StatelessWidget {
                                   ),
                                 ),
                                 Text(
-                                  "20:32",
+                                  formattedTime,
                                   style: textStyles.semiBold.copyWith(
                                     color: ColorName.black,
                                     fontWeight: FontWeight.w700,
@@ -245,6 +254,16 @@ class RequestMoneyDetailsScreen extends StatelessWidget {
                       const OutlinedGenericButton(
                         buttonTitle: "Share Receipt",
                         titleColor: ColorName.primaryColorLight,
+                      ),
+                      verticalSpacer(10),
+                      OutlinedGenericButton(
+                        buttonTitle: "Back to home",
+                        titleColor: ColorName.primaryColorLight,
+                        onTap: () => Navigator.pushNamedAndRemoveUntil(
+                          context,
+                          AppRoutes.hostPage,
+                              (route) => false,
+                        ),
                       ),
                     ],
                   ),

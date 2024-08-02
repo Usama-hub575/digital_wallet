@@ -35,4 +35,16 @@ class SendMoney extends DashboardEvent {
   });
 }
 
+class RequestMoney extends DashboardEvent {
+  final String email;
+  final String amount;
+  final String secretKey;
+
+  RequestMoney({
+    required this.email,
+    required this.amount,
+    required this.secretKey,
+  });
+}
+
 class GetProfileFromSendMoney extends DashboardEvent {}

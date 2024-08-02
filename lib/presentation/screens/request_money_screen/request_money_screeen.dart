@@ -37,6 +37,7 @@ class RequestMoneyScreen extends StatelessWidget {
         ),
       ),
       body: PageView(
+        scrollDirection: Axis.horizontal,
         controller: pageController,
         physics: const NeverScrollableScrollPhysics(),
         children: [

@@ -14,6 +14,7 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
         ) {
     on<SetSecretKey>(_setSecretKey);
     on<SendMoney>(_sendMoney);
+    on<RequestMoney>(_requestMoney);
     on<FindUser>(_findUser);
     on<ProceedButtonLoading>(_loading);
   }
@@ -71,7 +72,32 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
       (success) {
         emit(
           state.copyWith(
-            status: DashboardStatus.success,
+            status: DashboardStatus.sendMoneySuccess,
+          ),
+        );
+      },
+      (r) {
+        emit(
+          state.copyWith(
+            status: DashboardStatus.error,
+            errorMessage: r.message,
+          ),
+        );
+      },
+    );
+  }
+
+  _requestMoney(RequestMoney event, emit) async {
+    final response = await dashboardUseCase.requestMoney(
+      secretKey: event.secretKey,
+      amount: event.amount,
+      email: event.email,
+    );
+    return response.fold(
+      (success) {
+        emit(
+          state.copyWith(
+            status: DashboardStatus.requestMoneySuccess,
           ),
         );
       },

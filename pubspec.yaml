@@ -20,6 +20,8 @@ dependencies:
   get_it:
   flutter_svg:
   flutter_bloc:
+  qr_code_scanner: ^1.0.1
+  intl:
   pin_code_fields:
   equatable:
   flutter_screenutil:

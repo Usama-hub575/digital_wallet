@@ -52,6 +52,30 @@ class DashboardUseCase {
     );
   }
 
+  Future<Either<Success, Failure>> requestMoney({
+    required String email,
+    required String amount,
+    required String secretKey,
+  }) async {
+    final response = await dashboardRepo.requestMoney(
+      secretKey: secretKey,
+      amount: amount,
+      email: email,
+    );
+    return response.fold(
+          (success) {
+        return Left(
+          success,
+        );
+      },
+          (r) {
+        return Right(
+          r,
+        );
+      },
+    );
+  }
+
   Future<Either<dynamic, Failure>> findUser({
     required String email,
   }) async {

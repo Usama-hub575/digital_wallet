@@ -192,14 +192,14 @@ class SetAmountWidget extends StatelessWidget {
                   builder: (context, state) {
                     return ProceedButton(
                       onTap: () {
-                        requestMoney == true
-                            ? () {}
-                            : showPinModalBottomSheet(
-                                context,
-                                amount: '30',
-                                sendMoney: true,
-                                email: state.findUserResponseModel.email,
-                              );
+                        FocusScope.of(context).unfocus();
+                        showPinModalBottomSheet(
+                          context,
+                          amount: '30',
+                          requestMoney: requestMoney,
+                          sendMoney: requestMoney == true ? false : true,
+                          email: state.findUserResponseModel.email,
+                        );
                       },
                     );
                   },
@@ -222,6 +222,31 @@ class SetAmountWidget extends StatelessWidget {
                           message: state.errorMessage,
                           context: context,
                         );
+                        state.status = DashboardStatus.init;
+                        break;
+                      case DashboardStatus.sendMoneySuccess:
+                        Navigator.pushNamedAndRemoveUntil(
+                          context,
+                          AppRoutes.paymentDetailScreen,
+                          arguments: {
+                            "Amount": amountController.text,
+                            "Email" : state.findUserResponseModel.email,
+                          },
+                          (route) => false,
+                        );
+                        state.status = DashboardStatus.init;
+                        break;
+                      case DashboardStatus.requestMoneySuccess:
+                        Navigator.pushNamedAndRemoveUntil(
+                          context,
+                          AppRoutes.requestDetailsScreen,
+                          arguments: {
+                            "Amount": amountController.text,
+                            "Email" : state.findUserResponseModel.email,
+                          },
+                          (route) => false,
+                        );
+                        state.status = DashboardStatus.init;
                         break;
                     }
                   },

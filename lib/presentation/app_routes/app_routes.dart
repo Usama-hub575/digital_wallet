@@ -15,6 +15,7 @@ class AppRoutes {
   static const createNewPasswordScreen = '/createNewPasswordScreen';
   static const requestMoneyScreen = '/requestMoney';
   static const requestDetailsScreen = '/requestDetailsScreen';
+  static const profileScreen = '/profileScreen';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     _currentRoute = settings.name;
@@ -33,13 +34,20 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: (_) => SignUpScreen(),
         );
+      case profileScreen:
+        return MaterialPageRoute(
+          builder: (_) => ProfileScreen(),
+        );
       case verifyAccountScreen:
         return MaterialPageRoute(
           builder: (_) => VerifyAccountScreen(),
         );
       case requestDetailsScreen:
         return MaterialPageRoute(
-          builder: (_) => const RequestMoneyDetailsScreen(),
+          builder: (_) => RequestMoneyDetailsScreen(
+            amount: args?["Amount"],
+            email: args?["Email"],
+          ),
         );
       case sendMoney:
         return MaterialPageRoute(
@@ -57,7 +65,10 @@ class AppRoutes {
         );
       case paymentDetailScreen:
         return MaterialPageRoute(
-          builder: (_) => const PaymentDetailScreen(),
+          builder: (_) => PaymentDetailScreen(
+            amount: args?["Amount"],
+            email: args?["Email"],
+          ),
         );
       case forgetPasswordScreen:
         return MaterialPageRoute(
