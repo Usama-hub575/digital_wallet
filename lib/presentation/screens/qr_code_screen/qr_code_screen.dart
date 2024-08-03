@@ -1,30 +1,7 @@
 import 'package:digital_wallet/export.dart';
 
-class QrCodeScreen extends StatefulWidget {
+class QrCodeScreen extends StatelessWidget {
   QrCodeScreen({super.key});
-
-  @override
-  State<QrCodeScreen> createState() => _QrCodeScreenState();
-}
-
-class _QrCodeScreenState extends State<QrCodeScreen> {
-  GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
-  QRViewController? controller;
-
-  @override
-  void reassemble() {
-    super.reassemble();
-    if (defaultTargetPlatform == TargetPlatform.android) {
-      controller?.pauseCamera();
-    }
-    controller?.resumeCamera();
-  }
-
-  @override
-  void dispose() {
-    controller?.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -104,70 +81,14 @@ class _QrCodeScreenState extends State<QrCodeScreen> {
             Expanded(
               child: TabBarView(
                 children: [
-                  Expanded(
-                    flex: 5,
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(
-                        vertical: 20.h,
-                        horizontal: 10.w,
-                      ),
-                      child: ClipRRect(
-                        borderRadius: const BorderRadius.all(
-                          Radius.circular(18),
-                        ),
-                        child: QRView(
-                          key: qrKey,
-                          onQRViewCreated: _onQRViewCreated,
-                          overlay: QrScannerOverlayShape(
-                            cutOutSize: 300,
-                            borderWidth: 10,
-                            borderColor: Colors.red,
-                            borderRadius: 10,
-                            borderLength: 30,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    flex: 5,
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(
-                        vertical: 20.h,
-                        horizontal: 10.w,
-                      ),
-                      child: ClipRRect(
-                        borderRadius: const BorderRadius.all(
-                          Radius.circular(18),
-                        ),
-                        child: QRView(
-                          key: qrKey,
-                          onQRViewCreated: _onQRViewCreated,
-                          overlay: QrScannerOverlayShape(
-                            cutOutSize: 300,
-                            borderWidth: 10,
-                            borderColor: Colors.red,
-                            borderRadius: 10,
-                            borderLength: 30,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
+                  SendMoneyWidget(),
+                  RequestMoneyWidget(),
                 ],
               ),
             ),
           ],
         ),
       ),
-    );
-  }
-
-  void _onQRViewCreated(QRViewController controller) {
-    controller.scannedDataStream.listen(
-      (scanData) {
-        String? qrText = scanData.code;
-      },
     );
   }
 }

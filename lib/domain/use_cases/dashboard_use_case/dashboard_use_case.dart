@@ -63,12 +63,12 @@ class DashboardUseCase {
       email: email,
     );
     return response.fold(
-          (success) {
+      (success) {
         return Left(
           success,
         );
       },
-          (r) {
+      (r) {
         return Right(
           r,
         );
@@ -81,6 +81,41 @@ class DashboardUseCase {
   }) async {
     final response = await dashboardRepo.findUser(
       email: email,
+    );
+    return response.fold(
+      (success) {
+        return Left(
+          success,
+        );
+      },
+      (r) {
+        return Right(
+          Failure(
+            status: r.status,
+            message: r.message,
+          ),
+        );
+      },
+    );
+  }
+
+  Future<Either<dynamic, Failure>> getRequests() async {
+    final response = await dashboardRepo.getRequests();
+    return response.fold(
+      (success) {
+        return Left(success);
+      },
+      (r) {
+        return Right(r);
+      },
+    );
+  }
+
+  Future<Either<dynamic, Failure>> acceptMoney({
+    required String requestID,
+  }) async {
+    final response = await dashboardRepo.acceptMoney(
+      requestID: requestID,
     );
     return response.fold(
       (success) {

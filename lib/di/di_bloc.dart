@@ -14,4 +14,7 @@ Future initializeBlocs() async {
       dashboardUseCase: it<DashboardUseCase>(),
     ),
   );
+  it.registerLazySingleton(
+    () => QRBloc(),
+  );
 }

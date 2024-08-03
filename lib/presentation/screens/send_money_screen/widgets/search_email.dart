@@ -72,7 +72,7 @@ class SearchEmailWidget extends StatelessWidget {
                     return SizedBox(
                       width: 200.w,
                       child: ProceedButton(
-                        isLoading: state.status == DashboardStatus.loading
+                        isLoading: state.status == DashboardStatus.buttonLoading
                             ? true
                             : false,
                         onTap: () {
@@ -99,7 +99,7 @@ class SearchEmailWidget extends StatelessWidget {
                         break;
                       case DashboardStatus.init:
                         break;
-                      case DashboardStatus.loading:
+                      case DashboardStatus.buttonLoading:
                         break;
                       case DashboardStatus.loaded:
                         break;
@@ -110,6 +110,12 @@ class SearchEmailWidget extends StatelessWidget {
                       case DashboardStatus.sendMoneySuccess:
                       // TODO: Handle this case.
                       case DashboardStatus.requestMoneySuccess:
+                        // TODO: Handle this case.
+                      case DashboardStatus.pendingRequestsSuccess:
+                        // TODO: Handle this case.
+                      case DashboardStatus.acceptMoneySuccess:
+                        // TODO: Handle this case.
+                      case DashboardStatus.loading:
                         // TODO: Handle this case.
                     }
                   },

@@ -46,11 +46,7 @@ class DashboardRepoImpl implements DashboardRepo {
   }) async {
     final response = await networkHelper.post(
       endPoints.getSendMoneyEndPoint(),
-      body: {
-        "email": email,
-        "amount": amount,
-        "secret_key": secretKey
-      },
+      body: {"email": email, "amount": amount, "secret_key": secretKey},
     );
     return response.fold(
       (success) {
@@ -84,12 +80,12 @@ class DashboardRepoImpl implements DashboardRepo {
       },
     );
     return response.fold(
-          (success) {
+      (success) {
         return Left(
           Success(),
         );
       },
-          (r) {
+      (r) {
         return Right(
           Failure(
             status: r.status,
@@ -124,6 +120,53 @@ class DashboardRepoImpl implements DashboardRepo {
             message: r.message,
           ),
         );
+      },
+    );
+  }
+
+  @override
+  Future<Either<dynamic, Failure>> acceptMoney({
+    required String requestID,
+  }) async {
+    final response = await networkHelper.post(
+      endPoints.getAcceptMoneyEndPoint(),
+      body: {
+        "request_id": requestID,
+      },
+    );
+
+    return response.fold(
+      (success) {
+        final decodedResponse = jsonDecode(success);
+        return Left(
+          decodedResponse,
+        );
+      },
+      (r) {
+        return Right(
+          Failure(
+            status: r.status,
+            message: r.message,
+          ),
+        );
+      },
+    );
+  }
+
+  @override
+  Future<Either<dynamic, Failure>> getRequests() async {
+    final response = await networkHelper.get(
+      endPoints.getRequestMoneyEndPoint(),
+    );
+    return response.fold(
+      (success) {
+        final decodedResponse = jsonDecode(success);
+        return Left(
+          decodedResponse,
+        );
+      },
+      (r) {
+        return Right(r);
       },
     );
   }

@@ -10,6 +10,9 @@
 class $AssetsSvgGen {
   const $AssetsSvgGen();
 
+  /// File path: assets/svg/account_info.svg
+  String get accountInfo => 'assets/svg/account_info.svg';
+
   /// File path: assets/svg/add_icon.svg
   String get addIcon => 'assets/svg/add_icon.svg';
 
@@ -21,6 +24,12 @@ class $AssetsSvgGen {
 
   /// File path: assets/svg/banking_&_finance.svg
   String get bankingFinance => 'assets/svg/banking_&_finance.svg';
+
+  /// File path: assets/svg/change_login_pin.svg
+  String get changeLoginPin => 'assets/svg/change_login_pin.svg';
+
+  /// File path: assets/svg/change_password.svg
+  String get changePassword => 'assets/svg/change_password.svg';
 
   /// File path: assets/svg/cnic_transfer.svg
   String get cnicTransfer => 'assets/svg/cnic_transfer.svg';
@@ -46,11 +55,17 @@ class $AssetsSvgGen {
   /// File path: assets/svg/electricity.svg
   String get electricity => 'assets/svg/electricity.svg';
 
+  /// File path: assets/svg/faqs.svg
+  String get faqs => 'assets/svg/faqs.svg';
+
   /// File path: assets/svg/floating_action_button.svg
   String get floatingActionButton => 'assets/svg/floating_action_button.svg';
 
   /// File path: assets/svg/gas.svg
   String get gas => 'assets/svg/gas.svg';
+
+  /// File path: assets/svg/general_setting.svg
+  String get generalSetting => 'assets/svg/general_setting.svg';
 
   /// File path: assets/svg/health_insurance.svg
   String get healthInsurance => 'assets/svg/health_insurance.svg';
@@ -67,6 +82,12 @@ class $AssetsSvgGen {
   /// File path: assets/svg/internet.svg
   String get internet => 'assets/svg/internet.svg';
 
+  /// File path: assets/svg/language.svg
+  String get language => 'assets/svg/language.svg';
+
+  /// File path: assets/svg/merchant.svg
+  String get merchant => 'assets/svg/merchant.svg';
+
   /// File path: assets/svg/mobile_credit.svg
   String get mobileCredit => 'assets/svg/mobile_credit.svg';
 
@@ -82,6 +103,9 @@ class $AssetsSvgGen {
   /// File path: assets/svg/my_rewards.svg
   String get myRewards => 'assets/svg/my_rewards.svg';
 
+  /// File path: assets/svg/my_wallet.svg
+  String get myWallet => 'assets/svg/my_wallet.svg';
+
   /// File path: assets/svg/notification.svg
   String get notification => 'assets/svg/notification.svg';
 
@@ -96,6 +120,12 @@ class $AssetsSvgGen {
 
   /// File path: assets/svg/raast_payment.svg
   String get raastPayment => 'assets/svg/raast_payment.svg';
+
+  /// File path: assets/svg/rate_us.svg
+  String get rateUs => 'assets/svg/rate_us.svg';
+
+  /// File path: assets/svg/received.svg
+  String get received => 'assets/svg/received.svg';
 
   /// File path: assets/svg/recent_history.svg
   String get recentHistory => 'assets/svg/recent_history.svg';
@@ -115,18 +145,27 @@ class $AssetsSvgGen {
   /// File path: assets/svg/send_to_wallet.svg
   String get sendToWallet => 'assets/svg/send_to_wallet.svg';
 
+  /// File path: assets/svg/sent.svg
+  String get sent => 'assets/svg/sent.svg';
+
   /// File path: assets/svg/successful_tick.svg
   String get successfulTick => 'assets/svg/successful_tick.svg';
+
+  /// File path: assets/svg/transaction_history.svg
+  String get transactionHistory => 'assets/svg/transaction_history.svg';
 
   /// File path: assets/svg/water.svg
   String get water => 'assets/svg/water.svg';
 
   /// List of all assets
   List<String> get values => [
+        accountInfo,
         addIcon,
         authentication,
         bankTransfer,
         bankingFinance,
+        changeLoginPin,
+        changePassword,
         cnicTransfer,
         contactBook,
         creditCard,
@@ -135,30 +174,39 @@ class $AssetsSvgGen {
         dummy,
         education,
         electricity,
+        faqs,
         floatingActionButton,
         gas,
+        generalSetting,
         healthInsurance,
         help,
         history,
         home,
         internet,
+        language,
+        merchant,
         mobileCredit,
         mobilePostpaid,
         mobilePostpaid2,
         more,
         myRewards,
+        myWallet,
         notification,
         otherWallets,
         pendingPayments,
         profile,
         raastPayment,
+        rateUs,
+        received,
         recentHistory,
         report,
         requestMoney,
         scanQr,
         sendMoney,
         sendToWallet,
+        sent,
         successfulTick,
+        transactionHistory,
         water
       ];
 }

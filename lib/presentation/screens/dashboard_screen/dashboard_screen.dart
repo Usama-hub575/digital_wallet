@@ -159,7 +159,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   ),
                   verticalSpacer(10),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       InkWell(
                         onTap: () {
@@ -179,11 +179,21 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           Assets.svg.requestMoney,
                         ),
                       ),
-                      SvgPicture.asset(
-                        Assets.svg.pendingPayments,
-                      ),
-                      SvgPicture.asset(
-                        Assets.svg.recentHistory,
+                      InkWell(
+                        onTap: () {
+                          context.read<DashboardBloc>().add(
+                                FullScreenLoading(),
+                              );
+                          context.read<DashboardBloc>().add(
+                                GetRequests(),
+                              );
+                          Navigator.of(context, rootNavigator: true).pushNamed(
+                            AppRoutes.pendingPaymentRequestsScreen,
+                          );
+                        },
+                        child: SvgPicture.asset(
+                          Assets.svg.pendingPayments,
+                        ),
                       ),
                     ],
                   ),
@@ -201,8 +211,14 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    SvgPicture.asset(
-                      Assets.svg.electricity,
+                    InkWell(
+                      onTap: () =>
+                          Navigator.of(context, rootNavigator: true).pushNamed(
+                        AppRoutes.electricityScreen,
+                      ),
+                      child: SvgPicture.asset(
+                        Assets.svg.electricity,
+                      ),
                     ),
                     SvgPicture.asset(
                       Assets.svg.internet,

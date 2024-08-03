@@ -6,6 +6,7 @@ class OutlinedGenericButton extends StatelessWidget {
     this.outlinedButton = false,
     required this.buttonTitle,
     required this.titleColor,
+    this.borderColor,
     this.onTap,
     super.key,
   });
@@ -15,6 +16,7 @@ class OutlinedGenericButton extends StatelessWidget {
   final bool? outlinedButton;
   final String buttonTitle;
   final Color titleColor;
+  final Color? borderColor;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +29,7 @@ class OutlinedGenericButton extends StatelessWidget {
         ),
         decoration: BoxDecoration(
           border: Border.all(
-            color: ColorName.pureWhite,
+            color: borderColor ?? ColorName.pureWhite,
           ),
           color:
               outlinedButton == true ? Colors.transparent : ColorName.pureWhite,
@@ -51,7 +53,7 @@ class OutlinedGenericButton extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                   buttonTitle,
+                    buttonTitle,
                     style: textStyles.light.copyWith(
                       color: titleColor,
                       fontWeight: FontWeight.w700,

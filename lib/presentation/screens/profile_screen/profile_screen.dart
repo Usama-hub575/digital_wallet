@@ -92,125 +92,77 @@ class ProfileScreen extends StatelessWidget {
                     ),
                     verticalSpacer(10),
                     ProfileTile(
-                      addPadding: false,
                       onTap: () {},
-                      title: "Referral code",
+                      title: "Account Info",
+                      svgImage: Assets.svg.accountInfo,
                     ),
                     ProfileTile(
-                      addPadding: false,
+                      onTap: () {},
+                      title: "My Wallet",
+                      svgImage: Assets.svg.myWallet,
+                    ),
+                    verticalSpacer(10),
+                    ProfileTile(
+                      onTap: () {},
+                      title: "Transaction History",
+                      svgImage: Assets.svg.transactionHistory,
+                    ),
+                    ProfileTile(
+                      svgImage: Assets.svg.language,
                       onTap: () {},
                       title: "Language",
                     ),
                     verticalSpacer(10),
-                    Text(
-                      "Account".toUpperCase(),
-                      style: textStyles.semiBold.copyWith(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 12.sp,
-                      ),
+                    Divider(
+                      color: ColorName.grey.withOpacity(0.3),
+                      thickness: 1,
+                    ),
+                    ProfileTile(
+                      svgImage: Assets.svg.generalSetting,
+                      onTap: () {},
+                      title: "General Setting",
                     ),
                     verticalSpacer(10),
                     ProfileTile(
+                      svgImage: Assets.svg.changePassword,
                       onTap: () {},
-                      title: "Edit Profile",
+                      title: "Change Password",
                     ),
                     ProfileTile(
                       onTap: () {},
-                      title: "My Cards",
-                    ),
-                    verticalSpacer(10),
-                    Text(
-                      "Security".toUpperCase(),
-                      style: textStyles.semiBold.copyWith(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 12.sp,
-                      ),
-                    ),
-                    verticalSpacer(10),
-                    ProfileTile(
-                      onTap: () {},
-                      title: "Change Security Code",
-                    ),
-                    verticalSpacer(10),
-                    Text(
-                      "General Info".toUpperCase(),
-                      style: textStyles.semiBold.copyWith(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 12.sp,
-                      ),
-                    ),
-                    verticalSpacer(10),
-                    ProfileTile(
-                      onTap: () {},
-                      title: "Help Center",
+                      title: "Change Login PIN",
+                      svgImage: Assets.svg.changeLoginPin,
                     ),
                     ProfileTile(
                       onTap: () {},
-                      title: "Resolution Center",
+                      title: "Become a merchant",
+                      svgImage: Assets.svg.merchant,
+                    ),
+                    verticalSpacer(20),
+                    ProfileTile(
+                      svgImage: Assets.svg.faqs,
+                      onTap: () {},
+                      title: "FAQs",
                     ),
                     ProfileTile(
+                      svgImage: Assets.svg.rateUs,
                       onTap: () {},
-                      title: "Terms & Condition",
+                      title: "Rate Us",
                     ),
-                    ProfileTile(
-                      onTap: () {},
-                      title: "Privacy Policy",
+                    verticalSpacer(20),
+                    const OutlinedGenericButton(
+                      buttonTitle: "Logout",
+                      titleColor: ColorName.red,
+                      outlinedButton: true,
+                      borderColor: ColorName.red,
                     ),
-                    verticalSpacer(10),
+                    verticalSpacer(20),
                   ],
                 ),
               ),
             ),
-          )
+          ),
         ],
-      ),
-    );
-  }
-}
-
-class ProfileTile extends StatelessWidget {
-  const ProfileTile({
-    required this.title,
-    required this.onTap,
-    this.addPadding = true,
-    super.key,
-  });
-
-  final String title;
-  final VoidCallback? onTap;
-  final bool? addPadding;
-
-  @override
-  Widget build(BuildContext context) {
-    return ListTile(
-      contentPadding: EdgeInsets.zero,
-      onTap: () {},
-      title: addPadding == false
-          ? Text(
-              title.toUpperCase(),
-              style: textStyles.semiBold.copyWith(
-                fontWeight: FontWeight.w600,
-                fontSize: 12.sp,
-              ),
-            )
-          : Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: 15.w,
-              ),
-              child: Text(
-                title.toUpperCase(),
-                style: textStyles.semiBold.copyWith(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 12.sp,
-                ),
-              ),
-            ),
-      trailing: IconButton(
-        padding: EdgeInsets.zero,
-        onPressed: onTap,
-        icon: const Icon(
-          Icons.arrow_forward_ios_outlined,
-        ),
       ),
     );
   }

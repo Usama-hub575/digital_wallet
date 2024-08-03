@@ -21,6 +21,18 @@ class FindUser extends DashboardEvent {
   });
 }
 
+class FullScreenLoading extends DashboardEvent {}
+
+class AcceptMoney extends DashboardEvent {
+  final String requestID;
+
+  AcceptMoney({
+    required this.requestID,
+  });
+}
+
+class GetRequests extends DashboardEvent {}
+
 class ProceedButtonLoading extends DashboardEvent {}
 
 class SendMoney extends DashboardEvent {

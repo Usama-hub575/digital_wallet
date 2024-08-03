@@ -4,23 +4,28 @@ class DashboardState extends Equatable {
   DashboardStatus status;
   String errorMessage;
   FindUserResponseModel findUserResponseModel = FindUserResponseModel.empty();
+  RequestsResponseModel requestsResponseModel = RequestsResponseModel.empty();
 
   DashboardState({
     this.status = DashboardStatus.init,
     this.errorMessage = '',
     required this.findUserResponseModel,
+    required this.requestsResponseModel,
   });
 
   DashboardState copyWith({
     DashboardStatus? status,
     String? errorMessage,
     FindUserResponseModel? findUserResponseModel,
+    RequestsResponseModel? requestsResponseModel,
   }) {
     return DashboardState(
       status: status ?? this.status,
       errorMessage: errorMessage ?? this.errorMessage,
       findUserResponseModel:
           findUserResponseModel ?? this.findUserResponseModel,
+      requestsResponseModel:
+          requestsResponseModel ?? this.requestsResponseModel,
     );
   }
 
@@ -29,5 +34,6 @@ class DashboardState extends Equatable {
         status,
         errorMessage,
         findUserResponseModel,
+        requestsResponseModel,
       ];
 }

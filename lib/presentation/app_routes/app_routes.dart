@@ -1,5 +1,4 @@
 import 'package:digital_wallet/export.dart';
-import 'package:digital_wallet/presentation/screens/request_money_screen/export.dart';
 
 class AppRoutes {
   static const initializer = '/';
@@ -16,6 +15,9 @@ class AppRoutes {
   static const requestMoneyScreen = '/requestMoney';
   static const requestDetailsScreen = '/requestDetailsScreen';
   static const profileScreen = '/profileScreen';
+  static const pendingPaymentRequestsScreen = '/pendingPaymentRequestsScreen';
+  static const transactionDetailScreen = '/transactionDetailScreen';
+  static const electricityScreen = '/electricityScreen';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     _currentRoute = settings.name;
@@ -30,17 +32,29 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: (_) => SignInScreen(),
         );
+      case pendingPaymentRequestsScreen:
+        return MaterialPageRoute(
+          builder: (_) => const PendingPaymentRequestsScreen(),
+        );
+      case electricityScreen:
+        return MaterialPageRoute(
+          builder: (_) => ElectricityScreen(),
+        );
       case signupScreen:
         return MaterialPageRoute(
           builder: (_) => SignUpScreen(),
         );
       case profileScreen:
         return MaterialPageRoute(
-          builder: (_) => ProfileScreen(),
+          builder: (_) => const ProfileScreen(),
         );
       case verifyAccountScreen:
         return MaterialPageRoute(
           builder: (_) => VerifyAccountScreen(),
+        );
+      case transactionDetailScreen:
+        return MaterialPageRoute(
+          builder: (_) => TransactionDetailScreen(),
         );
       case requestDetailsScreen:
         return MaterialPageRoute(

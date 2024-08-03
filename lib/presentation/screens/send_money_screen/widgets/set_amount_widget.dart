@@ -213,7 +213,7 @@ class SetAmountWidget extends StatelessWidget {
                         break;
                       case DashboardStatus.init:
                         break;
-                      case DashboardStatus.loading:
+                      case DashboardStatus.buttonLoading:
                         break;
                       case DashboardStatus.loaded:
                         break;
@@ -230,7 +230,7 @@ class SetAmountWidget extends StatelessWidget {
                           AppRoutes.paymentDetailScreen,
                           arguments: {
                             "Amount": amountController.text,
-                            "Email" : state.findUserResponseModel.email,
+                            "Email": state.findUserResponseModel.email,
                           },
                           (route) => false,
                         );
@@ -242,12 +242,18 @@ class SetAmountWidget extends StatelessWidget {
                           AppRoutes.requestDetailsScreen,
                           arguments: {
                             "Amount": amountController.text,
-                            "Email" : state.findUserResponseModel.email,
+                            "Email": state.findUserResponseModel.email,
                           },
                           (route) => false,
                         );
                         state.status = DashboardStatus.init;
                         break;
+                      case DashboardStatus.pendingRequestsSuccess:
+                      // TODO: Handle this case.
+                      case DashboardStatus.acceptMoneySuccess:
+                        // TODO: Handle this case.
+                      case DashboardStatus.loading:
+                        // TODO: Handle this case.
                     }
                   },
                 ),

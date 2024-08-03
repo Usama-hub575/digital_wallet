@@ -45,8 +45,8 @@ class GenericButton extends StatelessWidget {
         child: isLoading == true
             ? Center(
                 child: SizedBox(
-                  height: verticalValue(20),
-                  width: horizontalValue(20),
+                  height: 20.h,
+                  width: 20.w,
                   child: const CircularProgressIndicator(
                     strokeWidth: 2.5,
                     color: ColorName.pureWhite,

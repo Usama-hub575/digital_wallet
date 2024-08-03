@@ -3,7 +3,7 @@ import 'package:digital_wallet/export.dart';
 Future<void> showPinModalBottomSheet(
   BuildContext context, {
   bool? requestMoney = false,
-  bool? sendMoney = true,
+  bool? sendMoney = false,
   String? amount,
   String? email,
 }) async {

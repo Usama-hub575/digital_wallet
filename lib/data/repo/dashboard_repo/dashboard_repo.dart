@@ -21,4 +21,10 @@ mixin DashboardRepo {
   Future<Either<dynamic, Failure>> findUser({
     required String email,
   });
+
+  Future<Either<dynamic, Failure>> getRequests();
+
+  Future<Either<dynamic, Failure>> acceptMoney({
+    required String requestID,
+  });
 }
