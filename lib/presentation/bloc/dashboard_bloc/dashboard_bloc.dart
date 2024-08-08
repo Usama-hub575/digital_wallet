@@ -11,6 +11,7 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
           DashboardState(
             findUserResponseModel: FindUserResponseModel.empty(),
             requestsResponseModel: RequestsResponseModel.empty(),
+            getProfileResponseModel: GetProfileResponseModel.empty(),
           ),
         ) {
     on<SetSecretKey>(_setSecretKey);
@@ -21,6 +22,7 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
     on<AcceptMoney>(_acceptMoney);
     on<GetRequests>(_getRequests);
     on<FullScreenLoading>(_loading);
+    on<GetProfile>(_getProfile);
   }
 
   final DashboardUseCase dashboardUseCase;
@@ -96,9 +98,32 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
     );
   }
 
+  _getProfile(GetProfile event, emit) async {
+    final response = await dashboardUseCase.getProfile();
+    return response.fold(
+          (success) {
+        emit(
+          state.copyWith(
+            status: DashboardStatus.loaded,
+            getProfileResponseModel: GetProfileResponseModel.fromJson(success),
+          ),
+        );
+      },
+          (r) {
+        emit(
+          state.copyWith(
+            status: DashboardStatus.error,
+            errorMessage: r.message,
+          ),
+        );
+      },
+    );
+  }
+
   _acceptMoney(AcceptMoney event, emit) async {
     final response = await dashboardUseCase.acceptMoney(
       requestID: event.requestID,
+      secretKey: event.secretKey,
     );
     return response.fold(
       (success) {

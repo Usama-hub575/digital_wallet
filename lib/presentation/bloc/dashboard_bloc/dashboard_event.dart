@@ -25,11 +25,15 @@ class FullScreenLoading extends DashboardEvent {}
 
 class AcceptMoney extends DashboardEvent {
   final String requestID;
+  final String secretKey;
 
   AcceptMoney({
     required this.requestID,
+    required this.secretKey,
   });
 }
+
+class GetProfile extends DashboardEvent {}
 
 class GetRequests extends DashboardEvent {}
 

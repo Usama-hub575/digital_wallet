@@ -1,7 +1,14 @@
 import 'package:digital_wallet/export.dart';
 
 class TransactionDetailScreen extends StatelessWidget {
-  TransactionDetailScreen({super.key});
+  TransactionDetailScreen({
+    required this.data,
+    this.receivedRequest = true,
+    super.key,
+  });
+
+  final MoneyRequest data;
+  final bool? receivedRequest;
 
   PageController pageController = PageController();
 
@@ -63,7 +70,7 @@ class TransactionDetailScreen extends StatelessWidget {
                     children: [
                       verticalSpacer(50),
                       Text(
-                        "Rs 200",
+                        data.amount.toString(),
                         style: textStyles.semiBold.copyWith(
                           color: ColorName.black,
                           fontWeight: FontWeight.w700,
@@ -83,24 +90,28 @@ class TransactionDetailScreen extends StatelessWidget {
                           horizontalSpacer(5),
                           BlocBuilder<DashboardBloc, DashboardState>(
                             builder: (context, state) {
-                              return Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    state.findUserResponseModel.username ?? '',
-                                    style: textStyles.semiBold.copyWith(
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 16.sp,
+                              return Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      receivedRequest == true
+                                          ? data.senderName
+                                          : data.recipientName,
+                                      style: textStyles.semiBold.copyWith(
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 16.sp,
+                                      ),
                                     ),
-                                  ),
-                                  Text(
-                                    'Acc ${state.findUserResponseModel.id ?? ''}',
-                                    style: textStyles.regular.copyWith(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 12.sp,
+                                    Text(
+                                      'Acc ${data.senderId}',
+                                      style: textStyles.regular.copyWith(
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 12.sp,
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               );
                             },
                           ),
@@ -131,7 +142,7 @@ class TransactionDetailScreen extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            "formattedDate",
+                            data.formattedDate,
                             style: textStyles.semiBold.copyWith(
                               color: ColorName.black,
                               fontWeight: FontWeight.w700,
@@ -153,7 +164,7 @@ class TransactionDetailScreen extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            "formattedTime",
+                            data.formattedTime,
                             style: textStyles.semiBold.copyWith(
                               color: ColorName.black,
                               fontWeight: FontWeight.w700,
@@ -181,7 +192,7 @@ class TransactionDetailScreen extends StatelessWidget {
                             ),
                             color: ColorName.red,
                             child: Text(
-                              'Paid',
+                              data.status,
                               style: textStyles.semiBold.copyWith(
                                 color: ColorName.pureWhite,
                                 fontWeight: FontWeight.w700,
@@ -228,12 +239,67 @@ class TransactionDetailScreen extends StatelessWidget {
                         ),
                       ),
                       verticalSpacer(20),
-                      SizedBox(
-                        width: 200.w,
-                        child: ProceedButton(
-                          onTap: () {},
-                        ),
-                      ),
+                      receivedRequest == true
+                          ? data.status == "Pending"
+                              ? SizedBox(
+                                  width: 200.w,
+                                  child: BlocConsumer<DashboardBloc,
+                                      DashboardState>(
+                                    builder: (context, state) {
+                                      return ProceedButton(
+                                        onTap: () {
+                                          showPinModalBottomSheet(
+                                            context,
+                                            acceptMoney: true,
+                                            requestID: data.id,
+                                          );
+                                        },
+                                      );
+                                    },
+                                    listener: (BuildContext context,
+                                        DashboardState state) {
+                                      switch (state.status) {
+                                        case DashboardStatus.init:
+                                        // TODO: Handle this case.
+                                        case DashboardStatus.loading:
+                                        // TODO: Handle this case.
+                                        case DashboardStatus.loaded:
+                                        // TODO: Handle this case.
+                                        case DashboardStatus.buttonLoading:
+                                        // TODO: Handle this case.
+                                        case DashboardStatus.sendMoneySuccess:
+                                        // TODO: Handle this case.
+                                        case DashboardStatus
+                                              .requestMoneySuccess:
+                                        // TODO: Handle this case.
+                                        case DashboardStatus
+                                              .pendingRequestsSuccess:
+                                        // TODO: Handle this case.
+                                        case DashboardStatus.acceptMoneySuccess:
+                                          successDialog(
+                                            context,
+                                            title: "Money Accepted",
+                                            subTitle:
+                                                "Your money request has been successfully accepted",
+                                          );
+                                          state.status = DashboardStatus.init;
+                                          break;
+                                        case DashboardStatus.success:
+                                          state.status = DashboardStatus.init;
+                                          break;
+                                        case DashboardStatus.error:
+                                          showErrorToast(
+                                            message: state.errorMessage,
+                                            context: context,
+                                          );
+                                          state.status = DashboardStatus.init;
+                                          break;
+                                      }
+                                    },
+                                  ),
+                                )
+                              : const SizedBox.shrink()
+                          : const SizedBox.shrink(),
                     ],
                   ),
                 ),

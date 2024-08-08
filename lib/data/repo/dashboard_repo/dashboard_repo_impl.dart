@@ -97,6 +97,29 @@ class DashboardRepoImpl implements DashboardRepo {
   }
 
   @override
+  Future<Either<dynamic, Failure>> getProfile() async {
+    final response = await networkHelper.get(
+      endPoints.getProfileEndPoint(),
+    );
+    return response.fold(
+          (success) {
+        final decodedResponse = jsonDecode(success);
+        return Left(
+          decodedResponse,
+        );
+      },
+          (r) {
+        return Right(
+          Failure(
+            status: r.status,
+            message: r.message,
+          ),
+        );
+      },
+    );
+  }
+
+  @override
   Future<Either<dynamic, Failure>> findUser({
     required String email,
   }) async {
@@ -127,11 +150,13 @@ class DashboardRepoImpl implements DashboardRepo {
   @override
   Future<Either<dynamic, Failure>> acceptMoney({
     required String requestID,
+    required String secretKey,
   }) async {
     final response = await networkHelper.post(
       endPoints.getAcceptMoneyEndPoint(),
       body: {
         "request_id": requestID,
+        "secret_key" : secretKey,
       },
     );
 
@@ -156,7 +181,7 @@ class DashboardRepoImpl implements DashboardRepo {
   @override
   Future<Either<dynamic, Failure>> getRequests() async {
     final response = await networkHelper.get(
-      endPoints.getRequestMoneyEndPoint(),
+      endPoints.getRequestsEndPoint(),
     );
     return response.fold(
       (success) {

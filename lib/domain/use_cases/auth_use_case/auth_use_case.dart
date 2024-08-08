@@ -117,20 +117,4 @@ class AuthUseCase {
       },
     );
   }
-
-  Future<Either<dynamic, Failure>> getProfile() async {
-    final response = await authRepo.getProfile();
-    return response.fold(
-      (success) {
-        return Left(
-          success,
-        );
-      },
-      (r) {
-        return Right(
-          r,
-        );
-      },
-    );
-  }
 }

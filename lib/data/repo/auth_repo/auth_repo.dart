@@ -22,8 +22,6 @@ mixin AuthRepo {
 
   Future? saveString({required String key, String? value});
 
-  Future<Either<dynamic, Failure>> getProfile();
-
   Future<Either<dynamic, Failure>> forgetPassword({
     required String email,
   });

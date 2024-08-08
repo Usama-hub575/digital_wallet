@@ -1,8 +1,9 @@
 import 'package:digital_wallet/export.dart';
+import 'package:digital_wallet/presentation/screens/become_merchant_screens/export.dart';
 
 class AppRoutes {
   static const initializer = '/';
-  static const signIn = '/signInScreen';
+  static const signInScreen = '/signInScreen';
   static const signupScreen = '/signUpScreen';
   static const dashboardScreen = '/dashboardScreen';
   static const hostPage = '/hostPage';
@@ -18,6 +19,10 @@ class AppRoutes {
   static const pendingPaymentRequestsScreen = '/pendingPaymentRequestsScreen';
   static const transactionDetailScreen = '/transactionDetailScreen';
   static const electricityScreen = '/electricityScreen';
+  static const historyScreen = '/historyScreen';
+  static const statisticsScreen = '/statisticsScreen';
+  static const welcomeToMerchantScreen = '/welcomeMerchantScreen';
+  static const becomeMerchantScreen = '/becomeMerchantScreen';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     _currentRoute = settings.name;
@@ -28,17 +33,33 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: (_) => SignInScreen(),
         );
-      case signIn:
+      case signInScreen:
         return MaterialPageRoute(
           builder: (_) => SignInScreen(),
+        );
+      case welcomeToMerchantScreen:
+        return MaterialPageRoute(
+          builder: (_) => WelcomeToMerchantScreen(),
+        );
+      case becomeMerchantScreen:
+        return MaterialPageRoute(
+          builder: (_) => BecomeMerchantScreen(),
         );
       case pendingPaymentRequestsScreen:
         return MaterialPageRoute(
           builder: (_) => const PendingPaymentRequestsScreen(),
         );
+      case statisticsScreen:
+        return MaterialPageRoute(
+          builder: (_) => StatisticsScreen(),
+        );
       case electricityScreen:
         return MaterialPageRoute(
           builder: (_) => ElectricityScreen(),
+        );
+      case historyScreen:
+        return MaterialPageRoute(
+          builder: (_) => const HistoryScreen(),
         );
       case signupScreen:
         return MaterialPageRoute(
@@ -54,7 +75,10 @@ class AppRoutes {
         );
       case transactionDetailScreen:
         return MaterialPageRoute(
-          builder: (_) => TransactionDetailScreen(),
+          builder: (_) => TransactionDetailScreen(
+            data: args?['data'] as MoneyRequest,
+            receivedRequest: args?['receivedRequest'] ?? true,
+          ),
         );
       case requestDetailsScreen:
         return MaterialPageRoute(

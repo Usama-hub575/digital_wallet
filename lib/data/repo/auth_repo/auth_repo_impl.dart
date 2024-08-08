@@ -129,29 +129,6 @@ class AuthRepoImpl implements AuthRepo {
   }
 
   @override
-  Future<Either<dynamic, Failure>> getProfile() async {
-    final response = await networkHelper.get(
-      endPoints.getProfileEndPoint(),
-    );
-    return response.fold(
-      (success) {
-        final decodedResponse = jsonDecode(success);
-        return Left(
-          decodedResponse,
-        );
-      },
-      (r) {
-        return Right(
-          Failure(
-            status: r.status,
-            message: r.message,
-          ),
-        );
-      },
-    );
-  }
-
-  @override
   Future<Either<dynamic, Failure>> forgetPassword({
     required String email,
   }) async {

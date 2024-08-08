@@ -43,10 +43,12 @@ void showAlertDialog(
                 onPressed: () {
                   // Handle "Set Key" action
                   Navigator.of(context).pop();
-                  // Navigate to the key setting screen or perform an action
+                  context.read<DashboardBloc>().add(
+                    GetProfile(),
+                  );
                 },
               ),
-              BlocBuilder<AuthBloc, AuthState>(builder: (context, state) {
+              BlocBuilder<DashboardBloc, DashboardState>(builder: (context, state) {
                 return TextButton(
                   child: Text(
                     emailVerified == false ? 'Set Key' : 'Verify Email',

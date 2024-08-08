@@ -13,265 +13,285 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   @override
   void initState() {
-    if (context.read<AuthBloc>().state.getProfileResponseModel.secretKeySet ==
-        false) {
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        showAlertDialog(context);
-      });
-    }
-    if (context
-                .read<AuthBloc>()
-                .state
-                .getProfileResponseModel
-                .emailVerfication ==
-            false &&
-        alertDialogShown == true) {
-      WidgetsBinding.instance.addPostFrameCallback(
-        (_) {
-          showAlertDialog(context);
-          alertDialogShown = true;
-        },
-      );
-    }
     super.initState();
+    context.read<DashboardBloc>().add(
+      FullScreenLoading(),
+    );
+    context.read<DashboardBloc>().add(
+      GetProfile(),
+    );
+        if(mounted){
+          if (context
+              .read<DashboardBloc>()
+              .state
+              .getProfileResponseModel
+              .emailVerfication ==
+              false &&
+              alertDialogShown == true) {
+            WidgetsBinding.instance.addPostFrameCallback(
+                  (_) {
+                showAlertDialog(context);
+                alertDialogShown = true;
+              },
+            );
+          }
+          if (context.read<DashboardBloc>().state.getProfileResponseModel.secretKeySet ==
+              false) {
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              showAlertDialog(
+                context,
+                emailVerified: false,
+              );
+            });
+          }
+        }
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: ColorName.pureWhite,
-      body: Column(
-        children: [
-          Container(
-            padding: EdgeInsets.symmetric(
-              vertical: 10.h,
-            ),
-            width: double.infinity,
-            decoration: const BoxDecoration(
-              color: ColorName.primaryColorLight,
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(10),
-                bottomRight: Radius.circular(10),
-              ),
-            ),
-            child: Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: 20.w,
-              ),
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      CircleAvatar(
-                        backgroundColor: Colors.transparent,
-                        child: SvgPicture.asset(
-                          Assets.svg.dummy,
-                        ),
-                      ),
-                      horizontalSpacer(5),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          BlocBuilder<AuthBloc, AuthState>(
-                              builder: (context, state) {
-                            return Text(
-                              'Hi, ${state.getProfileResponseModel.username}',
-                              style: textStyles.semiBold.copyWith(
-                                fontWeight: FontWeight.w500,
-                                fontSize: 16.sp,
-                              ),
-                            );
-                          }),
-                          Text(
-                            'Welcome Back👋',
-                            style: textStyles.regular.copyWith(
-                              fontWeight: FontWeight.w400,
-                              fontSize: 12.sp,
-                            ),
-                          ),
-                        ],
-                      ),
-                      const Spacer(),
-                      SvgPicture.asset(
-                        Assets.svg.notification,
-                      ),
-                    ],
+    return BlocBuilder<DashboardBloc, DashboardState>(
+      builder: (context, state) {
+        return Scaffold(
+          backgroundColor: ColorName.pureWhite,
+          body: const Stack().fullScreenLoader(
+            state: state.status == DashboardStatus.loading ? true : false,
+            loadingWidget: fullScreenLoader(),
+            child: Column(
+              children: [
+                Container(
+                  padding: EdgeInsets.symmetric(
+                    vertical: 10.h,
                   ),
-                  verticalSpacer(30),
-                  Container(
-                    width: double.infinity,
+                  width: double.infinity,
+                  decoration: const BoxDecoration(
+                    color: ColorName.primaryColorLight,
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(10),
+                      bottomRight: Radius.circular(10),
+                    ),
+                  ),
+                  child: Padding(
                     padding: EdgeInsets.symmetric(
-                      horizontal: 15.w,
-                      vertical: 20.h,
+                      horizontal: 20.w,
                     ),
-                    decoration: const BoxDecoration(
-                      color: ColorName.pureWhite,
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(15),
-                      ),
-                    ),
-                    child: Stack(
-                      alignment: Alignment.centerLeft,
+                    child: Column(
                       children: [
-                        Positioned(
-                          top: 20,
-                          right: 105,
-                          child: IconButton(
-                            onPressed: () {},
-                            icon: const Icon(
-                              color: ColorName.black,
-                              Icons.visibility_off,
+                        verticalSpacer(40),
+                        Row(
+                          children: [
+                            CircleAvatar(
+                              backgroundColor: Colors.transparent,
+                              child: SvgPicture.asset(
+                                Assets.svg.dummy,
+                              ),
+                            ),
+                            horizontalSpacer(5),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                BlocBuilder<DashboardBloc, DashboardState>(
+                                    builder: (context, state) {
+                                  return Text(
+                                    'Hi, ${state.getProfileResponseModel.username}',
+                                    style: textStyles.semiBold.copyWith(
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 16.sp,
+                                    ),
+                                  );
+                                }),
+                                Text(
+                                  'Welcome Back👋',
+                                  style: textStyles.regular.copyWith(
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 12.sp,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const Spacer(),
+                            SvgPicture.asset(
+                              Assets.svg.notification,
+                            ),
+                          ],
+                        ),
+                        verticalSpacer(30),
+                        Container(
+                          width: double.infinity,
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 15.w,
+                            vertical: 20.h,
+                          ),
+                          decoration: const BoxDecoration(
+                            color: ColorName.pureWhite,
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(15),
                             ),
                           ),
-                        ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Align(
-                              alignment: Alignment.topRight,
-                              child: SvgPicture.asset(
-                                Assets.svg.myRewards,
-                              ),
-                            ),
-                            Text(
-                              'Total Balance',
-                              style: textStyles.regular.copyWith(
-                                fontSize: 16.sp,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                            verticalSpacer(10),
-                            BlocBuilder<AuthBloc, AuthState>(
-                                builder: (context, state) {
-                              return Text(
-                                'Rs. ${state.getProfileResponseModel.money}',
-                                style: textStyles.regular.copyWith(
-                                  fontSize: 28.sp,
-                                  fontWeight: FontWeight.w700,
+                          child: Stack(
+                            alignment: Alignment.centerLeft,
+                            children: [
+                              Positioned(
+                                top: 20,
+                                right: 105,
+                                child: IconButton(
+                                  onPressed: () {},
+                                  icon: const Icon(
+                                    color: ColorName.black,
+                                    Icons.visibility_off,
+                                  ),
                                 ),
-                              );
-                            }),
+                              ),
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Align(
+                                    alignment: Alignment.topRight,
+                                    child: SvgPicture.asset(
+                                      Assets.svg.myRewards,
+                                    ),
+                                  ),
+                                  Text(
+                                    'Total Balance',
+                                    style: textStyles.regular.copyWith(
+                                      fontSize: 16.sp,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                  verticalSpacer(10),
+                                  BlocBuilder<DashboardBloc, DashboardState>(
+                                      builder: (context, state) {
+                                    return Text(
+                                      'Rs. ${state.getProfileResponseModel.money}',
+                                      style: textStyles.regular.copyWith(
+                                        fontSize: 28.sp,
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                    );
+                                  }),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        verticalSpacer(10),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            InkWell(
+                              onTap: () {
+                                sendMoneyDialog(context);
+                              },
+                              child: SvgPicture.asset(
+                                Assets.svg.sendMoney,
+                              ),
+                            ),
+                            InkWell(
+                              onTap: () {
+                                Navigator.of(context, rootNavigator: true).pushNamed(
+                                  AppRoutes.requestMoneyScreen,
+                                );
+                              },
+                              child: SvgPicture.asset(
+                                Assets.svg.requestMoney,
+                              ),
+                            ),
+                            InkWell(
+                              onTap: () {
+                                context.read<DashboardBloc>().add(
+                                      FullScreenLoading(),
+                                    );
+                                context.read<DashboardBloc>().add(
+                                      GetRequests(),
+                                    );
+                                Navigator.of(context, rootNavigator: true).pushNamed(
+                                  AppRoutes.pendingPaymentRequestsScreen,
+                                );
+                              },
+                              child: SvgPicture.asset(
+                                Assets.svg.pendingPayments,
+                              ),
+                            ),
                           ],
                         ),
                       ],
                     ),
                   ),
-                  verticalSpacer(10),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                ),
+                verticalSpacer(20),
+                Container(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 10.w,
+                  ),
+                  child: Column(
                     children: [
-                      InkWell(
-                        onTap: () {
-                          sendMoneyDialog(context);
-                        },
-                        child: SvgPicture.asset(
-                          Assets.svg.sendMoney,
-                        ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          InkWell(
+                            onTap: () =>
+                                Navigator.of(context, rootNavigator: true).pushNamed(
+                              AppRoutes.electricityScreen,
+                            ),
+                            child: SvgPicture.asset(
+                              Assets.svg.electricity,
+                            ),
+                          ),
+                          SvgPicture.asset(
+                            Assets.svg.internet,
+                          ),
+                          SvgPicture.asset(
+                            Assets.svg.education,
+                          ),
+                          SvgPicture.asset(
+                            Assets.svg.water,
+                          ),
+                        ],
                       ),
-                      InkWell(
-                        onTap: () {
-                          Navigator.of(context, rootNavigator: true).pushNamed(
-                            AppRoutes.requestMoneyScreen,
-                          );
-                        },
-                        child: SvgPicture.asset(
-                          Assets.svg.requestMoney,
-                        ),
+                      verticalSpacer(20),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          SvgPicture.asset(
+                            Assets.svg.mobilePostpaid,
+                          ),
+                          SvgPicture.asset(
+                            Assets.svg.gas,
+                          ),
+                          SvgPicture.asset(
+                            Assets.svg.mobileCredit,
+                          ),
+                          SvgPicture.asset(
+                            Assets.svg.healthInsurance,
+                          ),
+                        ],
                       ),
-                      InkWell(
-                        onTap: () {
-                          context.read<DashboardBloc>().add(
-                                FullScreenLoading(),
-                              );
-                          context.read<DashboardBloc>().add(
-                                GetRequests(),
-                              );
-                          Navigator.of(context, rootNavigator: true).pushNamed(
-                            AppRoutes.pendingPaymentRequestsScreen,
-                          );
-                        },
-                        child: SvgPicture.asset(
-                          Assets.svg.pendingPayments,
-                        ),
+                      verticalSpacer(20),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          SvgPicture.asset(
+                            Assets.svg.mobilePostpaid2,
+                          ),
+                          SvgPicture.asset(
+                            Assets.svg.creditCard,
+                          ),
+                          SvgPicture.asset(
+                            Assets.svg.bankingFinance,
+                          ),
+                          SvgPicture.asset(
+                            Assets.svg.more,
+                          ),
+                        ],
                       ),
                     ],
                   ),
-                ],
-              ),
-            ),
-          ),
-          verticalSpacer(20),
-          Container(
-            padding: EdgeInsets.symmetric(
-              horizontal: 10.w,
-            ),
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    InkWell(
-                      onTap: () =>
-                          Navigator.of(context, rootNavigator: true).pushNamed(
-                        AppRoutes.electricityScreen,
-                      ),
-                      child: SvgPicture.asset(
-                        Assets.svg.electricity,
-                      ),
-                    ),
-                    SvgPicture.asset(
-                      Assets.svg.internet,
-                    ),
-                    SvgPicture.asset(
-                      Assets.svg.education,
-                    ),
-                    SvgPicture.asset(
-                      Assets.svg.water,
-                    ),
-                  ],
-                ),
-                verticalSpacer(20),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    SvgPicture.asset(
-                      Assets.svg.mobilePostpaid,
-                    ),
-                    SvgPicture.asset(
-                      Assets.svg.gas,
-                    ),
-                    SvgPicture.asset(
-                      Assets.svg.mobileCredit,
-                    ),
-                    SvgPicture.asset(
-                      Assets.svg.healthInsurance,
-                    ),
-                  ],
-                ),
-                verticalSpacer(20),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    SvgPicture.asset(
-                      Assets.svg.mobilePostpaid2,
-                    ),
-                    SvgPicture.asset(
-                      Assets.svg.creditCard,
-                    ),
-                    SvgPicture.asset(
-                      Assets.svg.bankingFinance,
-                    ),
-                    SvgPicture.asset(
-                      Assets.svg.more,
-                    ),
-                  ],
                 ),
               ],
             ),
           ),
-        ],
-      ),
+        );
+      }
     );
   }
 }

@@ -4,6 +4,8 @@ Future<void> showPinModalBottomSheet(
   BuildContext context, {
   bool? requestMoney = false,
   bool? sendMoney = false,
+  String? requestID = '',
+  bool? acceptMoney = false,
   String? amount,
   String? email,
 }) async {
@@ -89,6 +91,13 @@ Future<void> showPinModalBottomSheet(
                             secretKey: value,
                           ),
                         );
+                  } else if (acceptMoney == true) {
+                    context.read<DashboardBloc>().add(
+                          AcceptMoney(
+                            requestID: requestID ?? '',
+                            secretKey: value,
+                          ),
+                        );
                   } else {
                     context.read<DashboardBloc>().add(
                           SetSecretKey(
@@ -96,9 +105,6 @@ Future<void> showPinModalBottomSheet(
                           ),
                         );
                   }
-                },
-                onChanged: (value) {
-                  print(value);
                 },
               ),
               // confirmPin == true ? verticalSpacer(50) : const SizedBox.shrink(),

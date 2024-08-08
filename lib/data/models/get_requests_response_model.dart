@@ -1,15 +1,15 @@
-class SentTransaction {
+class MoneyRequest {
   final String id;
   final String senderName;
   final String recipientName;
   final String senderId;
   final String recipientId;
-  final int amount;
+  final double amount;
   final String status;
   final String formattedDate;
   final String formattedTime;
 
-  SentTransaction({
+  MoneyRequest({
     required this.id,
     required this.senderName,
     required this.recipientName,
@@ -21,76 +21,20 @@ class SentTransaction {
     required this.formattedTime,
   });
 
-  // Factory constructor to create an instance from JSON
-  factory SentTransaction.fromJson(Map<String, dynamic> json) {
-    return SentTransaction(
+  factory MoneyRequest.fromJson(Map<String, dynamic> json) {
+    return MoneyRequest(
       id: json['id'],
       senderName: json['sender_name'],
       recipientName: json['recipient_name'],
       senderId: json['sender_id'],
       recipientId: json['recipient_id'],
-      amount: json['amount'],
+      amount: json['amount'].toDouble(),
       status: json['status'],
       formattedDate: json['formatted_date'],
       formattedTime: json['formatted_time'],
     );
   }
 
-  // Method to convert an instance to JSON
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'sender_name': senderName,
-      'recipient_name': recipientName,
-      'sender_id': senderId,
-      'recipient_id': recipientId,
-      'amount': amount,
-      'status': status,
-      'formatted_date': formattedDate,
-      'formatted_time': formattedTime,
-    };
-  }
-}
-
-class ReceivedTransaction {
-  final String id;
-  final String senderName;
-  final String recipientName;
-  final String senderId;
-  final String recipientId;
-  final int amount;
-  final String status;
-  final String formattedDate;
-  final String formattedTime;
-
-  ReceivedTransaction({
-    required this.id,
-    required this.senderName,
-    required this.recipientName,
-    required this.senderId,
-    required this.recipientId,
-    required this.amount,
-    required this.status,
-    required this.formattedDate,
-    required this.formattedTime,
-  });
-
-  // Factory constructor to create an instance from JSON
-  factory ReceivedTransaction.fromJson(Map<String, dynamic> json) {
-    return ReceivedTransaction(
-      id: json['id'],
-      senderName: json['sender_name'],
-      recipientName: json['recipient_name'],
-      senderId: json['sender_id'],
-      recipientId: json['recipient_id'],
-      amount: json['amount'],
-      status: json['status'],
-      formattedDate: json['formatted_date'],
-      formattedTime: json['formatted_time'],
-    );
-  }
-
-  // Method to convert an instance to JSON
   Map<String, dynamic> toJson() {
     return {
       'id': id,
@@ -107,38 +51,43 @@ class ReceivedTransaction {
 }
 
 class RequestsResponseModel {
-  final List<SentTransaction> sent;
-  final List<ReceivedTransaction> received;
+  final List<MoneyRequest> all;
+  final List<MoneyRequest> sent;
+  final List<MoneyRequest> received;
 
   RequestsResponseModel({
+    required this.all,
     required this.sent,
     required this.received,
   });
 
-  // Factory constructor to create an instance from JSON
   factory RequestsResponseModel.fromJson(Map<String, dynamic> json) {
     return RequestsResponseModel(
-      sent: (json['sent'] as List)
-          .map((item) => SentTransaction.fromJson(item))
+      all: (json['all'] as List<dynamic>)
+          .map((item) => MoneyRequest.fromJson(item as Map<String, dynamic>))
           .toList(),
-      received: (json['received'] as List)
-          .map((item) => ReceivedTransaction.fromJson(item))
+      sent: (json['sent'] as List<dynamic>)
+          .map((item) => MoneyRequest.fromJson(item as Map<String, dynamic>))
+          .toList(),
+      received: (json['received'] as List<dynamic>)
+          .map((item) => MoneyRequest.fromJson(item as Map<String, dynamic>))
           .toList(),
     );
-  }
-
-  // Method to convert an instance to JSON
-  Map<String, dynamic> toJson() {
-    return {
-      'sent': sent.map((item) => item.toJson()).toList(),
-      'received': received.map((item) => item.toJson()).toList(),
-    };
   }
 
   static RequestsResponseModel empty() {
     return RequestsResponseModel(
+      all: [],
       sent: [],
       received: [],
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'all': all.map((request) => request.toJson()).toList(),
+      'sent': sent.map((request) => request.toJson()).toList(),
+      'received': received.map((request) => request.toJson()).toList(),
+    };
   }
 }

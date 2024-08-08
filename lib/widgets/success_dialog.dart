@@ -1,8 +1,10 @@
 import 'package:digital_wallet/export.dart';
 
-void passwordResetDialog(
-  BuildContext context,
-) {
+void successDialog(
+  BuildContext context, {
+  required String title,
+  required String subTitle,
+}) {
   showDialog(
     context: context,
     builder: (BuildContext context) {
@@ -17,7 +19,7 @@ void passwordResetDialog(
             ),
             verticalSpacer(10),
             Text(
-              "Password Changed!",
+              title,
               textAlign: TextAlign.center,
               style: textStyles.bold.copyWith(
                 fontSize: 27.sp,
@@ -30,7 +32,7 @@ void passwordResetDialog(
           child: Column(
             children: [
               Text(
-                "Your password has been changed successfully.",
+                subTitle,
                 textAlign: TextAlign.center,
                 style: textStyles.light.copyWith(
                   fontSize: 12.sp,
@@ -41,11 +43,6 @@ void passwordResetDialog(
               ProceedButton(
                 onTap: () {
                   Navigator.pop(context);
-                  Navigator.pushNamedAndRemoveUntil(
-                    context,
-                    AppRoutes.signInScreen,
-                    (route) => false,
-                  );
                 },
               ),
             ],

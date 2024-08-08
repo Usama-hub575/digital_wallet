@@ -16,6 +16,12 @@ class $AssetsSvgGen {
   /// File path: assets/svg/add_icon.svg
   String get addIcon => 'assets/svg/add_icon.svg';
 
+  /// File path: assets/svg/arrow_circle_down.svg
+  String get arrowCircleDown => 'assets/svg/arrow_circle_down.svg';
+
+  /// File path: assets/svg/arrow_circle_up.svg
+  String get arrowCircleUp => 'assets/svg/arrow_circle_up.svg';
+
   /// File path: assets/svg/authentication.svg
   String get authentication => 'assets/svg/authentication.svg';
 
@@ -24,6 +30,9 @@ class $AssetsSvgGen {
 
   /// File path: assets/svg/banking_&_finance.svg
   String get bankingFinance => 'assets/svg/banking_&_finance.svg';
+
+  /// File path: assets/svg/become_merchant.svg
+  String get becomeMerchant => 'assets/svg/become_merchant.svg';
 
   /// File path: assets/svg/change_login_pin.svg
   String get changeLoginPin => 'assets/svg/change_login_pin.svg';
@@ -142,6 +151,9 @@ class $AssetsSvgGen {
   /// File path: assets/svg/send_money.svg
   String get sendMoney => 'assets/svg/send_money.svg';
 
+  /// File path: assets/svg/send_money_2.svg
+  String get sendMoney2 => 'assets/svg/send_money_2.svg';
+
   /// File path: assets/svg/send_to_wallet.svg
   String get sendToWallet => 'assets/svg/send_to_wallet.svg';
 
@@ -161,9 +173,12 @@ class $AssetsSvgGen {
   List<String> get values => [
         accountInfo,
         addIcon,
+        arrowCircleDown,
+        arrowCircleUp,
         authentication,
         bankTransfer,
         bankingFinance,
+        becomeMerchant,
         changeLoginPin,
         changePassword,
         cnicTransfer,
@@ -203,6 +218,7 @@ class $AssetsSvgGen {
         requestMoney,
         scanQr,
         sendMoney,
+        sendMoney2,
         sendToWallet,
         sent,
         successfulTick,

@@ -258,6 +258,7 @@ class SignUpScreen extends StatelessWidget {
                               "Email": emailController.text,
                             },
                           );
+                          state.signUpStatus = SignUpStatus.init;
                           break;
                       }
                     },

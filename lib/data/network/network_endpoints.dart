@@ -1,5 +1,5 @@
 class EndPoints {
-  final _baseUrl = 'https://b9c1-182-177-39-208.ngrok-free.app/';
+  final _baseUrl = 'https://9ba9-182-177-35-16.ngrok-free.app/';
   final String _login = 'login/';
   final String _signup = 'signup/';
   final String _getProfile = 'GetProfile/';
@@ -9,7 +9,7 @@ class EndPoints {
   final String _findUser = 'findUser/';
   final String _forgetPassword = 'forgetPassword/';
   final String _resetPassword = 'resetPassword/';
-  final String _requestMoney = 'GetMoneyRequests/';
+  final String _requestMoney = 'RequestMoney/';
   final String _acceptMoney = 'AcceptMoneyRequest/';
   final String _getRequests = 'GetMoneyRequests/';
 

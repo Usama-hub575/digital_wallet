@@ -195,7 +195,7 @@ class SetAmountWidget extends StatelessWidget {
                         FocusScope.of(context).unfocus();
                         showPinModalBottomSheet(
                           context,
-                          amount: '30',
+                          amount: amountController.text,
                           requestMoney: requestMoney,
                           sendMoney: requestMoney == true ? false : true,
                           email: state.findUserResponseModel.email,
@@ -206,7 +206,7 @@ class SetAmountWidget extends StatelessWidget {
                   listener: (BuildContext context, DashboardState state) {
                     switch (state.status) {
                       case DashboardStatus.success:
-                        context.read<AuthBloc>().add(
+                        context.read<DashboardBloc>().add(
                               GetProfile(),
                             );
                         state.status = DashboardStatus.init;

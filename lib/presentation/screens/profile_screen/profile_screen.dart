@@ -134,7 +134,9 @@ class ProfileScreen extends StatelessWidget {
                       svgImage: Assets.svg.changeLoginPin,
                     ),
                     ProfileTile(
-                      onTap: () {},
+                      onTap: () =>  Navigator.of(context, rootNavigator: true).pushNamed(
+                        AppRoutes.welcomeToMerchantScreen,
+                      ),
                       title: "Become a merchant",
                       svgImage: Assets.svg.merchant,
                     ),
@@ -150,11 +152,16 @@ class ProfileScreen extends StatelessWidget {
                       title: "Rate Us",
                     ),
                     verticalSpacer(20),
-                    const OutlinedGenericButton(
+                    OutlinedGenericButton(
                       buttonTitle: "Logout",
                       titleColor: ColorName.red,
                       outlinedButton: true,
                       borderColor: ColorName.red,
+                      onTap: () => Navigator.of(context, rootNavigator: true)
+                          .pushNamedAndRemoveUntil(
+                        AppRoutes.signInScreen,
+                        (route) => false,
+                      ),
                     ),
                     verticalSpacer(20),
                   ],

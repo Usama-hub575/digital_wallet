@@ -137,6 +137,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                             context,
                             AppRoutes.initializer,
                           );
+                    state.verifyOtpStatus = VerifyOtpStatus.init;
                     break;
                 }
               },

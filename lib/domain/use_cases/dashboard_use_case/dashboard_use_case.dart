@@ -111,11 +111,29 @@ class DashboardUseCase {
     );
   }
 
+  Future<Either<dynamic, Failure>> getProfile() async {
+    final response = await dashboardRepo.getProfile();
+    return response.fold(
+          (success) {
+        return Left(
+          success,
+        );
+      },
+          (r) {
+        return Right(
+          r,
+        );
+      },
+    );
+  }
+
   Future<Either<dynamic, Failure>> acceptMoney({
     required String requestID,
+    required String secretKey,
   }) async {
     final response = await dashboardRepo.acceptMoney(
       requestID: requestID,
+      secretKey: secretKey
     );
     return response.fold(
       (success) {

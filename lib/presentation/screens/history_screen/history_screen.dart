@@ -1,16 +1,14 @@
 import 'package:digital_wallet/export.dart';
 
-class ElectricityScreen extends StatelessWidget {
-  ElectricityScreen({super.key});
-
-  TextEditingController searchController = TextEditingController();
+class HistoryScreen extends StatelessWidget {
+  const HistoryScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorName.primaryColorLight,
       appBar: const GenericAppBar(
-        title: "Pay Electricity Bill",
+        title: "History",
       ),
       body: Column(
         children: [
@@ -32,40 +30,6 @@ class ElectricityScreen extends StatelessWidget {
               ),
               child: Column(
                 children: [
-                  TextField(
-                    controller: searchController,
-                    decoration: InputDecoration(
-                      hintText: 'Search',
-                      hintStyle: const TextStyle(
-                        color: ColorName.grey,
-                      ),
-                      // Optional: customize hint text color
-                      contentPadding: const EdgeInsets.symmetric(
-                          horizontal: 20.0, vertical: 15.0),
-                      border: OutlineInputBorder(
-                        borderRadius:
-                            BorderRadius.circular(30.0), // Rounded corners
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(30.0),
-                        // Rounded corners
-                        borderSide: const BorderSide(
-                            color: ColorName.grey,
-                            width: 1.0), // Border color and width
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(30.0),
-                        // Rounded corners
-                        borderSide: const BorderSide(
-                            color: ColorName.grey,
-                            width: 2.0), // Border color and width when focused
-                      ),
-                      suffixIcon: const Icon(
-                        Icons.search,
-                        color: ColorName.grey, // Optional: customize icon color
-                      ),
-                    ),
-                  ),
                   Expanded(
                     child: ListView.separated(
                       shrinkWrap: true,
@@ -75,6 +39,7 @@ class ElectricityScreen extends StatelessWidget {
                         color: ColorName.grey.withOpacity(0.3),
                       ),
                       itemBuilder: (context, index) {
+                        final bool isEven = index % 2 == 0 ? true : false;
                         return ListTile(
                           leading: Container(
                             height: 35.h,
@@ -87,30 +52,37 @@ class ElectricityScreen extends StatelessWidget {
                               shape: BoxShape.circle,
                               color: ColorName.grey.withOpacity(0.09),
                             ),
-                            child: Icon(
-                              Icons.electric_bolt,
+                            child: SvgPicture.asset(
+                              isEven
+                                  ? Assets.svg.depositMoney
+                                  : Assets.svg.sendMoney2,
                             ),
                           ),
                           contentPadding: EdgeInsets.zero,
                           onTap: () {},
                           title: Text(
-                            "IDI Corp".toUpperCase(),
+                            isEven
+                                ? "Received Money".toUpperCase()
+                                : "Sent Money".toUpperCase(),
                             style: textStyles.semiBold.copyWith(
                               fontWeight: FontWeight.w600,
                               fontSize: 12.sp,
                             ),
                           ),
-                          trailing: InkWell(
-                            onTap: () => Navigator.pushNamed(
-                              context,
-                              AppRoutes.transactionDetailScreen,
+                          subtitle: Text(
+                            "Yesterday 19:12",
+                            style: textStyles.semiBold.copyWith(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 11.sp,
+                              color: ColorName.grey.withOpacity(0.5),
                             ),
-                            child: IconButton(
-                              onPressed: () {},
-                              icon: Icon(
-                                Icons.arrow_forward_ios_rounded,
-                                size: 15,
-                              ),
+                          ),
+                          trailing: Text(
+                            isEven ? "+Rs 300.00" : "-Rs 600.00",
+                            style: textStyles.semiBold.copyWith(
+                              color: isEven ? ColorName.green : ColorName.red,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 13.sp,
                             ),
                           ),
                         );

@@ -33,8 +33,6 @@ class SignUpLoading extends AuthEvent {}
 
 class SignInCheckBoxToggle extends AuthEvent {}
 
-class GetProfile extends AuthEvent {}
-
 class ResetPassword extends AuthEvent {
   final String otp;
   final String newPassword;

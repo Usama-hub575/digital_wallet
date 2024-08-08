@@ -24,7 +24,10 @@ mixin DashboardRepo {
 
   Future<Either<dynamic, Failure>> getRequests();
 
+  Future<Either<dynamic, Failure>> getProfile();
+
   Future<Either<dynamic, Failure>> acceptMoney({
     required String requestID,
+    required String secretKey,
   });
 }

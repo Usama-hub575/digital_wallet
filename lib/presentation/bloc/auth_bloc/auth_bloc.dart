@@ -11,7 +11,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     required this.authUseCase,
   }) : super(
           AuthState(
-            getProfileResponseModel: GetProfileResponseModel.empty(),
           ),
         ) {
     on<SignInToggle>(_toggle);
@@ -27,7 +26,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<StartTimer>(_startTimer);
     on<VerifyOTP>(_verifyOTP);
     on<VerifyOTPLoading>(_verifyOtpLoading);
-    on<GetProfile>(_getProfile);
     on<ForgetPassword>(_forgetPassword);
     on<ForgetPasswordLoading>(_forgetPasswordLoading);
     on<ResetPassword>(_resetPassword);
@@ -98,7 +96,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       (success) {
         emit(
           state.copyWith(
-            status: SignInStatus.success,
+            status: SignInStatus.home,
           ),
         );
       },
@@ -113,27 +111,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     );
   }
 
-  _getProfile(GetProfile event, emit) async {
-    final response = await authUseCase.getProfile();
-    return response.fold(
-      (success) {
-        emit(
-          state.copyWith(
-            status: SignInStatus.home,
-            getProfileResponseModel: GetProfileResponseModel.fromJson(success),
-          ),
-        );
-      },
-      (r) {
-        emit(
-          state.copyWith(
-            status: SignInStatus.error,
-            errorMessage: r.message,
-          ),
-        );
-      },
-    );
-  }
 
   _resetPassword(ResetPassword event, emit) async {
     final response = await authUseCase.resetPassword(
