@@ -16,3 +16,4 @@ export 'pending_payment_requests/export.dart';
 export 'transaction_details_screen/export.dart';
 export 'electricity_screen/export.dart';
 export 'request_details_screen/export.dart';
+export 'notification_screen/export.dart';

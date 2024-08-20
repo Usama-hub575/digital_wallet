@@ -23,6 +23,7 @@ class AppRoutes {
   static const statisticsScreen = '/statisticsScreen';
   static const welcomeToMerchantScreen = '/welcomeMerchantScreen';
   static const becomeMerchantScreen = '/becomeMerchantScreen';
+  static const notificationScreen = '/notificationScreen';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     _currentRoute = settings.name;
@@ -36,6 +37,10 @@ class AppRoutes {
       case signInScreen:
         return MaterialPageRoute(
           builder: (_) => SignInScreen(),
+        );
+      case notificationScreen:
+        return MaterialPageRoute(
+          builder: (_) => NotificationScreen(),
         );
       case welcomeToMerchantScreen:
         return MaterialPageRoute(

@@ -54,8 +54,8 @@ class HistoryScreen extends StatelessWidget {
                             ),
                             child: SvgPicture.asset(
                               isEven
-                                  ? Assets.svg.depositMoney
-                                  : Assets.svg.sendMoney2,
+                                  ? Assets.svg.received
+                                  : Assets.svg.sent,
                             ),
                           ),
                           contentPadding: EdgeInsets.zero,
