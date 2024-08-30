@@ -89,7 +89,6 @@ class ForgotPasswordScreen extends StatelessWidget {
                               ),
                             );
                       }
-                      ;
                     },
                     isLoading: state.forgotPasswordStatus ==
                             ForgotPasswordStatus.loading

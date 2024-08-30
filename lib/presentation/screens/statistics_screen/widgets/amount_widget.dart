@@ -19,7 +19,7 @@ class AmountWidget extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         color: income ?ColorName.primaryColorLight :ColorName.primaryColor,
-        borderRadius: BorderRadius.all(
+        borderRadius: const BorderRadius.all(
           Radius.circular(8),
         ),
       ),

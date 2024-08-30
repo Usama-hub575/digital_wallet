@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:digital_wallet/export.dart';
-import 'package:digital_wallet/presentation/export.dart';
 
 part 'auth_event.dart';
 

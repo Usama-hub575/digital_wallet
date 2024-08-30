@@ -1,7 +1,7 @@
 import 'package:digital_wallet/export.dart';
 
-class MerchantOutlinedButton extends StatelessWidget {
-  const MerchantOutlinedButton({
+class GenericOutlinedButton extends StatelessWidget {
+  const GenericOutlinedButton({
     required this.buttonTitle,
     required this.titleColor,
     this.borderColor,

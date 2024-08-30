@@ -31,14 +31,26 @@ class $AssetsSvgGen {
   /// File path: assets/svg/banking_&_finance.svg
   String get bankingFinance => 'assets/svg/banking_&_finance.svg';
 
-  /// File path: assets/svg/become_merchant.svg
-  String get becomeMerchant => 'assets/svg/become_merchant.svg';
+  /// File path: assets/svg/become_a_merchant.svg
+  String get becomeAMerchant => 'assets/svg/become_a_merchant.svg';
+
+  /// File path: assets/svg/business.svg
+  String get business => 'assets/svg/business.svg';
+
+  /// File path: assets/svg/calculator.svg
+  String get calculator => 'assets/svg/calculator.svg';
+
+  /// File path: assets/svg/cash.svg
+  String get cash => 'assets/svg/cash.svg';
 
   /// File path: assets/svg/change_login_pin.svg
   String get changeLoginPin => 'assets/svg/change_login_pin.svg';
 
   /// File path: assets/svg/change_password.svg
   String get changePassword => 'assets/svg/change_password.svg';
+
+  /// File path: assets/svg/chat_with_e_wallet.svg
+  String get chatWithEWallet => 'assets/svg/chat_with_e_wallet.svg';
 
   /// File path: assets/svg/cnic_transfer.svg
   String get cnicTransfer => 'assets/svg/cnic_transfer.svg';
@@ -139,6 +151,9 @@ class $AssetsSvgGen {
   /// File path: assets/svg/recent_history.svg
   String get recentHistory => 'assets/svg/recent_history.svg';
 
+  /// File path: assets/svg/refresh.svg
+  String get refresh => 'assets/svg/refresh.svg';
+
   /// File path: assets/svg/report.svg
   String get report => 'assets/svg/report.svg';
 
@@ -178,9 +193,13 @@ class $AssetsSvgGen {
         authentication,
         bankTransfer,
         bankingFinance,
-        becomeMerchant,
+        becomeAMerchant,
+        business,
+        calculator,
+        cash,
         changeLoginPin,
         changePassword,
+        chatWithEWallet,
         cnicTransfer,
         contactBook,
         creditCard,
@@ -214,6 +233,7 @@ class $AssetsSvgGen {
         rateUs,
         received,
         recentHistory,
+        refresh,
         report,
         requestMoney,
         scanQr,

@@ -155,7 +155,6 @@ class CreateNewPasswordScreen extends StatelessWidget {
                               ),
                             );
                       }
-                      ;
                     },
                     isLoading: state.forgotPasswordStatus ==
                             ForgotPasswordStatus.loading

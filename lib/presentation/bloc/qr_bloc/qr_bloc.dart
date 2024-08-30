@@ -8,5 +8,5 @@ class QRBloc extends Bloc<QREvent, QRState> {
   QRBloc()
       : super(
           QRState(),
-        ) {}
+        );
 }

@@ -32,11 +32,11 @@ class StatisticsScreen extends StatelessWidget {
                 ),
               ),
               child: SingleChildScrollView(
-                physics: BouncingScrollPhysics(),
+                physics: const BouncingScrollPhysics(),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
+                    const Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         AmountWidget(
@@ -99,7 +99,7 @@ class StatisticsScreen extends StatelessWidget {
                             // Expand to fill the container width
                             underline: const SizedBox.shrink(),
                             // Remove default underline
-                            icon: Icon(
+                            icon: const Icon(
                               Icons.keyboard_arrow_down_outlined,
                               color: ColorName.black,
                             ), // Down arrow
@@ -110,8 +110,8 @@ class StatisticsScreen extends StatelessWidget {
                     verticalSpacer(15),
                     SfCartesianChart(
                       margin: EdgeInsets.zero,
-                      primaryXAxis: CategoryAxis(),
-                      primaryYAxis: NumericAxis(
+                      primaryXAxis: const CategoryAxis(),
+                      primaryYAxis: const NumericAxis(
                         minimum: 0,
                         maximum: 1000,
                         interval: 200,
@@ -135,7 +135,7 @@ class StatisticsScreen extends StatelessWidget {
                           ],
                           xValueMapper: (ChartData data, _) => data.x,
                           yValueMapper: (ChartData data, _) => data.y,
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                          borderRadius: const BorderRadius.all(Radius.circular(10)),
                           color: ColorName.primaryColorLight,
                           width: 0.6,
                           spacing: 0.3,
@@ -150,7 +150,7 @@ class StatisticsScreen extends StatelessWidget {
                           ],
                           xValueMapper: (ChartData data, _) => data.x,
                           yValueMapper: (ChartData data, _) => data.y,
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                          borderRadius: const BorderRadius.all(Radius.circular(10)),
                           // Rounded bars
                           width: 0.6,
                           spacing: 0.3,
@@ -192,7 +192,7 @@ class StatisticsScreen extends StatelessWidget {
                               color: isEven
                                   ? ColorName.yellow.withOpacity(0.09)
                                   : ColorName.shadedBlue.withOpacity(0.09),
-                              borderRadius: BorderRadius.all(
+                              borderRadius: const BorderRadius.all(
                                 Radius.circular(8),
                               ),
                             ),

@@ -11,7 +11,7 @@ Widget fullScreenLoader() => Material(
       child: SizedBox(
         width: 30.w,
         height: 30.h,
-        child: CircularProgressIndicator(
+        child: const CircularProgressIndicator(
           backgroundColor: Colors.white,
           valueColor: AlwaysStoppedAnimation<Color>(
             ColorName.primaryColor,

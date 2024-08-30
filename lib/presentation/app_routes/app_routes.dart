@@ -1,5 +1,4 @@
 import 'package:digital_wallet/export.dart';
-import 'package:digital_wallet/presentation/screens/become_merchant_screens/export.dart';
 
 class AppRoutes {
   static const initializer = '/';
@@ -24,6 +23,8 @@ class AppRoutes {
   static const welcomeToMerchantScreen = '/welcomeMerchantScreen';
   static const becomeMerchantScreen = '/becomeMerchantScreen';
   static const notificationScreen = '/notificationScreen';
+  static const merchantQRScreen = '/merchantQRScreen';
+  static const merchantDashboardScreen = '/merchantDashboardScreen';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     _currentRoute = settings.name;
@@ -40,11 +41,19 @@ class AppRoutes {
         );
       case notificationScreen:
         return MaterialPageRoute(
-          builder: (_) => NotificationScreen(),
+          builder: (_) => const NotificationScreen(),
         );
       case welcomeToMerchantScreen:
         return MaterialPageRoute(
-          builder: (_) => WelcomeToMerchantScreen(),
+          builder: (_) => const WelcomeToMerchantScreen(),
+        );
+      case merchantQRScreen:
+        return MaterialPageRoute(
+          builder: (_) => const MerchantQrScreen(),
+        );
+      case merchantDashboardScreen:
+        return MaterialPageRoute(
+          builder: (_) => const MerchantDashboardScreen(),
         );
       case becomeMerchantScreen:
         return MaterialPageRoute(

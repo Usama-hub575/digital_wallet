@@ -108,6 +108,9 @@ class VerifyAccountScreen extends StatelessWidget {
               onTap: () => Navigator.pushNamed(
                 context,
                 AppRoutes.createNewPasswordScreen,
+                arguments: {
+                  "otp": "123",
+                },
               ),
               buttonColor: ColorName.primaryColorLight,
             ),

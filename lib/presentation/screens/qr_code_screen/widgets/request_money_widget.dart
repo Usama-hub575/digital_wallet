@@ -1,7 +1,7 @@
 import 'package:digital_wallet/export.dart';
 
 class RequestMoneyWidget extends StatefulWidget {
-  RequestMoneyWidget({super.key});
+  const RequestMoneyWidget({super.key});
 
   @override
   State<RequestMoneyWidget> createState() => _RequestMoneyWidgetState();

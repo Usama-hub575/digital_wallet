@@ -1,14 +1,16 @@
 import 'package:digital_wallet/export.dart';
 
 class SendMoneyWidget extends StatefulWidget {
-  SendMoneyWidget({super.key});
+  const SendMoneyWidget({super.key});
 
   @override
   State<SendMoneyWidget> createState() => _SendMoneyWidgetState();
 }
 
 class _SendMoneyWidgetState extends State<SendMoneyWidget> {
-  GlobalKey sendMoneyQRKey = GlobalKey(debugLabel: 'SendMoneyQR');
+  GlobalKey sendMoneyQRKey = GlobalKey(
+    debugLabel: 'SendMoneyQR',
+  );
   QRViewController? controller;
 
   @override
@@ -43,7 +45,7 @@ class _SendMoneyWidgetState extends State<SendMoneyWidget> {
           overlay: QrScannerOverlayShape(
             cutOutSize: 300,
             borderWidth: 10,
-            borderColor: Colors.red,
+            borderColor: ColorName.grey,
             borderRadius: 10,
             borderLength: 30,
           ),
@@ -54,7 +56,7 @@ class _SendMoneyWidgetState extends State<SendMoneyWidget> {
 
   void _onQRViewCreated(QRViewController controller) {
     controller.scannedDataStream.listen(
-          (scanData) {
+      (scanData) {
         String? qrText = scanData.code;
       },
     );

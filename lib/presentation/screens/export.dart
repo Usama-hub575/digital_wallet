@@ -1,4 +1,4 @@
-export 'become_merchant_screens/export.dart';
+export 'merchant_flow/export.dart';
 export 'otp_verification_screen/export.dart';
 export 'dashboard_screen/export.dart';
 export 'host_page/export.dart';

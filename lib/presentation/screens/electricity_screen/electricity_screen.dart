@@ -87,7 +87,7 @@ class ElectricityScreen extends StatelessWidget {
                               shape: BoxShape.circle,
                               color: ColorName.grey.withOpacity(0.09),
                             ),
-                            child: Icon(
+                            child: const Icon(
                               Icons.electric_bolt,
                             ),
                           ),
@@ -107,7 +107,7 @@ class ElectricityScreen extends StatelessWidget {
                             ),
                             child: IconButton(
                               onPressed: () {},
-                              icon: Icon(
+                              icon: const Icon(
                                 Icons.arrow_forward_ios_rounded,
                                 size: 15,
                               ),

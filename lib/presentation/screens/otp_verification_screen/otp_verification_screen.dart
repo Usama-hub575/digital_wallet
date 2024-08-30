@@ -73,7 +73,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
             BlocBuilder<AuthBloc, AuthState>(
               builder: (context, state) {
                 return Text(
-                  "Code send to ${widget.email}. \n This code will expired in ",
+                  "Code sent to ${widget.email}. \n This code will expired in ",
                   style: textStyles.regular.copyWith(
                     fontWeight: FontWeight.w400,
                     fontSize: 14.sp,

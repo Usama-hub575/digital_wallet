@@ -1,7 +1,7 @@
 import 'package:digital_wallet/export.dart';
 
 class QrCodeScreen extends StatelessWidget {
-  QrCodeScreen({super.key});
+  const QrCodeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -78,7 +78,7 @@ class QrCodeScreen extends StatelessWidget {
                 ),
               ),
             ),
-            Expanded(
+            const Expanded(
               child: TabBarView(
                 children: [
                   SendMoneyWidget(),

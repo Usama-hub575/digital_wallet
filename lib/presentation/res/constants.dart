@@ -3,7 +3,12 @@ class AppConstants {
   static const pleaseEnterYourPassword = 'Please enter your password';
   static const pleaseEnterYourNameOrEmail = 'Please enter your name or email';
   static const pleaseEnterYourName = 'Please enter your name';
+  static const pleaseSelectMonthlySales = 'Please select monthly sales';
+  static const pleaseSelectTypeOfBusiness = 'Please select type of business';
+  static const pleaseEnterBusinessName = 'Please enter business name';
+  static const pleaseEnterBusinessAddress = 'Please enter business address';
   static const pleaseEnterYourEmail = 'Please enter your email';
+  static const pleaseSelectCity = 'Please select city';
   static const confirmPassword = 'Confirm Password';
   static const passwordDonotMatch = 'Password doesnot match';
   static const error = 'Error';

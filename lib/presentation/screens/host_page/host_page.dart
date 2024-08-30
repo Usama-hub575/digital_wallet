@@ -21,9 +21,9 @@ class HostPage extends StatelessWidget {
             state.currentIndex == 1
                 ? StatisticsScreen()
                 : const SizedBox.shrink(),
-            state.currentIndex == 2 ? QrCodeScreen() : const SizedBox.shrink(),
-            state.currentIndex == 3 ? HistoryScreen() : const SizedBox.shrink(),
-            state.currentIndex == 4 ? ProfileScreen() : const SizedBox.shrink(),
+            state.currentIndex == 2 ? const QrCodeScreen() : const SizedBox.shrink(),
+            state.currentIndex == 3 ? const HistoryScreen() : const SizedBox.shrink(),
+            state.currentIndex == 4 ? const ProfileScreen() : const SizedBox.shrink(),
           ],
           onItemSelected: (index) {
             context.read<HostBloc>().add(
