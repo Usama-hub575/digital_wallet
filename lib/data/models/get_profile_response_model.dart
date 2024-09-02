@@ -10,6 +10,7 @@ class GetProfileResponseModel {
   String? id;
   bool? emailVerfication;
   bool? secretKeySet;
+  bool? isMerchant;
 
   GetProfileResponseModel({
     this.tokenType,
@@ -23,6 +24,7 @@ class GetProfileResponseModel {
     this.id,
     this.emailVerfication,
     this.secretKeySet,
+    this.isMerchant,
   });
 
   static GetProfileResponseModel empty() {
@@ -38,6 +40,7 @@ class GetProfileResponseModel {
       tokenType: '',
       userId: '',
       username: '',
+      isMerchant: false,
     );
   }
 
@@ -53,6 +56,7 @@ class GetProfileResponseModel {
     id = json['id'];
     emailVerfication = json['email_verfication'];
     secretKeySet = json['secret_key_set'];
+    isMerchant = json['is_merchant'];
   }
 
   Map<String, dynamic> toJson() {
@@ -68,6 +72,7 @@ class GetProfileResponseModel {
     data['id'] = id;
     data['email_verfication'] = emailVerfication;
     data['secret_key_set'] = secretKeySet;
+    data['is_merchant'] = isMerchant;
     return data;
   }
 }

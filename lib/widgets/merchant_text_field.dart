@@ -81,6 +81,7 @@ class MerchantTextField extends StatelessWidget {
         ),
         hintText: hintText,
         hintStyle: textStyles.regular.copyWith(
+          fontSize: 11.sp,
           color: ColorName.grey.withOpacity(
             0.3,
           ),

@@ -73,9 +73,8 @@ class BecomeMerchantScreen extends StatelessWidget {
               verticalSpacer(20),
               Text(
                 "Business Name",
-                style: textStyles.bold.copyWith(
-                  fontSize: 12.sp,
-                  fontWeight: FontWeight.w700,
+                style: textStyles.regular.copyWith(
+                  fontSize: 13.sp,
                 ),
               ),
               verticalSpacer(10),
@@ -93,9 +92,8 @@ class BecomeMerchantScreen extends StatelessWidget {
               verticalSpacer(20),
               Text(
                 "Business Address",
-                style: textStyles.bold.copyWith(
-                  fontSize: 12.sp,
-                  fontWeight: FontWeight.w700,
+                style: textStyles.regular.copyWith(
+                  fontSize: 13.sp,
                 ),
               ),
               verticalSpacer(10),
@@ -113,9 +111,8 @@ class BecomeMerchantScreen extends StatelessWidget {
               verticalSpacer(20),
               Text(
                 "City",
-                style: textStyles.bold.copyWith(
-                  fontSize: 12.sp,
-                  fontWeight: FontWeight.w700,
+                style: textStyles.regular.copyWith(
+                  fontSize: 13.sp,
                 ),
               ),
               verticalSpacer(10),
@@ -153,9 +150,8 @@ class BecomeMerchantScreen extends StatelessWidget {
               verticalSpacer(20),
               Text(
                 "Estimated Monthly Sales",
-                style: textStyles.bold.copyWith(
-                  fontSize: 12.sp,
-                  fontWeight: FontWeight.w700,
+                style: textStyles.regular.copyWith(
+                  fontSize: 13.sp,
                 ),
               ),
               verticalSpacer(10),
@@ -195,9 +191,8 @@ class BecomeMerchantScreen extends StatelessWidget {
               verticalSpacer(20),
               Text(
                 "Type of Business",
-                style: textStyles.bold.copyWith(
-                  fontSize: 12.sp,
-                  fontWeight: FontWeight.w700,
+                style: textStyles.regular.copyWith(
+                  fontSize: 13.sp,
                 ),
               ),
               verticalSpacer(10),
@@ -233,19 +228,23 @@ class BecomeMerchantScreen extends StatelessWidget {
                 },
               ),
               verticalSpacer(30),
-              Row(
-                children: [
-                  Flexible(
-                    child: DottedBorder(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 10.w,
-                        vertical: 15.h,
-                      ),
-                      borderType: BorderType.RRect,
-                      radius: const Radius.circular(10),
-                      dashPattern: const [10, 10],
-                      color: ColorName.grey,
-                      strokeWidth: 2,
+              InkWell(
+                onTap: () => context.read<BecomeMerchantBloc>().add(
+                      CaptureImage(),
+                    ),
+                child: SizedBox(
+                  width: double.infinity,
+                  child: DottedBorder(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 10.w,
+                      vertical: 25.h,
+                    ),
+                    borderType: BorderType.RRect,
+                    radius: const Radius.circular(10),
+                    dashPattern: const [10, 10],
+                    color: ColorName.primaryColorLight,
+                    strokeWidth: 2,
+                    child: Center(
                       child: Text(
                         "Upload Photo or Your CNIC",
                         textAlign: TextAlign.center,
@@ -255,35 +254,13 @@ class BecomeMerchantScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  horizontalSpacer(20),
-                  Flexible(
-                    child: DottedBorder(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 10.w,
-                        vertical: 15.h,
-                      ),
-                      borderType: BorderType.RRect,
-                      radius: const Radius.circular(10),
-                      dashPattern: const [10, 10],
-                      color: Colors.grey,
-                      strokeWidth: 2,
-                      child: Text(
-                        "Upload Photo or Your CNIC",
-                        textAlign: TextAlign.center,
-                        style: textStyles.regular.copyWith(
-                          fontSize: 12.sp,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
+                ),
               ),
               verticalSpacer(30),
               Text(
                 "Location",
-                style: textStyles.bold.copyWith(
-                  fontSize: 12.sp,
-                  fontWeight: FontWeight.w700,
+                style: textStyles.regular.copyWith(
+                  fontSize: 13.sp,
                 ),
               ),
               verticalSpacer(10),
@@ -297,12 +274,55 @@ class BecomeMerchantScreen extends StatelessWidget {
                 alignment: Alignment.center,
                 child: SizedBox(
                   width: 200.w,
-                  child: MerchantGenericButton(
-                    title: "Submit",
-                    onPressed: () => Navigator.pushNamed(
-                      context,
-                      AppRoutes.merchantQRScreen,
-                    ),
+                  child: BlocConsumer<BecomeMerchantBloc, BecomeMerchantState>(
+                    builder: (context, state) {
+                      return MerchantGenericButton(
+                        isLoading: state.status == BecomeMerchantStatus.loading
+                            ? true
+                            : false,
+                        title: "Submit",
+                        onPressed: () {
+                          context.read<BecomeMerchantBloc>().add(
+                                MerchantLoading(),
+                              );
+                          context.read<BecomeMerchantBloc>().add(
+                                CreateAndGetMerchant(
+                                  payload: const {
+                                    "bussiness_name": "store",
+                                    "bussines_details":
+                                        "my store has good things in it",
+                                    "estimated_monthly_sales": "90000",
+                                    "location": "abbottabad"
+                                  },
+                                ),
+                              );
+                        },
+                      );
+                    },
+                    listener: (context, state) {
+                      switch (state.status) {
+                        case BecomeMerchantStatus.init:
+                          // TODO: Handle this case.
+                          break;
+                        case BecomeMerchantStatus.loading:
+                          // TODO: Handle this case.
+                          break;
+                        case BecomeMerchantStatus.success:
+                          Navigator.pushNamed(
+                            context,
+                            AppRoutes.merchantQRScreen,
+                          );
+                          state.status = BecomeMerchantStatus.init;
+                          break;
+                        case BecomeMerchantStatus.error:
+                          showErrorToast(
+                            message: state.errorMessage,
+                            context: context,
+                          );
+                          state.status = BecomeMerchantStatus.init;
+                          break;
+                      }
+                    },
                   ),
                 ),
               ),

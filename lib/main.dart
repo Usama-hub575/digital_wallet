@@ -15,6 +15,9 @@ void main() async {
         BlocProvider.value(
           value: it<HostBloc>(),
         ),
+        BlocProvider.value(
+          value: it<BecomeMerchantBloc>(),
+        ),
       ],
       child: const MyApp(),
     ),

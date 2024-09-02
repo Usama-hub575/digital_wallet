@@ -17,4 +17,9 @@ Future initializeBlocs() async {
   it.registerLazySingleton(
     () => QRBloc(),
   );
+  it.registerLazySingleton(
+    () => BecomeMerchantBloc(
+      becomeMerchantUseCase: it<BecomeMerchantUseCase>(),
+    ),
+  );
 }

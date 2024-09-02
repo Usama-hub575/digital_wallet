@@ -13,6 +13,7 @@ dependencies:
 
   cupertino_icons: ^1.0.6
   dartz:
+  http_parser:
   http:
   shared_preferences:
   persistent_bottom_nav_bar:
@@ -23,6 +24,7 @@ dependencies:
   qr_code_scanner: ^1.0.1
   qr_flutter:
   pie_chart:
+  image_picker:
   intl:
   pin_code_fields:
   dotted_border:

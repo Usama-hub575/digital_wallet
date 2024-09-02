@@ -108,10 +108,12 @@ class ReceiveMoneyWidget extends StatelessWidget {
             width: double.infinity,
             child: MerchantGenericOutlinedButton(
               title: "Merchant Dashboard",
-              onPressed: () => Navigator.pushNamed(
+              onPressed: () {
+                Navigator.pushNamed(
                 context,
                 AppRoutes.merchantDashboardScreen,
-              ),
+              );
+              },
             ),
           ),
           verticalSpacer(20),

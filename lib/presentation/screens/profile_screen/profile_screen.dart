@@ -133,13 +133,25 @@ class ProfileScreen extends StatelessWidget {
                       title: "Change Login PIN",
                       svgImage: Assets.svg.changeLoginPin,
                     ),
-                    ProfileTile(
-                      onTap: () =>  Navigator.of(context, rootNavigator: true).pushNamed(
-                        AppRoutes.welcomeToMerchantScreen,
-                      ),
-                      title: "Become a merchant",
-                      svgImage: Assets.svg.merchant,
-                    ),
+                    BlocBuilder<DashboardBloc, DashboardState>(
+                        builder: (context, state) {
+                      return ProfileTile(
+                        onTap: () =>
+                            state.getProfileResponseModel.isMerchant == true
+                                ? Navigator.of(context, rootNavigator: true)
+                                    .pushNamed(
+                                    AppRoutes.merchantQRScreen,
+                                  )
+                                : Navigator.of(context, rootNavigator: true)
+                                    .pushNamed(
+                                    AppRoutes.welcomeToMerchantScreen,
+                                  ),
+                        title: state.getProfileResponseModel.isMerchant == true
+                            ? "Merchant "
+                            : "Become a merchant",
+                        svgImage: Assets.svg.merchant,
+                      );
+                    }),
                     verticalSpacer(20),
                     ProfileTile(
                       svgImage: Assets.svg.faqs,

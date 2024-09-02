@@ -4,11 +4,13 @@ class MerchantGenericButton extends StatelessWidget {
   const MerchantGenericButton({
     required this.title,
     required this.onPressed,
+    this.isLoading = false,
     super.key,
   });
 
   final String title;
   final VoidCallback onPressed;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -28,13 +30,25 @@ class MerchantGenericButton extends StatelessWidget {
         ),
       ),
       onPressed: onPressed,
-      child: Text(
-        title,
-        style: textStyles.regular.copyWith(
-          fontSize: 14.sp,
-          color: ColorName.pureWhite,
-        ),
-      ),
+      child: isLoading == true
+          ? Center(
+              child: SizedBox(
+                height: 21.h,
+                width: 20.w,
+                child: const CircularProgressIndicator(
+                  strokeWidth: 2.5,
+                  color: ColorName.pureWhite,
+                  backgroundColor: ColorName.primaryColor,
+                ),
+              ),
+            )
+          : Text(
+              title,
+              style: textStyles.regular.copyWith(
+                fontSize: 14.sp,
+                color: ColorName.pureWhite,
+              ),
+            ),
     );
   }
 }

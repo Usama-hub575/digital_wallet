@@ -12,8 +12,13 @@ Future initializeAuthUseCase() async {
   );
 
   it.registerLazySingleton<DashboardUseCase>(
-        () => DashboardUseCase(
+    () => DashboardUseCase(
       dashboardRepo: it<DashboardRepo>(),
+    ),
+  );
+  it.registerLazySingleton<BecomeMerchantUseCase>(
+    () => BecomeMerchantUseCase(
+      becomeMerchantRepo: it<BecomeMerchantRepo>(),
     ),
   );
 }

@@ -8,14 +8,20 @@ Future initializeRepoDependencies() async {
   );
 
   it.registerLazySingleton<AuthRepo>(
-    () => AuthRepoImpl( 
+    () => AuthRepoImpl(
       storage: storage,
       networkHelper: it(),
     ),
   );
 
   it.registerLazySingleton<DashboardRepo>(
-        () => DashboardRepoImpl(
+    () => DashboardRepoImpl(
+      storage: storage,
+      networkHelper: it(),
+    ),
+  );
+  it.registerLazySingleton<BecomeMerchantRepo>(
+    () => BecomeMerchantRepoImpl(
       storage: storage,
       networkHelper: it(),
     ),

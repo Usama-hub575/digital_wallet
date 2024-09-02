@@ -15,6 +15,7 @@ class NetworkHelperImpl extends NetworkHelper {
       final response = await http.get(
         Uri.parse(url),
         headers: appendHeader(headers: headers),
+
       );
       return handleResponse(response: response);
     } catch (e) {
@@ -74,15 +75,48 @@ class NetworkHelperImpl extends NetworkHelper {
       body.forEach((key, value) => request.fields[key] = value);
 
       headers!.forEach((key, value) => request.headers[key] = value);
+      // Handle files if present
+      if (files != null) {
+        for (final entry in files.entries) {
+          final name = entry.key;
+          final file = entry.value;
 
-      files.forEach(
-        (name, filePath) async => request.files.add(
-          await http.MultipartFile.fromPath(
-            name,
-            filePath,
-          ),
-        ),
-      );
+          if (file is XFile) {
+            final bytes = await file.readAsBytes(); // Read the bytes from the XFile
+            request.files.add(
+              http.MultipartFile.fromBytes(
+                name,
+                bytes, // Use the bytes
+                filename: file.name, // Set the filename
+                contentType: MediaType('image', 'jpg'), // Set the appropriate media type
+              ),
+            );
+          } else if (file is String) {
+            request.files.add(
+              await http.MultipartFile.fromPath(
+                name,
+                file,
+              ),
+            );
+          } else {
+            return Right(
+              Failure(
+                status: false,
+                message: 'Unsupported file type',
+              ),
+            );
+          }
+        }
+      }
+
+      // files.forEach(
+      //   (name, filePath) async => request.files.add(
+      //     await http.MultipartFile.fromPath(
+      //       name,
+      //       filePath,
+      //     ),
+      //   ),
+      // );
 
       http.StreamedResponse response = await request.send();
 
@@ -92,6 +126,7 @@ class NetworkHelperImpl extends NetworkHelper {
 
       if (statusCode >= 400) {
         //Map<String, String> errorJson = jsonDecode(responseText);
+
         return Right(
           Failure(
             status: false,
