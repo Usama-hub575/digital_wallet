@@ -91,9 +91,10 @@ class BecomeMerchantRepoImpl implements BecomeMerchantRepo {
   @override
   Future<Either<TransactionsResponseModel, Failure>> getTransactions({
     bool sent = false,
+    String? url,
   }) async {
     final response = await networkHelper.get(
-      endPoints.getTransactionEndPoint(
+      url ?? endPoints.getMerchantTransactionEndPoint(
         value: sent ? "sent" : "received",
       ),
     );

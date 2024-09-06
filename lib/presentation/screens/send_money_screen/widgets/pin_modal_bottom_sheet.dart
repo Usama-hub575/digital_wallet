@@ -44,6 +44,9 @@ Future<void> showPinModalBottomSheet(
                   ),
                 ],
               ),
+              SvgPicture.asset(
+                Assets.svg.enterPin,
+              ),
               verticalSpacer(30),
               Text(
                 'Enter Pin',
@@ -59,10 +62,9 @@ Future<void> showPinModalBottomSheet(
                 obscureText: true,
                 animationType: AnimationType.fade,
                 pinTheme: PinTheme(
-                  shape: PinCodeFieldShape.circle,
-                  borderRadius: BorderRadius.circular(20),
+                  shape: PinCodeFieldShape.underline,
                   fieldHeight: 50,
-                  fieldWidth: 30,
+                  fieldWidth: 50,
                   activeFillColor: ColorName.grey,
                   activeColor: ColorName.black,
                   disabledColor: ColorName.grey,

@@ -76,11 +76,17 @@ class $AssetsSvgGen {
   /// File path: assets/svg/electricity.svg
   String get electricity => 'assets/svg/electricity.svg';
 
+  /// File path: assets/svg/enter_pin.svg
+  String get enterPin => 'assets/svg/enter_pin.svg';
+
   /// File path: assets/svg/faqs.svg
   String get faqs => 'assets/svg/faqs.svg';
 
   /// File path: assets/svg/floating_action_button.svg
   String get floatingActionButton => 'assets/svg/floating_action_button.svg';
+
+  /// File path: assets/svg/forgot_password.svg
+  String get forgotPassword => 'assets/svg/forgot_password.svg';
 
   /// File path: assets/svg/gas.svg
   String get gas => 'assets/svg/gas.svg';
@@ -175,11 +181,20 @@ class $AssetsSvgGen {
   /// File path: assets/svg/sent.svg
   String get sent => 'assets/svg/sent.svg';
 
+  /// File path: assets/svg/signup.svg
+  String get signup => 'assets/svg/signup.svg';
+
   /// File path: assets/svg/successful_tick.svg
   String get successfulTick => 'assets/svg/successful_tick.svg';
 
   /// File path: assets/svg/transaction_history.svg
   String get transactionHistory => 'assets/svg/transaction_history.svg';
+
+  /// File path: assets/svg/verfiy_account.svg
+  String get verfiyAccount => 'assets/svg/verfiy_account.svg';
+
+  /// File path: assets/svg/verification_code.svg
+  String get verificationCode => 'assets/svg/verification_code.svg';
 
   /// File path: assets/svg/water.svg
   String get water => 'assets/svg/water.svg';
@@ -208,8 +223,10 @@ class $AssetsSvgGen {
         dummy,
         education,
         electricity,
+        enterPin,
         faqs,
         floatingActionButton,
+        forgotPassword,
         gas,
         generalSetting,
         healthInsurance,
@@ -241,8 +258,11 @@ class $AssetsSvgGen {
         sendMoney2,
         sendToWallet,
         sent,
+        signup,
         successfulTick,
         transactionHistory,
+        verfiyAccount,
+        verificationCode,
         water
       ];
 }

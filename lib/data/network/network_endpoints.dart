@@ -1,5 +1,5 @@
 class EndPoints {
-  final _baseUrl = 'https://3680-110-93-228-117.ngrok-free.app/';
+  final _baseUrl = 'https://b26d-2407-d000-a-4ae7-e999-31e4-d5b9-3996.ngrok-free.app/';
   final String _login = 'login/';
   final String _signup = 'signup/';
   final String _getProfile = 'GetProfile/';
@@ -14,7 +14,7 @@ class EndPoints {
   final String _getRequests = 'GetMoneyRequests/';
   final String _createAndGetMerchant = 'CreateAndGetMerchant/';
   final String _getMerchantDashboardData = 'GetMerchantDashboard/';
-  final String _getTransactions = 'GetTransactions/';
+  final String _getMerchantTransactions = 'GetTransactions/merchant/';
 
   ///Getters
 
@@ -44,10 +44,10 @@ class EndPoints {
 
   String getAndCreateMerchantEndPoint() => '$_baseUrl$_createAndGetMerchant';
 
-  String getTransactionEndPoint({
+  String getMerchantTransactionEndPoint({
     required String value,
   }) =>
-      '$_baseUrl$_getTransactions$value/';
+      '$_baseUrl$_getMerchantTransactions$value/';
 
   String getMerchantDashboardDataEndPoint() =>
       '$_baseUrl$_getMerchantDashboardData';

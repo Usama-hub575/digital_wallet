@@ -30,18 +30,11 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
     return Scaffold(
       backgroundColor: ColorName.pureWhite,
       appBar: AppBar(
+        backgroundColor: ColorName.pureWhite,
         leading: IconButton(
           onPressed: () => Navigator.pop(context),
           icon: const Icon(
-            Icons.arrow_back_outlined,
-          ),
-        ),
-        title: Text(
-          "Enter Digit Verification",
-          style: textStyles.light.copyWith(
-            fontWeight: FontWeight.w600,
-            fontSize: 15.54.sp,
-            color: ColorName.lightGreyText,
+            Icons.arrow_back_ios_new,
           ),
         ),
       ),
@@ -52,7 +45,6 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            verticalSpacer(80),
             Text(
               "Enter 4-digit",
               style: textStyles.semiBold.copyWith(
@@ -70,6 +62,10 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
               ),
             ),
             verticalSpacer(10),
+            SvgPicture.asset(
+              Assets.svg.verificationCode,
+            ),
+            verticalSpacer(10),
             BlocBuilder<AuthBloc, AuthState>(
               builder: (context, state) {
                 return Text(
@@ -82,7 +78,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                 );
               },
             ),
-            verticalSpacer(60),
+            verticalSpacer(30),
             OTPTextField(
               controller: otpFieldController,
               width: double.infinity,
@@ -102,7 +98,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                 // Handle completed OTP input
               },
             ),
-            verticalSpacer(40),
+            verticalSpacer(50),
             BlocConsumer<AuthBloc, AuthState>(
               builder: (context, state) {
                 return GenericButton(

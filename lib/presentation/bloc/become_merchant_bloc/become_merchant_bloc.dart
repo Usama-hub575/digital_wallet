@@ -32,6 +32,14 @@ class BecomeMerchantBloc
     );
   }
 
+  _showLoader(event, emit) {
+    emit(
+      state.copyWith(
+        isLoading: !state.isLoading,
+      ),
+    );
+  }
+
   _captureImage(CaptureImage event, emit) async {
     state.image = await ImagePicker().pickImage(
       source: ImageSource.camera,
@@ -61,15 +69,28 @@ class BecomeMerchantBloc
   }
 
   _getTransactions(GetTransactions event, emit) async {
+    // if (state.transactionsResponseModel.next == null && event.sent) {
+    //   return;
+    // }
+    if (event.url != null) {
+      add(
+        _showLoader(event, emit),
+      );
+    }
     final response = await becomeMerchantUseCase.getTransactions(
+      url: event.url,
       sent: event.sent,
     );
     return response.fold(
       (success) {
+        final updatedResults = List<Results>.from(
+          state.results ?? [],
+        )..addAll(success.results!);
         emit(
           state.copyWith(
             status: BecomeMerchantStatus.success,
             transactionsResponseModel: success,
+            results: updatedResults,
           ),
         );
       },

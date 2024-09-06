@@ -44,22 +44,8 @@ class SignUpScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   verticalSpacer(20),
-                  Center(
-                    child: Text(
-                      "Welcome To",
-                      style: textStyles.bold.copyWith(
-                        fontSize: 27.sp,
-                      ),
-                    ),
-                  ),
-                  Center(
-                    child: Text(
-                      "Name Start Now",
-                      textAlign: TextAlign.center,
-                      style: textStyles.bold.copyWith(
-                        fontSize: 27.sp,
-                      ),
-                    ),
+                  SvgPicture.asset(
+                    Assets.svg.signup,
                   ),
                   verticalSpacer(30),
                   GenericTextField(
@@ -214,21 +200,28 @@ class SignUpScreen extends StatelessWidget {
                         buttonColor: ColorName.primaryColorLight,
                         buttonText: "Sign Up Now",
                         onTap: () {
-                          if (signUpFormKey.currentState!.validate()) {
-                            FocusScope.of(context).requestFocus(
-                              FocusNode(),
-                            );
-                            context.read<AuthBloc>().add(
-                                  SignUpLoading(),
-                                );
-                            context.read<AuthBloc>().add(
-                                  SignUp(
-                                    email: emailController.text,
-                                    username: nameController.text,
-                                    password: passwordController.text,
-                                  ),
-                                );
-                          }
+                          // if (signUpFormKey.currentState!.validate()) {
+                          //   FocusScope.of(context).requestFocus(
+                          //     FocusNode(),
+                          //   );
+                          //   context.read<AuthBloc>().add(
+                          //         SignUpLoading(),
+                          //       );
+                          //   context.read<AuthBloc>().add(
+                          //         SignUp(
+                          //           email: emailController.text,
+                          //           username: nameController.text,
+                          //           password: passwordController.text,
+                          //         ),
+                          //       );
+                          // }
+                          Navigator.pushNamed(
+                            context,
+                            AppRoutes.verificationScreen,
+                            arguments: {
+                              "Email": emailController.text,
+                            },
+                          );
                         },
                       );
                     },

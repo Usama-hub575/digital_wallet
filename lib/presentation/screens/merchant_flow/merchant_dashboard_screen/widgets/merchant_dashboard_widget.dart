@@ -1,8 +1,24 @@
 import 'package:digital_wallet/export.dart';
 
-class MerchantDashboardWidget extends StatelessWidget {
+class MerchantDashboardWidget extends StatefulWidget {
   const MerchantDashboardWidget({super.key});
 
+  @override
+  State<MerchantDashboardWidget> createState() => _MerchantDashboardWidgetState();
+}
+
+class _MerchantDashboardWidgetState extends State<MerchantDashboardWidget> {
+  @override
+  void initState() {
+
+    super.initState();
+    context.read<BecomeMerchantBloc>().add(
+      MerchantLoading(),
+    );
+    context.read<BecomeMerchantBloc>().add(
+      GetMerchantDashboardData(),
+    );
+  }
   @override
   Widget build(BuildContext context) {
     return Padding(

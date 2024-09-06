@@ -28,10 +28,6 @@ class GenericTextField extends StatelessWidget {
       autovalidateMode: AutovalidateMode.onUserInteraction,
       decoration: InputDecoration(
         suffixIcon: suffixIcon,
-        filled: true,
-        fillColor: ColorName.grey.withOpacity(
-          0.1,
-        ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(
             13,
@@ -41,17 +37,47 @@ class GenericTextField extends StatelessWidget {
             width: 1,
           ),
         ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(
+            10.0,
+          ),
+          // Half rounded corners
+          borderSide: const BorderSide(
+            color: ColorName.grey,
+          ), // No border side
+        ),
+        disabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(
+            10.0,
+          ),
+          // Half rounded corners
+          borderSide: const BorderSide(
+            color: ColorName.grey,
+          ), // No border side
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(
+            10.0,
+          ),
+          // Half rounded corners
+          borderSide: const BorderSide(
+            color: ColorName.grey,
+          ), // No border side
+        ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(
             10.0,
           ),
           // Half rounded corners
-          borderSide: BorderSide.none, // No border side
+          borderSide: const BorderSide(
+            color: ColorName.grey,
+          ), // No border side
         ),
         hintText: hintText,
-        hintStyle: textStyles.semiBold.copyWith(
+        hintStyle: textStyles.regular.copyWith(
+          fontSize: 13.sp,
           color: ColorName.grey.withOpacity(
-            0.3,
+            0.9,
           ),
         ),
       ),

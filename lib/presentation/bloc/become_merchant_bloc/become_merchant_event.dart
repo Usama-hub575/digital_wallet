@@ -14,9 +14,11 @@ class GetMerchantDashboardData extends BecomeMerchantEvent {}
 class GetTransactions extends BecomeMerchantEvent {
   GetTransactions({
     this.sent = false,
+    this.url,
   });
 
   final bool sent;
+  final String? url;
 }
 
 class CreateAndGetMerchant extends BecomeMerchantEvent {

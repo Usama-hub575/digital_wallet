@@ -32,12 +32,12 @@ class MerchantDashboardResponseModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['total'] = this.total;
-    data['received'] = this.received;
-    data['sent'] = this.sent;
-    data['received_sum'] = this.receivedSum;
-    data['sent_sum'] = this.sentSum;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['total'] = total;
+    data['received'] = received;
+    data['sent'] = sent;
+    data['received_sum'] = receivedSum;
+    data['sent_sum'] = sentSum;
     return data;
   }
 }

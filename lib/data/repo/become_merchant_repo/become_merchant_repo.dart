@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:digital_wallet/data/models/merchant_dashboard_response_model.dart';
 import 'package:digital_wallet/export.dart';
 
 mixin BecomeMerchantRepo {
@@ -13,5 +12,6 @@ mixin BecomeMerchantRepo {
 
   Future<Either<TransactionsResponseModel, Failure>> getTransactions({
     bool sent = false,
+    String? url,
   });
 }

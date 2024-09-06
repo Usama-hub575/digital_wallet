@@ -1,7 +1,42 @@
 import 'package:digital_wallet/export.dart';
 
-class TransactionSummaryWidget extends StatelessWidget {
+class TransactionSummaryWidget extends StatefulWidget {
   const TransactionSummaryWidget({super.key});
+
+  @override
+  State<TransactionSummaryWidget> createState() =>
+      _TransactionSummaryWidgetState();
+}
+
+ScrollController _scrollController = ScrollController();
+
+class _TransactionSummaryWidgetState extends State<TransactionSummaryWidget> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<BecomeMerchantBloc>().add(
+          MerchantLoading(),
+        );
+    context.read<BecomeMerchantBloc>().add(
+          GetTransactions(),
+        );
+    _scrollController.addListener(() {
+      // Detect if user has scrolled to the bottom of the list
+      if (_scrollController.position.pixels ==
+              _scrollController.position.maxScrollExtent &&
+          !context.read<BecomeMerchantBloc>().state.isLoading) {
+        context.read<BecomeMerchantBloc>().add(
+              GetTransactions(
+                url: context
+                    .read<BecomeMerchantBloc>()
+                    .state
+                    .transactionsResponseModel
+                    .next,
+              ),
+            );
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -84,8 +119,17 @@ class TransactionSummaryWidget extends StatelessWidget {
                 verticalSpacer(10),
                 Flexible(
                   child: ListView.separated(
+                    controller: _scrollController,
+                    itemCount:
+                        state.transactionsResponseModel.results?.length ?? 0,
                     physics: const BouncingScrollPhysics(),
                     itemBuilder: (context, index) {
+                      if (index == state.results?.length) {
+                        return Center(
+                            child:
+                                CircularProgressIndicator()); // Loader for more data
+                      }
+
                       return Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -140,9 +184,15 @@ class TransactionSummaryWidget extends StatelessWidget {
                       thickness: 1,
                       color: ColorName.grey.withOpacity(0.4),
                     ),
-                    itemCount: 8,
                   ),
                 ),
+                if (state.isLoading)
+                  Positioned(
+                    bottom: 20,
+                    left: 0,
+                    right: 0,
+                    child: Center(child: CircularProgressIndicator()),
+                  ),
               ],
             ),
           );
@@ -150,17 +200,21 @@ class TransactionSummaryWidget extends StatelessWidget {
         listener: (context, state) {
           switch (state.status) {
             case BecomeMerchantStatus.init:
-            // TODO: Handle this case.
+              // TODO: Handle this case.
+              break;
             case BecomeMerchantStatus.loading:
-            // TODO: Handle this case.
+              // TODO: Handle this case.
+              break;
             case BecomeMerchantStatus.success:
-            // TODO: Handle this case.
+              // TODO: Handle this case.
+              break;
             case BecomeMerchantStatus.error:
               showErrorToast(
                 message: state.errorMessage,
                 context: context,
               );
               state.status = BecomeMerchantStatus.init;
+              break;
           }
         },
       ),

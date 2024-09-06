@@ -282,20 +282,24 @@ class BecomeMerchantScreen extends StatelessWidget {
                             : false,
                         title: "Submit",
                         onPressed: () {
-                          context.read<BecomeMerchantBloc>().add(
-                                MerchantLoading(),
-                              );
-                          context.read<BecomeMerchantBloc>().add(
-                                CreateAndGetMerchant(
-                                  payload: const {
-                                    "bussiness_name": "store",
-                                    "bussines_details":
-                                        "my store has good things in it",
-                                    "estimated_monthly_sales": "90000",
-                                    "location": "abbottabad"
-                                  },
-                                ),
-                              );
+                          // context.read<BecomeMerchantBloc>().add(
+                          //       MerchantLoading(),
+                          //     );
+                          // context.read<BecomeMerchantBloc>().add(
+                          //       CreateAndGetMerchant(
+                          //         payload: const {
+                          //           "bussiness_name": "store",
+                          //           "bussines_details":
+                          //               "my store has good things in it",
+                          //           "estimated_monthly_sales": "90000",
+                          //           "location": "abbottabad"
+                          //         },
+                          //       ),
+                          //     );
+                          Navigator.pushNamed(
+                            context,
+                            AppRoutes.merchantQRScreen,
+                          );
                         },
                       );
                     },

@@ -18,18 +18,18 @@ class TransactionsResponseModel {
     if (json['results'] != null) {
       results = <Results>[];
       json['results'].forEach((v) {
-        results!.add(new Results.fromJson(v));
+        results!.add(Results.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['count'] = this.count;
-    data['next'] = this.next;
-    data['previous'] = this.previous;
-    if (this.results != null) {
-      data['results'] = this.results!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['count'] = count;
+    data['next'] = next;
+    data['previous'] = previous;
+    if (results != null) {
+      data['results'] = results!.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -80,16 +80,16 @@ class Results {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['sender_name'] = this.senderName;
-    data['receiver_name'] = this.receiverName;
-    data['sender_id'] = this.senderId;
-    data['receiver_id'] = this.receiverId;
-    data['amount'] = this.amount;
-    data['formatted_date'] = this.formattedDate;
-    data['formatted_time'] = this.formattedTime;
-    data['status'] = this.status;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['sender_name'] = senderName;
+    data['receiver_name'] = receiverName;
+    data['sender_id'] = senderId;
+    data['receiver_id'] = receiverId;
+    data['amount'] = amount;
+    data['formatted_date'] = formattedDate;
+    data['formatted_time'] = formattedTime;
+    data['status'] = status;
     return data;
   }
 }
