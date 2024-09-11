@@ -18,24 +18,28 @@ class _TransactionSummaryWidgetState extends State<TransactionSummaryWidget> {
           MerchantLoading(),
         );
     context.read<BecomeMerchantBloc>().add(
-          GetTransactions(),
+          GetTransactions(
+            sent: true,
+          ),
         );
-    _scrollController.addListener(() {
-      // Detect if user has scrolled to the bottom of the list
-      if (_scrollController.position.pixels ==
-              _scrollController.position.maxScrollExtent &&
-          !context.read<BecomeMerchantBloc>().state.isLoading) {
-        context.read<BecomeMerchantBloc>().add(
-              GetTransactions(
-                url: context
-                    .read<BecomeMerchantBloc>()
-                    .state
-                    .transactionsResponseModel
-                    .next,
-              ),
-            );
-      }
-    });
+    // _scrollController.addListener(
+    //   () {
+    //     // Detect if user has scrolled to the bottom of the list
+    //     if (_scrollController.position.pixels ==
+    //             _scrollController.position.maxScrollExtent &&
+    //         !context.read<BecomeMerchantBloc>().state.isLoading) {
+    //       context.read<BecomeMerchantBloc>().add(
+    //             GetTransactions(
+    //               url: context
+    //                   .read<BecomeMerchantBloc>()
+    //                   .state
+    //                   .transactionsResponseModel
+    //                   .next,
+    //             ),
+    //           );
+    //     }
+    //   },
+    // );
   }
 
   @override
@@ -119,16 +123,17 @@ class _TransactionSummaryWidgetState extends State<TransactionSummaryWidget> {
                 verticalSpacer(10),
                 Flexible(
                   child: ListView.separated(
+                    shrinkWrap: true,
                     controller: _scrollController,
                     itemCount:
                         state.transactionsResponseModel.results?.length ?? 0,
                     physics: const BouncingScrollPhysics(),
                     itemBuilder: (context, index) {
-                      if (index == state.results?.length) {
-                        return Center(
-                            child:
-                                CircularProgressIndicator()); // Loader for more data
-                      }
+                      // if (index == state.results?.length) {
+                      //   return Center(
+                      //     child: CircularProgressIndicator(),
+                      //   ); // Loader for more data
+                      // }
 
                       return Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -136,14 +141,17 @@ class _TransactionSummaryWidgetState extends State<TransactionSummaryWidget> {
                           Row(
                             children: [
                               Text(
-                                "Payment Received",
+                                "Payment Sent",
                                 style: textStyles.regular.copyWith(
                                   fontSize: 15.sp,
                                 ),
                               ),
                               const Spacer(),
                               Text(
-                                "Rs.100",
+                                state.transactionsResponseModel.results?[index]
+                                        .amount
+                                        .toString() ??
+                                    "0",
                                 style: textStyles.regular.copyWith(
                                   fontSize: 16.sp,
                                   color: ColorName.red,
@@ -186,12 +194,33 @@ class _TransactionSummaryWidgetState extends State<TransactionSummaryWidget> {
                     ),
                   ),
                 ),
-                if (state.isLoading)
-                  Positioned(
-                    bottom: 20,
-                    left: 0,
-                    right: 0,
-                    child: Center(child: CircularProgressIndicator()),
+                if (state.transactionsResponseModel.next != null &&
+                    !state.isLoading)
+                  Center(
+                    child: ElevatedButton(
+                      onPressed: () {
+                        context.read<BecomeMerchantBloc>().add(
+                              GetTransactions(
+                                url: state.transactionsResponseModel.next,
+                                sent: true,
+                              ),
+                            );
+                      },
+                      child: Text('Load More'),
+                    ),
+                  ),
+                if (state.isLoading) Center(child: CircularProgressIndicator()),
+
+                // No more data
+                if (state.transactionsResponseModel.next == null)
+                  Center(
+                    child: Text(
+                      "No more transactions",
+                      style: textStyles.regular.copyWith(
+                        fontSize: 14.sp,
+                        color: ColorName.grey,
+                      ),
+                    ),
                   ),
               ],
             ),

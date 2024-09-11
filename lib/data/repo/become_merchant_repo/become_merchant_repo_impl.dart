@@ -97,6 +97,11 @@ class BecomeMerchantRepoImpl implements BecomeMerchantRepo {
       url ?? endPoints.getMerchantTransactionEndPoint(
         value: sent ? "sent" : "received",
       ),
+      headers: <String, String>{
+        "Authorization":
+        'Bearer ${storage.getString(key: StorageKeys.accessToken)}',
+        "Content-Type": "application/json",
+      },
     );
     return response.fold(
       (success) {

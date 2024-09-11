@@ -1,5 +1,5 @@
 class EndPoints {
-  final _baseUrl = 'https://b26d-2407-d000-a-4ae7-e999-31e4-d5b9-3996.ngrok-free.app/';
+  final _baseUrl = 'https://0937-110-93-246-74.ngrok-free.app/';
   final String _login = 'login/';
   final String _signup = 'signup/';
   final String _getProfile = 'GetProfile/';

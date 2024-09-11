@@ -35,7 +35,7 @@ class BecomeMerchantBloc
   _showLoader(event, emit) {
     emit(
       state.copyWith(
-        isLoading: !state.isLoading,
+        isLoading: true,
       ),
     );
   }
@@ -73,9 +73,7 @@ class BecomeMerchantBloc
     //   return;
     // }
     if (event.url != null) {
-      add(
-        _showLoader(event, emit),
-      );
+      _showLoader(event, emit);
     }
     final response = await becomeMerchantUseCase.getTransactions(
       url: event.url,
@@ -91,6 +89,7 @@ class BecomeMerchantBloc
             status: BecomeMerchantStatus.success,
             transactionsResponseModel: success,
             results: updatedResults,
+            isLoading: false,
           ),
         );
       },
@@ -98,6 +97,7 @@ class BecomeMerchantBloc
         emit(
           state.copyWith(
             status: BecomeMerchantStatus.error,
+            isLoading: false,
             errorMessage: r.message,
           ),
         );
