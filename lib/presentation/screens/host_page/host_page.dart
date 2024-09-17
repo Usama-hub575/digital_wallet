@@ -47,7 +47,7 @@ class HostPage extends StatelessWidget {
               activeColorPrimary: ColorName.primaryColorLight,
               activeColorSecondary: ColorName.primaryColorLight,
               icon: SvgPicture.asset(
-                Assets.svg.report,
+                Assets.svg.stats,
                 color: state.currentIndex == 1
                     ? ColorName.primaryColorLight
                     : ColorName.grey,

@@ -11,17 +11,6 @@ class SignInScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: Text(
-            "SIGN IN",
-            style: textStyles.light.copyWith(
-              fontWeight: FontWeight.w600,
-              fontSize: 15.54.sp,
-              color: ColorName.lightGreyText,
-            ),
-          ),
-        ),
         backgroundColor: ColorName.pureWhite,
         body: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
@@ -33,27 +22,30 @@ class SignInScreen extends StatelessWidget {
             child: Form(
               key: loginFormKey,
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   verticalSpacer(20),
-                  Center(
-                    child: Text(
-                      "Glad to meet you",
-                      style: textStyles.bold.copyWith(
-                        fontSize: 27.sp,
-                      ),
+                  Text(
+                    "Welcome !",
+                    style: textStyles.semiBold.copyWith(
+                      fontSize: 26.sp,
                     ),
                   ),
-                  Center(
-                    child: Text(
-                      "again!",
-                      textAlign: TextAlign.center,
-                      style: textStyles.bold.copyWith(
-                        fontSize: 27.sp,
-                      ),
+                  Text(
+                    "Welcome to Wallet App!",
+                    textAlign: TextAlign.center,
+                    style: textStyles.regular.copyWith(
+                      fontSize: 16.sp,
                     ),
                   ),
                   verticalSpacer(30),
+                  Text(
+                    "Name",
+                    style: textStyles.semiBold.copyWith(
+                      fontSize: 14.sp,
+                    ),
+                  ),
+                  verticalSpacer(10),
                   GenericTextField(
                     hintText: "Name",
                     controller: emailController,
@@ -71,6 +63,13 @@ class SignInScreen extends StatelessWidget {
                     },
                   ),
                   verticalSpacer(20),
+                  Text(
+                    "Email",
+                    style: textStyles.semiBold.copyWith(
+                      fontSize: 14.sp,
+                    ),
+                  ),
+                  verticalSpacer(10),
                   BlocBuilder<AuthBloc, AuthState>(builder: (context, state) {
                     return GenericTextField(
                       obscureText: state.isObscure,
@@ -139,6 +138,7 @@ class SignInScreen extends StatelessWidget {
                           "Forgot Password",
                           style: textStyles.light.copyWith(
                             fontSize: 11.sp,
+                            color: ColorName.primaryColorLight,
                             fontWeight: FontWeight.w500,
                           ),
                         ),
@@ -146,7 +146,7 @@ class SignInScreen extends StatelessWidget {
                       verticalSpacer(30),
                     ],
                   ),
-                  verticalSpacer(50),
+                  verticalSpacer(30),
                   BlocConsumer<AuthBloc, AuthState>(
                     builder: (context, state) {
                       return GenericButton(
@@ -211,42 +211,74 @@ class SignInScreen extends StatelessWidget {
                     },
                   ),
                   verticalSpacer(20),
-                  GenericButton(
-                    buttonColor: ColorName.primaryColor,
-                    buttonText: "Sign Up",
-                    onTap: () {
-                      Navigator.pushNamed(
-                        context,
-                        AppRoutes.signupScreen,
-                      );
-                    },
+                  SizedBox(
+                    width: double.infinity,
+                    child: MerchantGenericOutlinedButton(
+                      title: "Register",
+                      onPressed: () {
+                        Navigator.pushNamed(
+                          context,
+                          AppRoutes.signupScreen,
+                        );
+                      },
+                    ),
                   ),
                   verticalSpacer(30),
+                  Center(
+                    child: Text(
+                      "Login with touch ID",
+                      style: textStyles.regular.copyWith(
+                        fontSize: 14.sp,
+                      ),
+                    ),
+                  ),
+                  verticalSpacer(20),
+                  Center(
+                    child: SvgPicture.asset(
+                      Assets.svg.touchId,
+                    ),
+                  ),
+                  verticalSpacer(20),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
+                      Expanded(
+                        child: Divider(
+                          color: ColorName.grey.withOpacity(0.3),
+                          thickness: 2,
+                        ),
+                      ),
+                      horizontalSpacer(10),
                       Text(
-                        "Already Registered? ",
-                        style: textStyles.light.copyWith(
-                          fontWeight: FontWeight.w400,
+                        "or connect with",
+                        style: textStyles.regular.copyWith(
                           fontSize: 14.sp,
                         ),
                       ),
-                      InkWell(
-                        onTap: () {
-                          Navigator.pushNamed(
-                            context,
-                            AppRoutes.signupScreen,
-                          );
-                        },
-                        child: Text(
-                          "Sign Up",
-                          style: textStyles.semiBold.copyWith(
-                            fontWeight: FontWeight.w700,
-                            fontSize: 14.sp,
-                          ),
+                      horizontalSpacer(10),
+                      Expanded(
+                        child: Divider(
+                          color: ColorName.grey.withOpacity(0.3),
+                          thickness: 2,
                         ),
+                      ),
+                    ],
+                  ),
+                  verticalSpacer(20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      SvgPicture.asset(
+                        Assets.svg.facebook,
+                      ),
+                      SvgPicture.asset(
+                        Assets.svg.instagram,
+                      ),
+                      SvgPicture.asset(
+                        Assets.svg.pinterest,
+                      ),
+                      SvgPicture.asset(
+                        Assets.svg.linkedin,
                       ),
                     ],
                   )

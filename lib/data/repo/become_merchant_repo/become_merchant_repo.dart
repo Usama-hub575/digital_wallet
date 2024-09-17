@@ -13,5 +13,6 @@ mixin BecomeMerchantRepo {
   Future<Either<TransactionsResponseModel, Failure>> getTransactions({
     bool sent = false,
     String? url,
+    int? page,
   });
 }

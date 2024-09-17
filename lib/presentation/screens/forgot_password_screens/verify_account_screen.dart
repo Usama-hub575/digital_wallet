@@ -37,10 +37,10 @@ class VerifyAccountScreen extends StatelessWidget {
                   fontWeight: FontWeight.w700,
                 ),
               ),
-              verticalSpacer(20),
-              SvgPicture.asset(
-                Assets.svg.verfiyAccount,
-              ),
+              // verticalSpacer(20),
+              // SvgPicture.asset(
+              //   Assets.svg.verfiyAccount,
+              // ),
               verticalSpacer(20),
               Text(
                 "Code has be sent to hamxa123@gmail.com. \n Enter the code to verify your account",

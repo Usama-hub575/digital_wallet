@@ -92,14 +92,23 @@ class BecomeMerchantRepoImpl implements BecomeMerchantRepo {
   Future<Either<TransactionsResponseModel, Failure>> getTransactions({
     bool sent = false,
     String? url,
+    int? page,
   }) async {
     final response = await networkHelper.get(
-      url ?? endPoints.getMerchantTransactionEndPoint(
-        value: sent ? "sent" : "received",
-      ),
+      sent
+          ? page != null
+              ? endPoints.getMerchantSentPaginatedTransactionEndPoint(
+                  page: page.toString(),
+                )
+              : endPoints.getMerchantSentTransactionEndPoint()
+          : page != null
+              ? endPoints.getMerchantReceivedPaginatedTransactionEndPoint(
+                  page: page.toString(),
+                )
+              : endPoints.getMerchantReceivedTransactionEndPoint(),
       headers: <String, String>{
         "Authorization":
-        'Bearer ${storage.getString(key: StorageKeys.accessToken)}',
+            'Bearer ${storage.getString(key: StorageKeys.accessToken)}',
         "Content-Type": "application/json",
       },
     );

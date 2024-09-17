@@ -7,7 +7,7 @@ class GenericButton extends StatelessWidget {
     this.onTap,
     this.height,
     this.width,
-    this.radius = 22,
+    this.radius = 14,
     this.buttonColor = ColorName.primaryColor,
     this.buttonTextColor = ColorName.pureWhite,
     this.fontWeight = FontWeight.w500,
@@ -36,6 +36,14 @@ class GenericButton extends StatelessWidget {
           vertical: 20.h,
         ),
         decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: ColorName.grey.withOpacity(0.3),
+              spreadRadius: 5,
+              blurRadius: 7,
+              offset: Offset(0, 3), // changes position of shadow
+            ),
+          ],
           color: buttonColor,
           border: border,
           borderRadius: BorderRadius.circular(

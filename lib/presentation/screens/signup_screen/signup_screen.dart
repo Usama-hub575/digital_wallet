@@ -43,10 +43,10 @@ class SignUpScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  verticalSpacer(20),
-                  SvgPicture.asset(
-                    Assets.svg.signup,
-                  ),
+                  // verticalSpacer(20),
+                  // SvgPicture.asset(
+                  //   Assets.svg.signup,
+                  // ),
                   verticalSpacer(30),
                   GenericTextField(
                     hintText: "Name",

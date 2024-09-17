@@ -203,6 +203,7 @@ class _TransactionSummaryWidgetState extends State<TransactionSummaryWidget> {
                               GetTransactions(
                                 url: state.transactionsResponseModel.next,
                                 sent: true,
+                                page: state.sentTransactionCurrentPage,
                               ),
                             );
                       },

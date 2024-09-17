@@ -34,6 +34,21 @@ class TransactionsResponseModel {
     return data;
   }
 
+  // Adding copyWith method
+  TransactionsResponseModel copyWith({
+    int? count,
+    String? next,
+    String? previous,
+    List<Results>? results,
+  }) {
+    return TransactionsResponseModel(
+      count: count ?? this.count,
+      next: next ?? this.next,
+      previous: previous ?? this.previous,
+      results: results ?? this.results,
+    );
+  }
+
   static TransactionsResponseModel empty() {
     return TransactionsResponseModel(
       count: 0,
@@ -92,4 +107,6 @@ class Results {
     data['status'] = status;
     return data;
   }
+
+// Optionally, you can add a copyWith method here too if needed
 }

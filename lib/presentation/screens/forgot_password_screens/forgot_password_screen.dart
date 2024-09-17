@@ -39,10 +39,10 @@ class ForgotPasswordScreen extends StatelessWidget {
                     fontWeight: FontWeight.w700,
                   ),
                 ),
-                verticalSpacer(20),
-                SvgPicture.asset(
-                  Assets.svg.forgotPassword,
-                ),
+                // verticalSpacer(20),
+                // SvgPicture.asset(
+                //   Assets.svg.forgotPassword,
+                // ),
                 verticalSpacer(20),
                 Text(
                   "No worries! Enter your email address below \n and we will send you a code to reset password.",

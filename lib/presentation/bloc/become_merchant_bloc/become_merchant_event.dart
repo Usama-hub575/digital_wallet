@@ -15,10 +15,12 @@ class GetTransactions extends BecomeMerchantEvent {
   GetTransactions({
     this.sent = false,
     this.url,
+    this.page,
   });
 
   final bool sent;
   final String? url;
+  final int? page;
 }
 
 class CreateAndGetMerchant extends BecomeMerchantEvent {

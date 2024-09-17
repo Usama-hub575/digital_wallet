@@ -1,5 +1,6 @@
 class EndPoints {
-  final _baseUrl = 'https://0937-110-93-246-74.ngrok-free.app/';
+  final _baseUrl =
+      'https://0206-2400-adcc-909-fb00-2484-a94c-652d-fa67.ngrok-free.app/';
   final String _login = 'login/';
   final String _signup = 'signup/';
   final String _getProfile = 'GetProfile/';
@@ -14,7 +15,13 @@ class EndPoints {
   final String _getRequests = 'GetMoneyRequests/';
   final String _createAndGetMerchant = 'CreateAndGetMerchant/';
   final String _getMerchantDashboardData = 'GetMerchantDashboard/';
-  final String _getMerchantTransactions = 'GetTransactions/merchant/';
+  final String _getMerchantSentTransactions = 'GetTransactions/merchant/sent/';
+  final String _getMerchantSentPaginatedTransactions =
+      'GetTransactions/merchant/sent/?page=';
+  final String _getMerchantReceivedPaginatedTransactions =
+      'GetTransactions/merchant/received/?page=';
+  final String _getMerchantReceivedTransactions =
+      'GetTransactions/merchant/received/';
 
   ///Getters
 
@@ -44,10 +51,21 @@ class EndPoints {
 
   String getAndCreateMerchantEndPoint() => '$_baseUrl$_createAndGetMerchant';
 
-  String getMerchantTransactionEndPoint({
-    required String value,
+  String getMerchantSentTransactionEndPoint() =>
+      '$_baseUrl$_getMerchantSentTransactions';
+
+  String getMerchantReceivedTransactionEndPoint() =>
+      '$_baseUrl$_getMerchantReceivedTransactions';
+
+  String getMerchantReceivedPaginatedTransactionEndPoint({
+    required String page,
   }) =>
-      '$_baseUrl$_getMerchantTransactions$value/';
+      '$_baseUrl$_getMerchantReceivedPaginatedTransactions$page';
+
+  String getMerchantSentPaginatedTransactionEndPoint({
+    required String page,
+  }) =>
+      '$_baseUrl$_getMerchantSentPaginatedTransactions$page';
 
   String getMerchantDashboardDataEndPoint() =>
       '$_baseUrl$_getMerchantDashboardData';

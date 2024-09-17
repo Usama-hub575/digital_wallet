@@ -16,6 +16,9 @@ class $AssetsSvgGen {
   /// File path: assets/svg/add_icon.svg
   String get addIcon => 'assets/svg/add_icon.svg';
 
+  /// File path: assets/svg/alert_question_mark.svg
+  String get alertQuestionMark => 'assets/svg/alert_question_mark.svg';
+
   /// File path: assets/svg/arrow_circle_down.svg
   String get arrowCircleDown => 'assets/svg/arrow_circle_down.svg';
 
@@ -64,6 +67,9 @@ class $AssetsSvgGen {
   /// File path: assets/svg/cross_icon.svg
   String get crossIcon => 'assets/svg/cross_icon.svg';
 
+  /// File path: assets/svg/dashboard_card.svg
+  String get dashboardCard => 'assets/svg/dashboard_card.svg';
+
   /// File path: assets/svg/deposit_money.svg
   String get depositMoney => 'assets/svg/deposit_money.svg';
 
@@ -78,6 +84,9 @@ class $AssetsSvgGen {
 
   /// File path: assets/svg/enter_pin.svg
   String get enterPin => 'assets/svg/enter_pin.svg';
+
+  /// File path: assets/svg/facebook.svg
+  String get facebook => 'assets/svg/facebook.svg';
 
   /// File path: assets/svg/faqs.svg
   String get faqs => 'assets/svg/faqs.svg';
@@ -106,11 +115,17 @@ class $AssetsSvgGen {
   /// File path: assets/svg/home.svg
   String get home => 'assets/svg/home.svg';
 
+  /// File path: assets/svg/instagram.svg
+  String get instagram => 'assets/svg/instagram.svg';
+
   /// File path: assets/svg/internet.svg
   String get internet => 'assets/svg/internet.svg';
 
   /// File path: assets/svg/language.svg
   String get language => 'assets/svg/language.svg';
+
+  /// File path: assets/svg/linkedin.svg
+  String get linkedin => 'assets/svg/linkedin.svg';
 
   /// File path: assets/svg/merchant.svg
   String get merchant => 'assets/svg/merchant.svg';
@@ -142,6 +157,9 @@ class $AssetsSvgGen {
   /// File path: assets/svg/pending_payments.svg
   String get pendingPayments => 'assets/svg/pending_payments.svg';
 
+  /// File path: assets/svg/pinterest.svg
+  String get pinterest => 'assets/svg/pinterest.svg';
+
   /// File path: assets/svg/profile.svg
   String get profile => 'assets/svg/profile.svg';
 
@@ -160,14 +178,17 @@ class $AssetsSvgGen {
   /// File path: assets/svg/refresh.svg
   String get refresh => 'assets/svg/refresh.svg';
 
-  /// File path: assets/svg/report.svg
-  String get report => 'assets/svg/report.svg';
+  /// File path: assets/svg/request.svg
+  String get request => 'assets/svg/request.svg';
 
   /// File path: assets/svg/request_money.svg
   String get requestMoney => 'assets/svg/request_money.svg';
 
   /// File path: assets/svg/scan_qr.svg
   String get scanQr => 'assets/svg/scan_qr.svg';
+
+  /// File path: assets/svg/send.svg
+  String get send => 'assets/svg/send.svg';
 
   /// File path: assets/svg/send_money.svg
   String get sendMoney => 'assets/svg/send_money.svg';
@@ -184,8 +205,14 @@ class $AssetsSvgGen {
   /// File path: assets/svg/signup.svg
   String get signup => 'assets/svg/signup.svg';
 
+  /// File path: assets/svg/stats.svg
+  String get stats => 'assets/svg/stats.svg';
+
   /// File path: assets/svg/successful_tick.svg
   String get successfulTick => 'assets/svg/successful_tick.svg';
+
+  /// File path: assets/svg/touch_id.svg
+  String get touchId => 'assets/svg/touch_id.svg';
 
   /// File path: assets/svg/transaction_history.svg
   String get transactionHistory => 'assets/svg/transaction_history.svg';
@@ -203,6 +230,7 @@ class $AssetsSvgGen {
   List<String> get values => [
         accountInfo,
         addIcon,
+        alertQuestionMark,
         arrowCircleDown,
         arrowCircleUp,
         authentication,
@@ -219,11 +247,13 @@ class $AssetsSvgGen {
         contactBook,
         creditCard,
         crossIcon,
+        dashboardCard,
         depositMoney,
         dummy,
         education,
         electricity,
         enterPin,
+        facebook,
         faqs,
         floatingActionButton,
         forgotPassword,
@@ -233,8 +263,10 @@ class $AssetsSvgGen {
         help,
         history,
         home,
+        instagram,
         internet,
         language,
+        linkedin,
         merchant,
         mobileCredit,
         mobilePostpaid,
@@ -245,21 +277,25 @@ class $AssetsSvgGen {
         notification,
         otherWallets,
         pendingPayments,
+        pinterest,
         profile,
         raastPayment,
         rateUs,
         received,
         recentHistory,
         refresh,
-        report,
+        request,
         requestMoney,
         scanQr,
+        send,
         sendMoney,
         sendMoney2,
         sendToWallet,
         sent,
         signup,
+        stats,
         successfulTick,
+        touchId,
         transactionHistory,
         verfiyAccount,
         verificationCode,

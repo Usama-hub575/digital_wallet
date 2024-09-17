@@ -69,29 +69,52 @@ class BecomeMerchantBloc
   }
 
   _getTransactions(GetTransactions event, emit) async {
-    // if (state.transactionsResponseModel.next == null && event.sent) {
-    //   return;
-    // }
     if (event.url != null) {
       _showLoader(event, emit);
     }
+
     final response = await becomeMerchantUseCase.getTransactions(
       url: event.url,
       sent: event.sent,
+      page: event.page,
     );
+
     return response.fold(
       (success) {
-        final updatedResults = List<Results>.from(
-          state.results ?? [],
-        )..addAll(success.results!);
-        emit(
-          state.copyWith(
-            status: BecomeMerchantStatus.success,
-            transactionsResponseModel: success,
-            results: updatedResults,
-            isLoading: false,
-          ),
+        // Append new results to the existing results
+        final updatedResults = List<Results>.from(state.results ?? [])
+          ..addAll(success.results ?? []);
+
+        // Manually update the transactionsResponseModel
+        final updatedResponseModel = state.transactionsResponseModel.copyWith(
+          count: success.count,
+          next: success.next,
+          previous: success.previous,
+          results: updatedResults,
         );
+        event.sent
+            ? emit(
+                state.copyWith(
+                  status: BecomeMerchantStatus.success,
+                  transactionsResponseModel: updatedResponseModel,
+                  results: updatedResults,
+                  sentTransactionCurrentPage:
+                      (state.sentTransactionCurrentPage ?? 1) + 1,
+                  receivedTransactionCurrentPage:
+                      (state.receivedTransactionCurrentPage ?? 1) + 1,
+                  isLoading: false,
+                ),
+              )
+            : emit(
+                state.copyWith(
+                  status: BecomeMerchantStatus.success,
+                  transactionsResponseModel: updatedResponseModel,
+                  results: updatedResults,
+                  receivedTransactionCurrentPage:
+                      (state.receivedTransactionCurrentPage ?? 1) + 1,
+                  isLoading: false,
+                ),
+              );
       },
       (r) {
         emit(

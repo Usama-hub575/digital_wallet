@@ -5,6 +5,8 @@ class BecomeMerchantState extends Equatable {
   XFile? image;
   String errorMessage;
   List<Results>? results;
+  int? receivedTransactionCurrentPage;
+  int? sentTransactionCurrentPage;
   bool isLoading;
   MerchantDashboardResponseModel merchantDashboardResponseModel =
       MerchantDashboardResponseModel.empty();
@@ -16,8 +18,10 @@ class BecomeMerchantState extends Equatable {
     this.image,
     this.errorMessage = "",
     this.isLoading = false,
+    this.receivedTransactionCurrentPage,
     required this.merchantDashboardResponseModel,
     required this.transactionsResponseModel,
+    this.sentTransactionCurrentPage,
     this.results,
   });
 
@@ -29,6 +33,8 @@ class BecomeMerchantState extends Equatable {
     MerchantDashboardResponseModel? merchantDashboardResponseModel,
     TransactionsResponseModel? transactionsResponseModel,
     List<Results>? results,
+    int? sentTransactionCurrentPage,
+    int? receivedTransactionCurrentPage,
   }) {
     return BecomeMerchantState(
       image: image ?? this.image,
@@ -36,6 +42,10 @@ class BecomeMerchantState extends Equatable {
       status: status ?? this.status,
       errorMessage: errorMessage ?? this.errorMessage,
       results: results ?? this.results,
+      sentTransactionCurrentPage:
+          sentTransactionCurrentPage ?? this.sentTransactionCurrentPage,
+      receivedTransactionCurrentPage:
+          receivedTransactionCurrentPage ?? this.receivedTransactionCurrentPage,
       merchantDashboardResponseModel:
           merchantDashboardResponseModel ?? this.merchantDashboardResponseModel,
       transactionsResponseModel:
@@ -49,8 +59,10 @@ class BecomeMerchantState extends Equatable {
         image,
         merchantDashboardResponseModel,
         transactionsResponseModel,
+        sentTransactionCurrentPage,
         errorMessage,
         isLoading,
         results,
+        receivedTransactionCurrentPage,
       ];
 }

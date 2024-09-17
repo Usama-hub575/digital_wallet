@@ -50,10 +50,12 @@ class BecomeMerchantUseCase {
   Future<Either<TransactionsResponseModel, Failure>> getTransactions({
     bool sent = false,
     String? url,
+    int? page,
   }) async {
     final response = await becomeMerchantRepo.getTransactions(
       sent: sent,
       url: url,
+      page: page,
     );
     return response.fold(
       (success) {
