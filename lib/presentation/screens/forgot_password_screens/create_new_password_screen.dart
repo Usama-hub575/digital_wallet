@@ -126,7 +126,7 @@ class CreateNewPasswordScreen extends StatelessWidget {
                         return AppConstants
                             .passwordMustContainAtLeastOneSpecialCharacterOneNumberAndBothLowercaseAndUppercaseLetters;
                       } else if (value != passwordController.text) {
-                        return AppConstants.passwordDonotMatch;
+                        return AppConstants.passwordDoesNotMatch;
                       }
                       return null;
                     },

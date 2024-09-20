@@ -10,7 +10,13 @@ class AppConstants {
   static const pleaseEnterYourEmail = 'Please enter your email';
   static const pleaseSelectCity = 'Please select city';
   static const confirmPassword = 'Confirm Password';
-  static const passwordDonotMatch = 'Password doesnot match';
+  static const sendMoney = 'Send Money';
+  static const sendMoneyEasilyAndWithOneClick = 'Send money easily and with one click everything will be sent every time you make a transaction';
+  static const requestMoney = 'Request Money';
+  static const youCanRequestMoneyToFriends = 'You can request money to friends or family to send as much money as you want';
+  static const easyToUse = 'Easy To Use';
+  static const veryEasyToUse = 'Very easy to use and easy to understand for those of you who are beginners';
+  static const passwordDoesNotMatch = 'Password doesnot match';
   static const error = 'Error';
   static const emailRegExp =
       r"^[a-zA-Z0-9.a-zA-Z0-9!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+";

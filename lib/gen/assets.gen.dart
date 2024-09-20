@@ -127,6 +127,9 @@ class $AssetsSvgGen {
   /// File path: assets/svg/linkedin.svg
   String get linkedin => 'assets/svg/linkedin.svg';
 
+  /// File path: assets/svg/logo.svg
+  String get logo => 'assets/svg/logo.svg';
+
   /// File path: assets/svg/merchant.svg
   String get merchant => 'assets/svg/merchant.svg';
 
@@ -150,6 +153,16 @@ class $AssetsSvgGen {
 
   /// File path: assets/svg/notification.svg
   String get notification => 'assets/svg/notification.svg';
+
+  /// File path: assets/svg/onboarding_easy_to_use.svg
+  String get onboardingEasyToUse => 'assets/svg/onboarding_easy_to_use.svg';
+
+  /// File path: assets/svg/onboarding_request_money.svg
+  String get onboardingRequestMoney =>
+      'assets/svg/onboarding_request_money.svg';
+
+  /// File path: assets/svg/onboarding_send_money.svg
+  String get onboardingSendMoney => 'assets/svg/onboarding_send_money.svg';
 
   /// File path: assets/svg/other_wallets.svg
   String get otherWallets => 'assets/svg/other_wallets.svg';
@@ -226,6 +239,9 @@ class $AssetsSvgGen {
   /// File path: assets/svg/water.svg
   String get water => 'assets/svg/water.svg';
 
+  /// File path: assets/svg/welcome_logo.svg
+  String get welcomeLogo => 'assets/svg/welcome_logo.svg';
+
   /// List of all assets
   List<String> get values => [
         accountInfo,
@@ -267,6 +283,7 @@ class $AssetsSvgGen {
         internet,
         language,
         linkedin,
+        logo,
         merchant,
         mobileCredit,
         mobilePostpaid,
@@ -275,6 +292,9 @@ class $AssetsSvgGen {
         myRewards,
         myWallet,
         notification,
+        onboardingEasyToUse,
+        onboardingRequestMoney,
+        onboardingSendMoney,
         otherWallets,
         pendingPayments,
         pinterest,
@@ -299,7 +319,8 @@ class $AssetsSvgGen {
         transactionHistory,
         verfiyAccount,
         verificationCode,
-        water
+        water,
+        welcomeLogo
       ];
 }
 

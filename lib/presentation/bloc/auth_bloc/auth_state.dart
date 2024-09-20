@@ -8,16 +8,19 @@ class AuthState extends Equatable {
   bool isPasswordValid;
   int start;
   bool checkBox;
+  int currentIndex;
   SignInStatus status;
   SignUpStatus signUpStatus;
   ForgotPasswordStatus forgotPasswordStatus;
   bool confirmPasswordValid;
   VerifyOtpStatus verifyOtpStatus;
+  List<Map>? onboardingContent;
 
   AuthState({
     this.errorMessage = '',
     this.status = SignInStatus.init,
     this.confirmPasswordObscure = false,
+    this.currentIndex = 0,
     this.signUpStatus = SignUpStatus.init,
     this.isObscure = true,
     this.start = 120,
@@ -27,13 +30,32 @@ class AuthState extends Equatable {
     this.signUpObscure = true,
     this.confirmPasswordValid = false,
     this.verifyOtpStatus = VerifyOtpStatus.init,
-  });
+  }){
+    onboardingContent = [
+      {
+        "title": AppConstants.sendMoney,
+        "description": AppConstants.sendMoneyEasilyAndWithOneClick,
+        "image": Assets.svg.onboardingSendMoney,
+      },
+      {
+        "title": AppConstants.requestMoney,
+        "description": AppConstants.youCanRequestMoneyToFriends,
+        "image": Assets.svg.onboardingRequestMoney,
+      },
+      {
+        "title": AppConstants.easyToUse,
+        "description": AppConstants.veryEasyToUse,
+        "image": Assets.svg.onboardingEasyToUse,
+      }
+    ];
+  }
 
   AuthState copyWith({
     String? errorMessage,
     bool? isObscure,
     bool? isPasswordValid,
     bool? checkBox,
+    int? currentIndex,
     int? start,
     SignInStatus? status,
     ForgotPasswordStatus? forgotPasswordStatus,
@@ -49,6 +71,7 @@ class AuthState extends Equatable {
       isObscure: isObscure ?? this.isObscure,
       isPasswordValid: isPasswordValid ?? this.isPasswordValid,
       checkBox: checkBox ?? this.checkBox,
+      currentIndex: currentIndex ?? this.currentIndex,
       verifyOtpStatus: verifyOtpStatus ?? this.verifyOtpStatus,
       status: status ?? this.status,
       confirmPasswordValid: confirmPasswordValid ?? this.confirmPasswordValid,
@@ -65,6 +88,7 @@ class AuthState extends Equatable {
         errorMessage,
         forgotPasswordStatus,
         isObscure,
+        currentIndex,
         verifyOtpStatus,
         isPasswordValid,
         checkBox,

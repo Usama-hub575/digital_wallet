@@ -15,6 +15,7 @@ class AppRoutes {
   static const requestMoneyScreen = '/requestMoney';
   static const requestDetailsScreen = '/requestDetailsScreen';
   static const profileScreen = '/profileScreen';
+  static const welcomeScreen = '/welcomeScreen';
   static const pendingPaymentRequestsScreen = '/pendingPaymentRequestsScreen';
   static const transactionDetailScreen = '/transactionDetailScreen';
   static const electricityScreen = '/electricityScreen';
@@ -42,6 +43,10 @@ class AppRoutes {
       case notificationScreen:
         return MaterialPageRoute(
           builder: (_) => const NotificationScreen(),
+        );
+      case welcomeScreen:
+        return MaterialPageRoute(
+          builder: (_) => const WelcomeScreen(),
         );
       case welcomeToMerchantScreen:
         return MaterialPageRoute(

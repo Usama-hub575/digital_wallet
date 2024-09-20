@@ -41,7 +41,7 @@ class GenericButton extends StatelessWidget {
               color: ColorName.grey.withOpacity(0.3),
               spreadRadius: 5,
               blurRadius: 7,
-              offset: Offset(0, 3), // changes position of shadow
+              offset: const Offset(0, 3), // changes position of shadow
             ),
           ],
           color: buttonColor,
