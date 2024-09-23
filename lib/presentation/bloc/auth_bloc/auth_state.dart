@@ -14,7 +14,7 @@ class AuthState extends Equatable {
   ForgotPasswordStatus forgotPasswordStatus;
   bool confirmPasswordValid;
   VerifyOtpStatus verifyOtpStatus;
-  List<Map>? onboardingContent;
+  List<Map> onboardingContent;
 
   AuthState({
     this.errorMessage = '',
@@ -25,30 +25,26 @@ class AuthState extends Equatable {
     this.isObscure = true,
     this.start = 120,
     this.isPasswordValid = true,
+    this.onboardingContent = const [
+      {
+        "title": AppConstants.sendMoney,
+        "description": AppConstants.sendMoneyEasilyAndWithOneClick,
+      },
+      {
+        "title": AppConstants.requestMoney,
+        "description": AppConstants.youCanRequestMoneyToFriends,
+      },
+      {
+        "title": AppConstants.easyToUse,
+        "description": AppConstants.veryEasyToUse,
+      }
+    ],
     this.forgotPasswordStatus = ForgotPasswordStatus.init,
     this.checkBox = true,
     this.signUpObscure = true,
     this.confirmPasswordValid = false,
     this.verifyOtpStatus = VerifyOtpStatus.init,
-  }){
-    onboardingContent = [
-      {
-        "title": AppConstants.sendMoney,
-        "description": AppConstants.sendMoneyEasilyAndWithOneClick,
-        "image": Assets.svg.onboardingSendMoney,
-      },
-      {
-        "title": AppConstants.requestMoney,
-        "description": AppConstants.youCanRequestMoneyToFriends,
-        "image": Assets.svg.onboardingRequestMoney,
-      },
-      {
-        "title": AppConstants.easyToUse,
-        "description": AppConstants.veryEasyToUse,
-        "image": Assets.svg.onboardingEasyToUse,
-      }
-    ];
-  }
+  });
 
   AuthState copyWith({
     String? errorMessage,

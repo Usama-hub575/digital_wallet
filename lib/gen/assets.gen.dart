@@ -7,11 +7,48 @@
 // ignore_for_file: type=lint
 // ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal,deprecated_member_use
 
+import 'package:flutter/widgets.dart';
+
+class $AssetsPngGen {
+  const $AssetsPngGen();
+
+  /// File path: assets/png/dummy.png
+  AssetGenImage get dummy => const AssetGenImage('assets/png/dummy.png');
+
+  /// File path: assets/png/onboarding_easy_to_use.png
+  AssetGenImage get onboardingEasyToUse =>
+      const AssetGenImage('assets/png/onboarding_easy_to_use.png');
+
+  /// File path: assets/png/onboarding_request_money.png
+  AssetGenImage get onboardingRequestMoney =>
+      const AssetGenImage('assets/png/onboarding_request_money.png');
+
+  /// File path: assets/png/onboarding_send_money.png
+  AssetGenImage get onboardingSendMoney =>
+      const AssetGenImage('assets/png/onboarding_send_money.png');
+
+  /// File path: assets/png/welcome_logo.png
+  AssetGenImage get welcomeLogo =>
+      const AssetGenImage('assets/png/welcome_logo.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [
+        dummy,
+        onboardingEasyToUse,
+        onboardingRequestMoney,
+        onboardingSendMoney,
+        welcomeLogo
+      ];
+}
+
 class $AssetsSvgGen {
   const $AssetsSvgGen();
 
   /// File path: assets/svg/account_info.svg
   String get accountInfo => 'assets/svg/account_info.svg';
+
+  /// File path: assets/svg/accounts.svg
+  String get accounts => 'assets/svg/accounts.svg';
 
   /// File path: assets/svg/add_icon.svg
   String get addIcon => 'assets/svg/add_icon.svg';
@@ -37,6 +74,9 @@ class $AssetsSvgGen {
   /// File path: assets/svg/become_a_merchant.svg
   String get becomeAMerchant => 'assets/svg/become_a_merchant.svg';
 
+  /// File path: assets/svg/blue_verified_tick.svg
+  String get blueVerifiedTick => 'assets/svg/blue_verified_tick.svg';
+
   /// File path: assets/svg/business.svg
   String get business => 'assets/svg/business.svg';
 
@@ -51,6 +91,9 @@ class $AssetsSvgGen {
 
   /// File path: assets/svg/change_password.svg
   String get changePassword => 'assets/svg/change_password.svg';
+
+  /// File path: assets/svg/change_pin.svg
+  String get changePin => 'assets/svg/change_pin.svg';
 
   /// File path: assets/svg/chat_with_e_wallet.svg
   String get chatWithEWallet => 'assets/svg/chat_with_e_wallet.svg';
@@ -75,6 +118,9 @@ class $AssetsSvgGen {
 
   /// File path: assets/svg/dummy.svg
   String get dummy => 'assets/svg/dummy.svg';
+
+  /// File path: assets/svg/edit_profile.svg
+  String get editProfile => 'assets/svg/edit_profile.svg';
 
   /// File path: assets/svg/education.svg
   String get education => 'assets/svg/education.svg';
@@ -103,6 +149,9 @@ class $AssetsSvgGen {
   /// File path: assets/svg/general_setting.svg
   String get generalSetting => 'assets/svg/general_setting.svg';
 
+  /// File path: assets/svg/green_verified_tick.svg
+  String get greenVerifiedTick => 'assets/svg/green_verified_tick.svg';
+
   /// File path: assets/svg/health_insurance.svg
   String get healthInsurance => 'assets/svg/health_insurance.svg';
 
@@ -123,6 +172,9 @@ class $AssetsSvgGen {
 
   /// File path: assets/svg/language.svg
   String get language => 'assets/svg/language.svg';
+
+  /// File path: assets/svg/light_mode.svg
+  String get lightMode => 'assets/svg/light_mode.svg';
 
   /// File path: assets/svg/linkedin.svg
   String get linkedin => 'assets/svg/linkedin.svg';
@@ -145,6 +197,9 @@ class $AssetsSvgGen {
   /// File path: assets/svg/more.svg
   String get more => 'assets/svg/more.svg';
 
+  /// File path: assets/svg/my_qr_code.svg
+  String get myQrCode => 'assets/svg/my_qr_code.svg';
+
   /// File path: assets/svg/my_rewards.svg
   String get myRewards => 'assets/svg/my_rewards.svg';
 
@@ -153,16 +208,6 @@ class $AssetsSvgGen {
 
   /// File path: assets/svg/notification.svg
   String get notification => 'assets/svg/notification.svg';
-
-  /// File path: assets/svg/onboarding_easy_to_use.svg
-  String get onboardingEasyToUse => 'assets/svg/onboarding_easy_to_use.svg';
-
-  /// File path: assets/svg/onboarding_request_money.svg
-  String get onboardingRequestMoney =>
-      'assets/svg/onboarding_request_money.svg';
-
-  /// File path: assets/svg/onboarding_send_money.svg
-  String get onboardingSendMoney => 'assets/svg/onboarding_send_money.svg';
 
   /// File path: assets/svg/other_wallets.svg
   String get otherWallets => 'assets/svg/other_wallets.svg';
@@ -200,6 +245,9 @@ class $AssetsSvgGen {
   /// File path: assets/svg/scan_qr.svg
   String get scanQr => 'assets/svg/scan_qr.svg';
 
+  /// File path: assets/svg/screen_lock.svg
+  String get screenLock => 'assets/svg/screen_lock.svg';
+
   /// File path: assets/svg/send.svg
   String get send => 'assets/svg/send.svg';
 
@@ -224,6 +272,9 @@ class $AssetsSvgGen {
   /// File path: assets/svg/successful_tick.svg
   String get successfulTick => 'assets/svg/successful_tick.svg';
 
+  /// File path: assets/svg/support.svg
+  String get support => 'assets/svg/support.svg';
+
   /// File path: assets/svg/touch_id.svg
   String get touchId => 'assets/svg/touch_id.svg';
 
@@ -239,12 +290,10 @@ class $AssetsSvgGen {
   /// File path: assets/svg/water.svg
   String get water => 'assets/svg/water.svg';
 
-  /// File path: assets/svg/welcome_logo.svg
-  String get welcomeLogo => 'assets/svg/welcome_logo.svg';
-
   /// List of all assets
   List<String> get values => [
         accountInfo,
+        accounts,
         addIcon,
         alertQuestionMark,
         arrowCircleDown,
@@ -253,11 +302,13 @@ class $AssetsSvgGen {
         bankTransfer,
         bankingFinance,
         becomeAMerchant,
+        blueVerifiedTick,
         business,
         calculator,
         cash,
         changeLoginPin,
         changePassword,
+        changePin,
         chatWithEWallet,
         cnicTransfer,
         contactBook,
@@ -266,6 +317,7 @@ class $AssetsSvgGen {
         dashboardCard,
         depositMoney,
         dummy,
+        editProfile,
         education,
         electricity,
         enterPin,
@@ -275,6 +327,7 @@ class $AssetsSvgGen {
         forgotPassword,
         gas,
         generalSetting,
+        greenVerifiedTick,
         healthInsurance,
         help,
         history,
@@ -282,6 +335,7 @@ class $AssetsSvgGen {
         instagram,
         internet,
         language,
+        lightMode,
         linkedin,
         logo,
         merchant,
@@ -289,12 +343,10 @@ class $AssetsSvgGen {
         mobilePostpaid,
         mobilePostpaid2,
         more,
+        myQrCode,
         myRewards,
         myWallet,
         notification,
-        onboardingEasyToUse,
-        onboardingRequestMoney,
-        onboardingSendMoney,
         otherWallets,
         pendingPayments,
         pinterest,
@@ -307,6 +359,7 @@ class $AssetsSvgGen {
         request,
         requestMoney,
         scanQr,
+        screenLock,
         send,
         sendMoney,
         sendMoney2,
@@ -315,17 +368,99 @@ class $AssetsSvgGen {
         signup,
         stats,
         successfulTick,
+        support,
         touchId,
         transactionHistory,
         verfiyAccount,
         verificationCode,
-        water,
-        welcomeLogo
+        water
       ];
 }
 
 class Assets {
   Assets._();
 
+  static const $AssetsPngGen png = $AssetsPngGen();
   static const $AssetsSvgGen svg = $AssetsSvgGen();
+}
+
+class AssetGenImage {
+  const AssetGenImage(
+    this._assetName, {
+    this.size,
+    this.flavors = const {},
+  });
+
+  final String _assetName;
+
+  final Size? size;
+  final Set<String> flavors;
+
+  Image image({
+    Key? key,
+    AssetBundle? bundle,
+    ImageFrameBuilder? frameBuilder,
+    ImageErrorWidgetBuilder? errorBuilder,
+    String? semanticLabel,
+    bool excludeFromSemantics = false,
+    double? scale,
+    double? width,
+    double? height,
+    Color? color,
+    Animation<double>? opacity,
+    BlendMode? colorBlendMode,
+    BoxFit? fit,
+    AlignmentGeometry alignment = Alignment.center,
+    ImageRepeat repeat = ImageRepeat.noRepeat,
+    Rect? centerSlice,
+    bool matchTextDirection = false,
+    bool gaplessPlayback = false,
+    bool isAntiAlias = false,
+    String? package,
+    FilterQuality filterQuality = FilterQuality.low,
+    int? cacheWidth,
+    int? cacheHeight,
+  }) {
+    return Image.asset(
+      _assetName,
+      key: key,
+      bundle: bundle,
+      frameBuilder: frameBuilder,
+      errorBuilder: errorBuilder,
+      semanticLabel: semanticLabel,
+      excludeFromSemantics: excludeFromSemantics,
+      scale: scale,
+      width: width,
+      height: height,
+      color: color,
+      opacity: opacity,
+      colorBlendMode: colorBlendMode,
+      fit: fit,
+      alignment: alignment,
+      repeat: repeat,
+      centerSlice: centerSlice,
+      matchTextDirection: matchTextDirection,
+      gaplessPlayback: gaplessPlayback,
+      isAntiAlias: isAntiAlias,
+      package: package,
+      filterQuality: filterQuality,
+      cacheWidth: cacheWidth,
+      cacheHeight: cacheHeight,
+    );
+  }
+
+  ImageProvider provider({
+    AssetBundle? bundle,
+    String? package,
+  }) {
+    return AssetImage(
+      _assetName,
+      bundle: bundle,
+      package: package,
+    );
+  }
+
+  String get path => _assetName;
+
+  String get keyName => _assetName;
 }

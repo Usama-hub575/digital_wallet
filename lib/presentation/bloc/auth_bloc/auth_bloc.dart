@@ -9,8 +9,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc({
     required this.authUseCase,
   }) : super(
-          AuthState(
-          ),
+          AuthState(),
         ) {
     on<SignInToggle>(_toggle);
     on<IsPasswordValid>(_isPasswordValid);
@@ -18,6 +17,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<SignInCheckBoxToggle>(_checkBoxToggle);
     on<SignIn>(_login);
     on<SignUp>(_signUp);
+    on<ChangeCurrentIndex>(_changeCurrentIndex);
     on<SignInLoading>(_loading);
     on<SignUpLoading>(_signUpLoading);
     on<SignUpToggle>(_signUpToggle);
@@ -44,6 +44,14 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     emit(
       state.copyWith(
         forgotPasswordStatus: ForgotPasswordStatus.loading,
+      ),
+    );
+  }
+
+  _changeCurrentIndex(ChangeCurrentIndex event, emit) {
+    emit(
+      state.copyWith(
+        currentIndex: event.currentIndex,
       ),
     );
   }
@@ -109,7 +117,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       },
     );
   }
-
 
   _resetPassword(ResetPassword event, emit) async {
     final response = await authUseCase.resetPassword(

@@ -11,6 +11,14 @@ class SignUpToggle extends AuthEvent {}
 
 class ConfirmPasswordToggle extends AuthEvent {}
 
+class ChangeCurrentIndex extends AuthEvent {
+  final int currentIndex;
+
+  ChangeCurrentIndex({
+    required this.currentIndex,
+  });
+}
+
 class IsPasswordValid extends AuthEvent {
   final String? password;
 

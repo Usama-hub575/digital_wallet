@@ -7,181 +7,146 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: ColorName.primaryColorLight,
-      appBar: AppBar(
-        backgroundColor: ColorName.primaryColorLight,
-        title: Text(
-          "Profile",
-          style: textStyles.semiBold.copyWith(
-            fontWeight: FontWeight.w700,
-            color: ColorName.pureWhite,
-          ),
-        ),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: SvgPicture.asset(
-              Assets.svg.help,
-            ),
-          ),
-        ],
-        centerTitle: true,
+      backgroundColor: ColorName.pureWhite,
+      appBar: GenericAppBar(
+        title: "Profile",
+        showNotificationIcon: true,
       ),
-      body: Column(
-        children: [
-          verticalSpacer(50),
-          Expanded(
-            child: Container(
-              padding: EdgeInsets.symmetric(
-                horizontal: 10.w,
-                vertical: 20.h,
-              ),
-              width: double.infinity,
-              height: double.infinity,
-              decoration: const BoxDecoration(
-                color: ColorName.pureWhite,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(20),
-                  topRight: Radius.circular(20),
+      body: Padding(
+        padding: EdgeInsets.symmetric(
+          horizontal: 20.w,
+        ),
+        child: Column(
+          children: [
+            verticalSpacer(30),
+            Row(
+              children: [
+                CircleAvatar(
+                  backgroundColor: ColorName.primaryColorLight.withOpacity(0.4),
+                  radius: 41,
+                  child: CircleAvatar(
+                    backgroundColor:
+                        ColorName.primaryColorLight.withOpacity(0.4),
+                    radius: 38,
+                    child: CircleAvatar(
+                      backgroundImage: AssetImage(
+                        Assets.png.dummy.path,
+                      ),
+                      radius: 35,
+                    ),
+                  ),
                 ),
-              ),
-              child: SingleChildScrollView(
-                physics: const BouncingScrollPhysics(),
-                child: Column(
+                horizontalSpacer(20),
+                Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    Text(
+                      "Haris Siddiqui",
+                      style: textStyles.medium.copyWith(
+                        fontSize: 16.sp,
+                      ),
+                    ),
                     Row(
                       children: [
-                        CircleAvatar(
-                          maxRadius: 30,
-                          minRadius: 30,
-                          backgroundColor: Colors.transparent,
-                          child: SvgPicture.asset(
-                            Assets.svg.dummy,
-                            height: 60.h,
-                            width: 60.w,
+                        Text(
+                          "2345634563",
+                          style: textStyles.regular.copyWith(
+                            fontSize: 10.sp,
+                            color: ColorName.textGrey,
                           ),
                         ),
-                        horizontalSpacer(5),
-                        Expanded(
-                          child: BlocBuilder<DashboardBloc, DashboardState>(
-                            builder: (context, state) {
-                              return Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    state.findUserResponseModel.username ?? '',
-                                    style: textStyles.semiBold.copyWith(
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 16.sp,
-                                    ),
-                                  ),
-                                  Text(
-                                    'Acc ${state.findUserResponseModel.email ?? ''}',
-                                    style: textStyles.regular.copyWith(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 12.sp,
-                                    ),
-                                  ),
-                                ],
-                              );
-                            },
-                          ),
+                        horizontalSpacer(10),
+                        SvgPicture.asset(
+                          Assets.svg.blueVerifiedTick,
                         ),
                       ],
                     ),
-                    verticalSpacer(10),
-                    ProfileTile(
-                      onTap: () {},
-                      title: "Account Info",
-                      svgImage: Assets.svg.accountInfo,
+                    Row(
+                      children: [
+                        Text(
+                          "abdulaleem@gmail.com",
+                          style: textStyles.regular.copyWith(
+                            fontSize: 10.sp,
+                            color: ColorName.textGrey,
+                          ),
+                        ),
+                        horizontalSpacer(10),
+                        SvgPicture.asset(
+                          Assets.svg.blueVerifiedTick,
+                        ),
+                      ],
                     ),
-                    ProfileTile(
-                      onTap: () {},
-                      title: "My Wallet",
-                      svgImage: Assets.svg.myWallet,
-                    ),
-                    verticalSpacer(10),
-                    ProfileTile(
-                      onTap: () {},
-                      title: "Transaction History",
-                      svgImage: Assets.svg.transactionHistory,
-                    ),
-                    ProfileTile(
-                      svgImage: Assets.svg.language,
-                      onTap: () {},
-                      title: "Language",
-                    ),
-                    verticalSpacer(10),
-                    Divider(
-                      color: ColorName.grey.withOpacity(0.3),
-                      thickness: 1,
-                    ),
-                    ProfileTile(
-                      svgImage: Assets.svg.generalSetting,
-                      onTap: () {},
-                      title: "General Setting",
-                    ),
-                    verticalSpacer(10),
-                    ProfileTile(
-                      svgImage: Assets.svg.changePassword,
-                      onTap: () {},
-                      title: "Change Password",
-                    ),
-                    ProfileTile(
-                      onTap: () {},
-                      title: "Change Login PIN",
-                      svgImage: Assets.svg.changeLoginPin,
-                    ),
-                    BlocBuilder<DashboardBloc, DashboardState>(
-                        builder: (context, state) {
-                      return ProfileTile(
-                        onTap: () =>
-                            state.getProfileResponseModel.isMerchant == true
-                                ? Navigator.of(context, rootNavigator: true)
-                                    .pushNamed(
-                                    AppRoutes.merchantQRScreen,
-                                  )
-                                : Navigator.of(context, rootNavigator: true)
-                                    .pushNamed(
-                                    AppRoutes.welcomeToMerchantScreen,
-                                  ),
-                        title: state.getProfileResponseModel.isMerchant == true
-                            ? "Merchant "
-                            : "Become a merchant",
-                        svgImage: Assets.svg.merchant,
-                      );
-                    }),
-                    verticalSpacer(20),
-                    ProfileTile(
-                      svgImage: Assets.svg.faqs,
-                      onTap: () {},
-                      title: "FAQs",
-                    ),
-                    ProfileTile(
-                      svgImage: Assets.svg.rateUs,
-                      onTap: () {},
-                      title: "Rate Us",
-                    ),
-                    verticalSpacer(20),
-                    OutlinedGenericButton(
-                      buttonTitle: "Logout",
-                      titleColor: ColorName.red,
-                      outlinedButton: true,
-                      borderColor: ColorName.red,
-                      onTap: () => Navigator.of(context, rootNavigator: true)
-                          .pushNamedAndRemoveUntil(
-                        AppRoutes.signInScreen,
-                        (route) => false,
-                      ),
-                    ),
-                    verticalSpacer(20),
                   ],
                 ),
-              ),
+                const Spacer(),
+                SvgPicture.asset(
+                  Assets.svg.editProfile,
+                ),
+              ],
             ),
-          ),
-        ],
+            verticalSpacer(10),
+            Row(
+              children: [
+                horizontalSpacer(20),
+                SvgPicture.asset(
+                  Assets.svg.greenVerifiedTick,
+                ),
+                horizontalSpacer(5),
+                Text(
+                  "Verified",
+                  style: textStyles.medium.copyWith(
+                    fontSize: 9.sp,
+                    color: ColorName.green,
+                  ),
+                ),
+              ],
+            ),
+            verticalSpacer(40),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ProfileActionWidget(
+                  icon: Assets.svg.changePin,
+                  title: "Change Pin",
+                ),
+                ProfileActionWidget(
+                  icon: Assets.svg.myQrCode,
+                  title: "My QR Code",
+                ),
+                ProfileActionWidget(
+                  icon: Assets.svg.support,
+                  title: "Help & Support",
+                ),
+              ],
+            ),
+            verticalSpacer(30),
+            ProfileTile(
+              subtitle: "Manage your accounts",
+              onTap: () {},
+              icon: Assets.svg.accounts,
+              title: "Accounts",
+            ),
+            ProfileTile(
+              subtitle: "You can change the app language",
+              onTap: () {},
+              icon: Assets.svg.language,
+              title: "Language",
+            ),
+            ProfileTile(
+              subtitle: "Manage touch ID or face ID",
+              onTap: () {},
+              icon: Assets.svg.screenLock,
+              title: "Screen Lock",
+            ),
+            ProfileTile(
+              showSwitchButton: true,
+              subtitle: "Switch between light & dark mode",
+              onTap: () {},
+              icon: Assets.svg.lightMode,
+              title: "Light Mode",
+            ),
+          ],
+        ),
       ),
     );
   }

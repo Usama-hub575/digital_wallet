@@ -9,6 +9,7 @@ class AppRoutes {
   static const sendMoney = '/sendMoney';
   static const verificationScreen = '/verificationScreen';
   static const paymentDetailScreen = '/paymentDetailScreen';
+  static const onboardingScreen = '/onboardingScreen';
   static const forgetPasswordScreen = '/forgetPasswordScreen';
   static const verifyAccountScreen = '/verifyAccountScreen';
   static const createNewPasswordScreen = '/createNewPasswordScreen';
@@ -32,13 +33,17 @@ class AppRoutes {
     Map<String, dynamic>? args = settings.arguments as Map<String, dynamic>?;
 
     switch (settings.name) {
-      case initializer:
+      case signInScreen:
         return MaterialPageRoute(
           builder: (_) => SignInScreen(),
         );
       case signInScreen:
         return MaterialPageRoute(
           builder: (_) => SignInScreen(),
+        );
+      case onboardingScreen:
+        return MaterialPageRoute(
+          builder: (_) => OnboardingScreen(),
         );
       case notificationScreen:
         return MaterialPageRoute(

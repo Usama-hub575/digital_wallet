@@ -6,19 +6,20 @@ class WelcomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: ColorName.pureWhite,
       body: Padding(
         padding: EdgeInsets.symmetric(
           horizontal: 10.w,
         ),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            verticalSpacer(50),
             SvgPicture.asset(
               Assets.svg.logo,
             ),
             verticalSpacer(10),
-            SvgPicture.asset(
-              Assets.svg.welcomeLogo,
-            ),
+            Assets.png.welcomeLogo.image(),
             verticalSpacer(10),
             Text(
               "Manage your all finances within your Pocket.",
@@ -34,8 +35,13 @@ class WelcomeScreen extends StatelessWidget {
                 fontSize: 16.sp,
               ),
             ),
-            verticalSpacer(30),
-            const GenericButton(
+            verticalSpacer(100),
+            GenericButton(
+              onTap: () => Navigator.pushNamed(
+                context,
+                AppRoutes.onboardingScreen,
+              ),
+              buttonColor: ColorName.primaryColorLight,
               buttonText: "Get Started",
             ),
           ],

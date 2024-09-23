@@ -72,10 +72,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   Row(
                     children: [
                       CircleAvatar(
-                        backgroundColor: Colors.transparent,
-                        child: SvgPicture.asset(
-                          Assets.svg.dummy,
+                        backgroundImage: AssetImage(
+                          Assets.png.dummy.path,
                         ),
+                        backgroundColor: Colors.transparent,
                       ),
                       horizontalSpacer(5),
                       Column(

@@ -9,7 +9,7 @@ class ElectricityScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorName.primaryColorLight,
-      appBar: const GenericAppBar(
+      appBar: GenericAppBar(
         title: "Pay Electricity Bill",
       ),
       body: Column(

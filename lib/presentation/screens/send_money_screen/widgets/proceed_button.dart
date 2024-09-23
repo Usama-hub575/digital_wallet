@@ -20,7 +20,7 @@ class ProceedButton extends StatelessWidget {
           vertical: 10.h,
         ),
         decoration: BoxDecoration(
-          color: ColorName.primaryColor,
+          color: ColorName.primaryColorLight,
           borderRadius: BorderRadius.circular(
             25,
           ),

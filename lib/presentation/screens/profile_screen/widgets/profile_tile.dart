@@ -4,52 +4,73 @@ class ProfileTile extends StatelessWidget {
   const ProfileTile({
     required this.title,
     required this.onTap,
-    required this.svgImage,
+    required this.icon,
+    required this.subtitle,
+    this.showSwitchButton = false,
     super.key,
   });
 
   final String title;
   final VoidCallback? onTap;
-  final String svgImage;
+  final String icon;
+  final String subtitle;
+  final bool showSwitchButton;
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      leading: Container(
-        height: 35.h,
-        width: 35.w,
-        padding: EdgeInsets.symmetric(
-          horizontal: 7.w,
-          vertical: 7.h,
-        ),
-        decoration: BoxDecoration(
-          borderRadius: const BorderRadius.all(
-            Radius.circular(10),
-          ),
-          color: ColorName.grey.withOpacity(0.09),
-        ),
-        child: SvgPicture.asset(
-          svgImage,
-          height: 15.h,
-          width: 15.w,
+    return Theme(
+      data: ThemeData(
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
+      ),
+      child: ListTile(
+        leading: SvgPicture.asset(
+          icon,
           color: ColorName.primaryColorLight,
         ),
-      ),
-      contentPadding: EdgeInsets.zero,
-      onTap: () {},
-      title: Text(
-        title.toUpperCase(),
-        style: textStyles.semiBold.copyWith(
-          fontWeight: FontWeight.w600,
-          fontSize: 12.sp,
+        contentPadding: EdgeInsets.zero,
+        onTap: () {},
+        title: Text(
+          title,
+          style: textStyles.medium.copyWith(
+            fontSize: 12.sp,
+          ),
         ),
-      ),
-      trailing: IconButton(
-        padding: EdgeInsets.zero,
-        onPressed: onTap,
-        icon: const Icon(
-          Icons.arrow_forward_ios_outlined,
+        subtitle: Text(
+          subtitle,
+          style: textStyles.medium.copyWith(
+            fontSize: 10.sp,
+          ),
         ),
+        trailing: showSwitchButton
+            ? Theme(
+                data: Theme.of(context).copyWith(
+                  switchTheme: SwitchThemeData(
+                    thumbColor: WidgetStateProperty.all(ColorName.pureWhite),
+                    trackColor:
+                        WidgetStateProperty.all(ColorName.primaryColorLight),
+                  ),
+                ),
+                child: Switch(
+                  value: true,
+                  thumbColor: const WidgetStatePropertyAll(
+                    ColorName.pureWhite,
+                  ),
+                  onChanged: (value) {},
+                  inactiveTrackColor: ColorName.textGrey,
+                  activeColor: ColorName.primaryColorLight,
+                  hoverColor: Colors.transparent,
+                  focusColor: ColorName.primaryColorLight,
+                ),
+              )
+            : IconButton(
+                padding: EdgeInsets.zero,
+                onPressed: onTap,
+                icon: const Icon(
+                  Icons.arrow_forward_ios_outlined,
+                  color: ColorName.textGrey,
+                ),
+              ),
       ),
     );
   }
