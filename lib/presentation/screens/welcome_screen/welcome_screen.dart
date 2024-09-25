@@ -35,7 +35,7 @@ class WelcomeScreen extends StatelessWidget {
                 fontSize: 16.sp,
               ),
             ),
-            verticalSpacer(100),
+            verticalSpacer(150),
             GenericButton(
               onTap: () => Navigator.pushNamed(
                 context,

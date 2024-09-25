@@ -4,11 +4,13 @@ class GenericAppBar extends StatelessWidget implements PreferredSizeWidget {
   GenericAppBar({
     required this.title,
     this.showNotificationIcon = false,
+    this.showBackButton = true,
     super.key,
   });
 
   final String title;
   bool showNotificationIcon;
+  bool showBackButton;
 
   @override
   Widget build(BuildContext context) {
@@ -23,13 +25,15 @@ class GenericAppBar extends StatelessWidget implements PreferredSizeWidget {
           fontSize: 16.sp,
         ),
       ),
-      leading: IconButton(
-        onPressed: () => Navigator.pop(context),
-        icon: const Icon(
-          Icons.arrow_back_ios_new_outlined,
-          color: ColorName.black,
-        ),
-      ),
+      leading: showBackButton
+          ? IconButton(
+              onPressed: () => Navigator.pop(context),
+              icon: const Icon(
+                Icons.arrow_back_ios_new_outlined,
+                color: ColorName.black,
+              ),
+            )
+          : const SizedBox.shrink(),
       actions: [
         showNotificationIcon
             ? Padding(

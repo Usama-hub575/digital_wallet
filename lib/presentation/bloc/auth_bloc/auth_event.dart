@@ -11,6 +11,14 @@ class SignUpToggle extends AuthEvent {}
 
 class ConfirmPasswordToggle extends AuthEvent {}
 
+class ChangeSignupIndex extends AuthEvent {
+  final int signupIndex;
+
+  ChangeSignupIndex({
+    required this.signupIndex,
+  });
+}
+
 class ChangeCurrentIndex extends AuthEvent {
   final int currentIndex;
 

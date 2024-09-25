@@ -38,7 +38,7 @@ class CreateNewPasswordScreen extends StatelessWidget {
             children: [
               verticalSpacer(50),
               Text(
-                "create New Password",
+                "Create New Password",
                 style: textStyles.bold.copyWith(
                   fontSize: 27.sp,
                   fontWeight: FontWeight.w700,

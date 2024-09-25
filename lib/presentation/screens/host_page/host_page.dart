@@ -19,9 +19,9 @@ class HostPage extends StatelessWidget {
                 ? const DashboardScreen()
                 : const SizedBox.shrink(),
             state.currentIndex == 1
-                ? StatisticsScreen()
+                ? const SpendingGraphSyncfusion()
                 : const SizedBox.shrink(),
-            state.currentIndex == 2 ? const QrCodeScreen() : const SizedBox.shrink(),
+            state.currentIndex == 2 ? const QrCodeScreenNew() : const SizedBox.shrink(),
             state.currentIndex == 3 ? const HistoryScreen() : const SizedBox.shrink(),
             state.currentIndex == 4 ? const ProfileScreen() : const SizedBox.shrink(),
           ],

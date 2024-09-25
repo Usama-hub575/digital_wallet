@@ -7,6 +7,7 @@ class AppRoutes {
   static const dashboardScreen = '/dashboardScreen';
   static const hostPage = '/hostPage';
   static const sendMoney = '/sendMoney';
+  static const allDoneScreen = '/allDoneScreen';
   static const verificationScreen = '/verificationScreen';
   static const paymentDetailScreen = '/paymentDetailScreen';
   static const onboardingScreen = '/onboardingScreen';
@@ -37,10 +38,6 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: (_) => SignInScreen(),
         );
-      case signInScreen:
-        return MaterialPageRoute(
-          builder: (_) => SignInScreen(),
-        );
       case onboardingScreen:
         return MaterialPageRoute(
           builder: (_) => OnboardingScreen(),
@@ -48,6 +45,10 @@ class AppRoutes {
       case notificationScreen:
         return MaterialPageRoute(
           builder: (_) => const NotificationScreen(),
+        );
+      case allDoneScreen:
+        return MaterialPageRoute(
+          builder: (_) => const AllDoneScreen(),
         );
       case welcomeScreen:
         return MaterialPageRoute(

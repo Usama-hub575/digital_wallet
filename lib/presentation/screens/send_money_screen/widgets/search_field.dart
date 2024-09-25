@@ -38,7 +38,7 @@ class SearchField extends StatelessWidget {
             width: 2.0,
           ), // Border color and width when focused
         ),
-        suffixIcon: Icon(Icons.search, color: ColorName.textGrey
+        suffixIcon: const Icon(Icons.search, color: ColorName.textGrey
             // Optional: customize icon color
             ),
       ),

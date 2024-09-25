@@ -28,6 +28,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<ForgetPassword>(_forgetPassword);
     on<ForgetPasswordLoading>(_forgetPasswordLoading);
     on<ResetPassword>(_resetPassword);
+    on<ChangeSignupIndex>(_changeSignupIndex);
   }
 
   final AuthUseCase authUseCase;
@@ -52,6 +53,14 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     emit(
       state.copyWith(
         currentIndex: event.currentIndex,
+      ),
+    );
+  }
+
+  _changeSignupIndex(ChangeSignupIndex event, emit) {
+    emit(
+      state.copyWith(
+        signupIndex: event.signupIndex,
       ),
     );
   }

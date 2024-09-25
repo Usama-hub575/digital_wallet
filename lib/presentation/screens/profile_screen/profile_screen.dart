@@ -9,6 +9,7 @@ class ProfileScreen extends StatelessWidget {
       resizeToAvoidBottomInset: false,
       backgroundColor: ColorName.pureWhite,
       appBar: GenericAppBar(
+        showBackButton: false,
         title: "Profile",
         showNotificationIcon: true,
       ),
@@ -106,14 +107,17 @@ class ProfileScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ProfileActionWidget(
+                  onTap: () {},
                   icon: Assets.svg.changePin,
                   title: "Change Pin",
                 ),
                 ProfileActionWidget(
+                  onTap: () => myQRBottomSheet(context),
                   icon: Assets.svg.myQrCode,
                   title: "My QR Code",
                 ),
                 ProfileActionWidget(
+                  onTap: () {},
                   icon: Assets.svg.support,
                   title: "Help & Support",
                 ),

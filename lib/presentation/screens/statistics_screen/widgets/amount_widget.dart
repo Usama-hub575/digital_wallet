@@ -27,7 +27,7 @@ class AmountWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           SvgPicture.asset(
-            income ? Assets.svg.arrowCircleDown : Assets.svg.arrowCircleUp,
+            income ? Assets.svg.arrowCircleDown : Assets.svg.arrowCircleDown,
           ),
           horizontalSpacer(10),
           Column(

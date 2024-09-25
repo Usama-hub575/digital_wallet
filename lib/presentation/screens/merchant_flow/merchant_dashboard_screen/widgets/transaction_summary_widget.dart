@@ -207,10 +207,10 @@ class _TransactionSummaryWidgetState extends State<TransactionSummaryWidget> {
                               ),
                             );
                       },
-                      child: Text('Load More'),
+                      child: const Text('Load More'),
                     ),
                   ),
-                if (state.isLoading) Center(child: CircularProgressIndicator()),
+                if (state.isLoading) const Center(child: CircularProgressIndicator()),
 
                 // No more data
                 if (state.transactionsResponseModel.next == null)

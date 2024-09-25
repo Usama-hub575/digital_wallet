@@ -9,6 +9,7 @@ class AuthState extends Equatable {
   int start;
   bool checkBox;
   int currentIndex;
+  int signupIndex;
   SignInStatus status;
   SignUpStatus signUpStatus;
   ForgotPasswordStatus forgotPasswordStatus;
@@ -21,6 +22,7 @@ class AuthState extends Equatable {
     this.status = SignInStatus.init,
     this.confirmPasswordObscure = false,
     this.currentIndex = 0,
+    this.signupIndex = 0,
     this.signUpStatus = SignUpStatus.init,
     this.isObscure = true,
     this.start = 120,
@@ -52,11 +54,13 @@ class AuthState extends Equatable {
     bool? isPasswordValid,
     bool? checkBox,
     int? currentIndex,
+    int? signupIndex,
     int? start,
     SignInStatus? status,
     ForgotPasswordStatus? forgotPasswordStatus,
     SignUpStatus? signUpStatus,
     bool? confirmPasswordObscure,
+    List<Map>? onboardingContent,
     bool? signUpObscure,
     bool? confirmPasswordValid,
     VerifyOtpStatus? verifyOtpStatus,
@@ -68,6 +72,7 @@ class AuthState extends Equatable {
       isPasswordValid: isPasswordValid ?? this.isPasswordValid,
       checkBox: checkBox ?? this.checkBox,
       currentIndex: currentIndex ?? this.currentIndex,
+      onboardingContent: onboardingContent ?? this.onboardingContent,
       verifyOtpStatus: verifyOtpStatus ?? this.verifyOtpStatus,
       status: status ?? this.status,
       confirmPasswordValid: confirmPasswordValid ?? this.confirmPasswordValid,
@@ -76,6 +81,7 @@ class AuthState extends Equatable {
       signUpStatus: signUpStatus ?? this.signUpStatus,
       signUpObscure: signUpObscure ?? this.signUpObscure,
       start: start ?? this.start,
+      signupIndex: signupIndex ?? this.signupIndex,
     );
   }
 
@@ -83,6 +89,7 @@ class AuthState extends Equatable {
   List<Object?> get props => [
         errorMessage,
         forgotPasswordStatus,
+        signupIndex,
         isObscure,
         currentIndex,
         verifyOtpStatus,

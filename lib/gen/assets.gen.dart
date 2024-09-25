@@ -12,8 +12,20 @@ import 'package:flutter/widgets.dart';
 class $AssetsPngGen {
   const $AssetsPngGen();
 
+  /// File path: assets/png/done.png
+  AssetGenImage get done => const AssetGenImage('assets/png/done.png');
+
   /// File path: assets/png/dummy.png
   AssetGenImage get dummy => const AssetGenImage('assets/png/dummy.png');
+
+  /// File path: assets/png/expenses.png
+  AssetGenImage get expenses => const AssetGenImage('assets/png/expenses.png');
+
+  /// File path: assets/png/income.png
+  AssetGenImage get income => const AssetGenImage('assets/png/income.png');
+
+  /// File path: assets/png/mobile_qr.png
+  AssetGenImage get mobileQr => const AssetGenImage('assets/png/mobile_qr.png');
 
   /// File path: assets/png/onboarding_easy_to_use.png
   AssetGenImage get onboardingEasyToUse =>
@@ -33,7 +45,11 @@ class $AssetsPngGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [
+        done,
         dummy,
+        expenses,
+        income,
+        mobileQr,
         onboardingEasyToUse,
         onboardingRequestMoney,
         onboardingSendMoney,
@@ -58,9 +74,6 @@ class $AssetsSvgGen {
 
   /// File path: assets/svg/arrow_circle_down.svg
   String get arrowCircleDown => 'assets/svg/arrow_circle_down.svg';
-
-  /// File path: assets/svg/arrow_circle_up.svg
-  String get arrowCircleUp => 'assets/svg/arrow_circle_up.svg';
 
   /// File path: assets/svg/authentication.svg
   String get authentication => 'assets/svg/authentication.svg';
@@ -221,6 +234,9 @@ class $AssetsSvgGen {
   /// File path: assets/svg/profile.svg
   String get profile => 'assets/svg/profile.svg';
 
+  /// File path: assets/svg/qr_icon.svg
+  String get qrIcon => 'assets/svg/qr_icon.svg';
+
   /// File path: assets/svg/raast_payment.svg
   String get raastPayment => 'assets/svg/raast_payment.svg';
 
@@ -244,6 +260,9 @@ class $AssetsSvgGen {
 
   /// File path: assets/svg/scan_qr.svg
   String get scanQr => 'assets/svg/scan_qr.svg';
+
+  /// File path: assets/svg/scan_qr_icon.svg
+  String get scanQrIcon => 'assets/svg/scan_qr_icon.svg';
 
   /// File path: assets/svg/screen_lock.svg
   String get screenLock => 'assets/svg/screen_lock.svg';
@@ -297,7 +316,6 @@ class $AssetsSvgGen {
         addIcon,
         alertQuestionMark,
         arrowCircleDown,
-        arrowCircleUp,
         authentication,
         bankTransfer,
         bankingFinance,
@@ -351,6 +369,7 @@ class $AssetsSvgGen {
         pendingPayments,
         pinterest,
         profile,
+        qrIcon,
         raastPayment,
         rateUs,
         received,
@@ -359,6 +378,7 @@ class $AssetsSvgGen {
         request,
         requestMoney,
         scanQr,
+        scanQrIcon,
         screenLock,
         send,
         sendMoney,

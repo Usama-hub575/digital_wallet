@@ -96,10 +96,10 @@ class OnboardingScreen extends StatelessWidget {
                               children: List.generate(
                                 state.onboardingContent.length,
                                 (index) => Container(
-                                  height: verticalValue(15),
-                                  width: horizontalValue(15),
+                                  height: verticalValue(10),
+                                  width: horizontalValue(10),
                                   margin: const EdgeInsets.only(
-                                    right: 5,
+                                    right: 20,
                                   ),
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(20),

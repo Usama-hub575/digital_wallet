@@ -42,8 +42,8 @@ class GenericTextField extends StatelessWidget {
             10.0,
           ),
           // Half rounded corners
-          borderSide: const BorderSide(
-            color: ColorName.grey,
+          borderSide: BorderSide(
+            color: ColorName.textGrey.withOpacity(0.3),
           ), // No border side
         ),
         disabledBorder: OutlineInputBorder(
@@ -51,8 +51,8 @@ class GenericTextField extends StatelessWidget {
             10.0,
           ),
           // Half rounded corners
-          borderSide: const BorderSide(
-            color: ColorName.grey,
+          borderSide: BorderSide(
+            color: ColorName.textGrey.withOpacity(0.3),
           ), // No border side
         ),
         enabledBorder: OutlineInputBorder(
@@ -60,8 +60,8 @@ class GenericTextField extends StatelessWidget {
             10.0,
           ),
           // Half rounded corners
-          borderSide: const BorderSide(
-            color: ColorName.grey,
+          borderSide: BorderSide(
+            color: ColorName.textGrey.withOpacity(0.3),
           ), // No border side
         ),
         border: OutlineInputBorder(

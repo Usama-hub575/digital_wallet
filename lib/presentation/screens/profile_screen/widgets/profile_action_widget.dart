@@ -4,11 +4,13 @@ class ProfileActionWidget extends StatelessWidget {
   const ProfileActionWidget({
     required this.icon,
     required this.title,
+    required this.onTap,
     super.key,
   });
 
   final String icon;
   final String title;
+  final Function() onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +19,9 @@ class ProfileActionWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         InkWell(
+          highlightColor: Colors.transparent,
+          splashColor: Colors.transparent,
+          onTap: onTap,
           child: Container(
             padding: EdgeInsets.symmetric(
               horizontal: 15.w,
