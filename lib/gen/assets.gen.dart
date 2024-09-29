@@ -12,8 +12,14 @@ import 'package:flutter/widgets.dart';
 class $AssetsPngGen {
   const $AssetsPngGen();
 
+  /// File path: assets/png/apple.png
+  AssetGenImage get apple => const AssetGenImage('assets/png/apple.png');
+
   /// File path: assets/png/done.png
   AssetGenImage get done => const AssetGenImage('assets/png/done.png');
+
+  /// File path: assets/png/dropbox.png
+  AssetGenImage get dropbox => const AssetGenImage('assets/png/dropbox.png');
 
   /// File path: assets/png/dummy.png
   AssetGenImage get dummy => const AssetGenImage('assets/png/dummy.png');
@@ -23,6 +29,9 @@ class $AssetsPngGen {
 
   /// File path: assets/png/income.png
   AssetGenImage get income => const AssetGenImage('assets/png/income.png');
+
+  /// File path: assets/png/linkedin.png
+  AssetGenImage get linkedin => const AssetGenImage('assets/png/linkedin.png');
 
   /// File path: assets/png/mobile_qr.png
   AssetGenImage get mobileQr => const AssetGenImage('assets/png/mobile_qr.png');
@@ -45,10 +54,13 @@ class $AssetsPngGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [
+        apple,
         done,
+        dropbox,
         dummy,
         expenses,
         income,
+        linkedin,
         mobileQr,
         onboardingEasyToUse,
         onboardingRequestMoney,
@@ -309,6 +321,9 @@ class $AssetsSvgGen {
   /// File path: assets/svg/water.svg
   String get water => 'assets/svg/water.svg';
 
+  /// File path: assets/svg/withdraw_money.svg
+  String get withdrawMoney => 'assets/svg/withdraw_money.svg';
+
   /// List of all assets
   List<String> get values => [
         accountInfo,
@@ -393,7 +408,8 @@ class $AssetsSvgGen {
         transactionHistory,
         verfiyAccount,
         verificationCode,
-        water
+        water,
+        withdrawMoney
       ];
 }
 

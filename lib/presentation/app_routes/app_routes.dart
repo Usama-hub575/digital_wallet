@@ -28,6 +28,8 @@ class AppRoutes {
   static const notificationScreen = '/notificationScreen';
   static const merchantQRScreen = '/merchantQRScreen';
   static const merchantDashboardScreen = '/merchantDashboardScreen';
+  static const transactionHistoryPage = '/transactionHistoryPage';
+  static const subscriptionHistoryPage = '/subscriptionHistoryPage';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     _currentRoute = settings.name;
@@ -143,6 +145,14 @@ class AppRoutes {
             email: args?['Email'],
             dashboardRoute: args?['Route'],
           ),
+        );
+      case transactionHistoryPage:
+        return MaterialPageRoute(
+          builder: (_) => const TransactionHistoryPage(),
+        );
+      case subscriptionHistoryPage:
+        return MaterialPageRoute(
+          builder: (_) => const SubscriptionHistoryPage(),
         );
       case dashboardScreen:
         return MaterialPageRoute(

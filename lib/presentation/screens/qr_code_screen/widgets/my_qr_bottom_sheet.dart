@@ -18,8 +18,7 @@ Future<void> myQRBottomSheet(
       ),
     ),
     builder: (BuildContext context) {
-      return SizedBox(
-        height: 500.h,
+      return IntrinsicHeight(
         child: Padding(
           padding: EdgeInsets.symmetric(
             horizontal: 20.w,

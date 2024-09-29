@@ -237,50 +237,50 @@ class SignInScreen extends StatelessWidget {
                     Assets.svg.touchId,
                   ),
                 ),
-                verticalSpacer(20),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Expanded(
-                      child: Divider(
-                        color: ColorName.grey.withOpacity(0.3),
-                        thickness: 2,
-                      ),
-                    ),
-                    horizontalSpacer(10),
-                    Text(
-                      "or connect with",
-                      style: textStyles.regular.copyWith(
-                        fontSize: 14.sp,
-                      ),
-                    ),
-                    horizontalSpacer(10),
-                    Expanded(
-                      child: Divider(
-                        color: ColorName.grey.withOpacity(0.3),
-                        thickness: 2,
-                      ),
-                    ),
-                  ],
-                ),
-                verticalSpacer(20),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    SvgPicture.asset(
-                      Assets.svg.facebook,
-                    ),
-                    SvgPicture.asset(
-                      Assets.svg.instagram,
-                    ),
-                    SvgPicture.asset(
-                      Assets.svg.pinterest,
-                    ),
-                    SvgPicture.asset(
-                      Assets.svg.linkedin,
-                    ),
-                  ],
-                )
+                // verticalSpacer(20),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                //   children: [
+                //     Expanded(
+                //       child: Divider(
+                //         color: ColorName.grey.withOpacity(0.3),
+                //         thickness: 2,
+                //       ),
+                //     ),
+                //     horizontalSpacer(10),
+                //     Text(
+                //       "or connect with",
+                //       style: textStyles.regular.copyWith(
+                //         fontSize: 14.sp,
+                //       ),
+                //     ),
+                //     horizontalSpacer(10),
+                //     Expanded(
+                //       child: Divider(
+                //         color: ColorName.grey.withOpacity(0.3),
+                //         thickness: 2,
+                //       ),
+                //     ),
+                //   ],
+                // ),
+                // verticalSpacer(20),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                //   children: [
+                //     SvgPicture.asset(
+                //       Assets.svg.facebook,
+                //     ),
+                //     SvgPicture.asset(
+                //       Assets.svg.instagram,
+                //     ),
+                //     SvgPicture.asset(
+                //       Assets.svg.pinterest,
+                //     ),
+                //     SvgPicture.asset(
+                //       Assets.svg.linkedin,
+                //     ),
+                //   ],
+                // ),
               ],
             ),
           ),
