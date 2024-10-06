@@ -19,30 +19,19 @@ class PaymentDetailScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: ColorName.primaryColorLight,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: ColorName.primaryColorLight,
         actions: [
-          IconButton(
-            onPressed: () {},
-            icon: SvgPicture.asset(
-              Assets.svg.help,
+          Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: 20.w,
+            ),
+            child: Icon(
+              Icons.ios_share_rounded,
+              color: ColorName.pureWhite,
             ),
           ),
         ],
-        centerTitle: true,
-        // leading: IconButton(
-        //   onPressed: () => Navigator.pop(context),
-        //   icon: const Icon(
-        //     Icons.arrow_back_sharp,
-        //     color: ColorName.pureWhite,
-        //   ),
-        // ),
-        title: Text(
-          "Payment Details",
-          style: textStyles.semiBold.copyWith(
-            fontWeight: FontWeight.w700,
-            color: ColorName.pureWhite,
-          ),
-        ),
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(
@@ -74,245 +63,297 @@ class PaymentDetailScreen extends StatelessWidget {
                           children: [
                             Text(
                               "Transfer Successful",
-                              style: textStyles.semiBold.copyWith(
-                                color: ColorName.green,
-                                fontWeight: FontWeight.w700,
-                                fontSize: 15.sp,
+                              style: textStyles.bold.copyWith(
+                                fontSize: 24.sp,
                               ),
                             ),
                             verticalSpacer(10),
                             Text(
                               "Your transaction was successful",
-                              style: textStyles.light.copyWith(
+                              style: textStyles.regular.copyWith(
                                 color: ColorName.textGrey,
-                                fontWeight: FontWeight.w400,
-                                fontSize: 13.sp,
+                                fontSize: 16.sp,
+                              ),
+                            ),
+                            verticalSpacer(30),
+                            Text(
+                              "Total Payment",
+                              style: textStyles.medium.copyWith(
+                                fontSize: 18.sp,
                               ),
                             ),
                             verticalSpacer(30),
                             Text(
                               "Rs $amount",
                               style: textStyles.semiBold.copyWith(
-                                color: ColorName.black,
-                                fontWeight: FontWeight.w700,
-                                fontSize: 33.sp,
-                              ),
-                            ),
-                            verticalSpacer(30),
-                            Text(
-                              "Sent to",
-                              style: textStyles.semiBold.copyWith(
-                                color: ColorName.black,
-                                fontWeight: FontWeight.w700,
-                                fontSize: 15.sp,
+                                color: ColorName.green,
+                                fontSize: 24.sp,
                               ),
                             ),
                             verticalSpacer(20),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                CircleAvatar(
-                                  backgroundColor: Colors.transparent,
-                                  child: SvgPicture.asset(
-                                    Assets.svg.dummy,
+                            Container(
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 10.w,
+                                vertical: 10.h,
+                              ),
+                              decoration: BoxDecoration(
+                                color: ColorName.textGrey.withOpacity(0.1),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Row(
+                                children: [
+                                  SvgPicture.asset(
+                                    Assets.svg.linkedin,
                                   ),
-                                ),
-                                horizontalSpacer(5),
-                                Expanded(
-                                  child: BlocBuilder<DashboardBloc, DashboardState>(
-                                    builder: (context, state) {
-                                      return Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            email,
-                                            style: textStyles.semiBold.copyWith(
-                                              fontWeight: FontWeight.w500,
-                                              fontSize: 16.sp,
-                                            ),
-                                          ),
-                                          FittedBox(
-                                            child: Text(
-                                              'Acc ${state.findUserResponseModel.id ?? ''}',
-                                              style: textStyles.regular.copyWith(
-                                                fontWeight: FontWeight.w400,
-                                                fontSize: 12.sp,
-                                                color: ColorName.textGrey,
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      );
-                                    },
-                                  ),
-                                ),
-                              ],
-                            ),
-                            verticalSpacer(20),
-                            Align(
-                              alignment: Alignment.centerLeft,
-                              child: Text(
-                                "Transaction Details",
-                                style: textStyles.semiBold.copyWith(
-                                  color: ColorName.black,
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 15.sp,
-                                ),
+                                  horizontalSpacer(10),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "LinkedIn",
+                                        style: textStyles.medium.copyWith(
+                                          fontSize: 16.sp,
+                                        ),
+                                      ),
+                                      Text(
+                                        "+3456598765",
+                                        style: textStyles.medium.copyWith(
+                                          fontSize: 16.sp,
+                                        ),
+                                      ),
+                                    ],
+                                  )
+                                ],
                               ),
                             ),
                             verticalSpacer(20),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "Payment",
-                                  style: textStyles.semiBold.copyWith(
-                                    color: ColorName.textGrey,
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 11.sp,
-                                  ),
-                                ),
-                                Text(
-                                  "Rs $amount",
-                                  style: textStyles.semiBold.copyWith(
-                                    color: ColorName.black,
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 11.sp,
-                                  ),
-                                ),
-                              ],
+                            GenericOutlinedButton(
+                              buttonTitle: "Done",
+                              titleColor: ColorName.black,
+                              borderColor: ColorName.black,
+                              onTap: () => Navigator.pushNamed(
+                                context,
+                                AppRoutes.hostPage,
+                              ),
                             ),
-                            verticalSpacer(20),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "Date",
-                                  style: textStyles.semiBold.copyWith(
-                                    color: ColorName.textGrey,
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 11.sp,
-                                  ),
-                                ),
-                                Text(
-                                  formattedDate,
-                                  style: textStyles.semiBold.copyWith(
-                                    color: ColorName.black,
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 11.sp,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            verticalSpacer(20),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "Time",
-                                  style: textStyles.semiBold.copyWith(
-                                    color: ColorName.textGrey,
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 11.sp,
-                                  ),
-                                ),
-                                Text(
-                                  formattedTime,
-                                  style: textStyles.semiBold.copyWith(
-                                    color: ColorName.black,
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 11.sp,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            verticalSpacer(20),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "Reference Number",
-                                  style: textStyles.semiBold.copyWith(
-                                    color: ColorName.textGrey,
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 11.sp,
-                                  ),
-                                ),
-                                Text(
-                                  "QOIU-0012-ADFE-2234",
-                                  style: textStyles.semiBold.copyWith(
-                                    color: ColorName.black,
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 11.sp,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            verticalSpacer(20),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "Fee",
-                                  style: textStyles.semiBold.copyWith(
-                                    color: ColorName.textGrey,
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 11.sp,
-                                  ),
-                                ),
-                                Text(
-                                  "Rs 0",
-                                  style: textStyles.semiBold.copyWith(
-                                    color: ColorName.black,
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 11.sp,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            verticalSpacer(20),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "Total Payment",
-                                  style: textStyles.semiBold.copyWith(
-                                    color: ColorName.primaryColorLight,
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 15.sp,
-                                  ),
-                                ),
-                                Text(
-                                  "Rs $amount",
-                                  style: textStyles.semiBold.copyWith(
-                                    color: ColorName.primaryColorLight,
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 15.sp,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            verticalSpacer(20),
+                            // verticalSpacer(30),
+                            // Text(
+                            //   "Sent to",
+                            //   style: textStyles.semiBold.copyWith(
+                            //     color: ColorName.black,
+                            //     fontWeight: FontWeight.w700,
+                            //     fontSize: 15.sp,
+                            //   ),
+                            // ),
+                            // verticalSpacer(20),
+                            // Row(
+                            //   mainAxisAlignment: MainAxisAlignment.center,
+                            //   children: [
+                            //     CircleAvatar(
+                            //       backgroundColor: Colors.transparent,
+                            //       child: SvgPicture.asset(
+                            //         Assets.svg.dummy,
+                            //       ),
+                            //     ),
+                            //     horizontalSpacer(5),
+                            //     Expanded(
+                            //       child: BlocBuilder<DashboardBloc,
+                            //           DashboardState>(
+                            //         builder: (context, state) {
+                            //           return Column(
+                            //             crossAxisAlignment:
+                            //                 CrossAxisAlignment.start,
+                            //             children: [
+                            //               Text(
+                            //                 email,
+                            //                 style: textStyles.semiBold.copyWith(
+                            //                   fontWeight: FontWeight.w500,
+                            //                   fontSize: 16.sp,
+                            //                 ),
+                            //               ),
+                            //               FittedBox(
+                            //                 child: Text(
+                            //                   'Acc ${state.findUserResponseModel.id ?? ''}',
+                            //                   style:
+                            //                       textStyles.regular.copyWith(
+                            //                     fontWeight: FontWeight.w400,
+                            //                     fontSize: 12.sp,
+                            //                     color: ColorName.textGrey,
+                            //                   ),
+                            //                 ),
+                            //               ),
+                            //             ],
+                            //           );
+                            //         },
+                            //       ),
+                            //     ),
+                            //   ],
+                            // ),
+                            // verticalSpacer(20),
+                            // Align(
+                            //   alignment: Alignment.centerLeft,
+                            //   child: Text(
+                            //     "Transaction Details",
+                            //     style: textStyles.semiBold.copyWith(
+                            //       color: ColorName.black,
+                            //       fontWeight: FontWeight.w700,
+                            //       fontSize: 15.sp,
+                            //     ),
+                            //   ),
+                            // ),
+                            // verticalSpacer(20),
+                            // Row(
+                            //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            //   children: [
+                            //     Text(
+                            //       "Payment",
+                            //       style: textStyles.semiBold.copyWith(
+                            //         color: ColorName.textGrey,
+                            //         fontWeight: FontWeight.w500,
+                            //         fontSize: 11.sp,
+                            //       ),
+                            //     ),
+                            //     Text(
+                            //       "Rs $amount",
+                            //       style: textStyles.semiBold.copyWith(
+                            //         color: ColorName.black,
+                            //         fontWeight: FontWeight.w700,
+                            //         fontSize: 11.sp,
+                            //       ),
+                            //     ),
+                            //   ],
+                            // ),
+                            // verticalSpacer(20),
+                            // Row(
+                            //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            //   children: [
+                            //     Text(
+                            //       "Date",
+                            //       style: textStyles.semiBold.copyWith(
+                            //         color: ColorName.textGrey,
+                            //         fontWeight: FontWeight.w500,
+                            //         fontSize: 11.sp,
+                            //       ),
+                            //     ),
+                            //     Text(
+                            //       formattedDate,
+                            //       style: textStyles.semiBold.copyWith(
+                            //         color: ColorName.black,
+                            //         fontWeight: FontWeight.w700,
+                            //         fontSize: 11.sp,
+                            //       ),
+                            //     ),
+                            //   ],
+                            // ),
+                            // verticalSpacer(20),
+                            // Row(
+                            //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            //   children: [
+                            //     Text(
+                            //       "Time",
+                            //       style: textStyles.semiBold.copyWith(
+                            //         color: ColorName.textGrey,
+                            //         fontWeight: FontWeight.w500,
+                            //         fontSize: 11.sp,
+                            //       ),
+                            //     ),
+                            //     Text(
+                            //       formattedTime,
+                            //       style: textStyles.semiBold.copyWith(
+                            //         color: ColorName.black,
+                            //         fontWeight: FontWeight.w700,
+                            //         fontSize: 11.sp,
+                            //       ),
+                            //     ),
+                            //   ],
+                            // ),
+                            // verticalSpacer(20),
+                            // Row(
+                            //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            //   children: [
+                            //     Text(
+                            //       "Reference Number",
+                            //       style: textStyles.semiBold.copyWith(
+                            //         color: ColorName.textGrey,
+                            //         fontWeight: FontWeight.w500,
+                            //         fontSize: 11.sp,
+                            //       ),
+                            //     ),
+                            //     Text(
+                            //       "QOIU-0012-ADFE-2234",
+                            //       style: textStyles.semiBold.copyWith(
+                            //         color: ColorName.black,
+                            //         fontWeight: FontWeight.w700,
+                            //         fontSize: 11.sp,
+                            //       ),
+                            //     ),
+                            //   ],
+                            // ),
+                            // verticalSpacer(20),
+                            // Row(
+                            //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            //   children: [
+                            //     Text(
+                            //       "Fee",
+                            //       style: textStyles.semiBold.copyWith(
+                            //         color: ColorName.textGrey,
+                            //         fontWeight: FontWeight.w500,
+                            //         fontSize: 11.sp,
+                            //       ),
+                            //     ),
+                            //     Text(
+                            //       "Rs 0",
+                            //       style: textStyles.semiBold.copyWith(
+                            //         color: ColorName.black,
+                            //         fontWeight: FontWeight.w700,
+                            //         fontSize: 11.sp,
+                            //       ),
+                            //     ),
+                            //   ],
+                            // ),
+                            // verticalSpacer(20),
+                            // Row(
+                            //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            //   children: [
+                            //     Text(
+                            //       "Total Payment",
+                            //       style: textStyles.semiBold.copyWith(
+                            //         color: ColorName.primaryColorLight,
+                            //         fontWeight: FontWeight.w500,
+                            //         fontSize: 15.sp,
+                            //       ),
+                            //     ),
+                            //     Text(
+                            //       "Rs $amount",
+                            //       style: textStyles.semiBold.copyWith(
+                            //         color: ColorName.primaryColorLight,
+                            //         fontWeight: FontWeight.w500,
+                            //         fontSize: 15.sp,
+                            //       ),
+                            //     ),
+                            //   ],
+                            // ),
+                            // verticalSpacer(20),
                           ],
                         ),
                       ),
-                      verticalSpacer(20),
-                      const OutlinedGenericButton(
-                        outlinedButton: true,
-                        buttonTitle: "Share",
-                        titleColor: ColorName.pureWhite,
-                      ),
-                      verticalSpacer(10),
-                      OutlinedGenericButton(
-                        buttonTitle: "Back to home",
-                        titleColor: ColorName.primaryColorLight,
-                        onTap: () => Navigator.pushNamedAndRemoveUntil(
-                          context,
-                          AppRoutes.hostPage,
-                          (route) => false,
-                        ),
-                      ),
+                      // verticalSpacer(20),
+                      // const OutlinedGenericButton(
+                      //   outlinedButton: true,
+                      //   buttonTitle: "Share",
+                      //   titleColor: ColorName.pureWhite,
+                      // ),
+                      // verticalSpacer(10),
+                      // OutlinedGenericButton(
+                      //   buttonTitle: "Back to home",
+                      //   titleColor: ColorName.primaryColorLight,
+                      //   onTap: () => Navigator.pushNamedAndRemoveUntil(
+                      //     context,
+                      //     AppRoutes.hostPage,
+                      //     (route) => false,
+                      //   ),
+                      // ),
                     ],
                   ),
                   Positioned(

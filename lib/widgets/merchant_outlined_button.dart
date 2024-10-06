@@ -27,9 +27,9 @@ class GenericOutlinedButton extends StatelessWidget {
           border: Border.all(
             color: borderColor ?? ColorName.pureWhite,
           ),
-          color: ColorName.grey.withOpacity(0.3),
+          // color: ColorName.grey.withOpacity(0.3),
           borderRadius: BorderRadius.circular(
-            22,
+            15,
           ),
         ),
         child: Row(

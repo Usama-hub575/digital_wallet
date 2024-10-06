@@ -7,6 +7,7 @@ class AppRoutes {
   static const dashboardScreen = '/dashboardScreen';
   static const hostPage = '/hostPage';
   static const sendMoney = '/sendMoney';
+  static const paymentsScreen = '/paymentsScreen';
   static const allDoneScreen = '/allDoneScreen';
   static const verificationScreen = '/verificationScreen';
   static const paymentDetailScreen = '/paymentDetailScreen';
@@ -30,6 +31,11 @@ class AppRoutes {
   static const merchantDashboardScreen = '/merchantDashboardScreen';
   static const transactionHistoryPage = '/transactionHistoryPage';
   static const subscriptionHistoryPage = '/subscriptionHistoryPage';
+  static const transferToOtherWalletsPage = '/transferToOtherWalletsPage';
+  static const addAccountDetailsPage = '/addAccountDetailsPage';
+  static const viewDetailsPage = '/viewDetailsPage';
+  static const confirmationPage = '/confirmationPage';
+  static const transferSuccessfulScreen = '/transferSuccessfulScreen';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     _currentRoute = settings.name;
@@ -48,9 +54,33 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: (_) => const NotificationScreen(),
         );
+      case transferToOtherWalletsPage:
+        return MaterialPageRoute(
+          builder: (_) => TransferToOtherWallets(),
+        );
+      case confirmationPage:
+        return MaterialPageRoute(
+          builder: (_) => ConfirmationPage(),
+        );
+      case transferSuccessfulScreen:
+        return MaterialPageRoute(
+          builder: (_) => TransferSuccessfulScreen(),
+        );
+      case viewDetailsPage:
+        return MaterialPageRoute(
+          builder: (_) => ViewDetailsPage(),
+        );
       case allDoneScreen:
         return MaterialPageRoute(
           builder: (_) => const AllDoneScreen(),
+        );
+      case paymentsScreen:
+        return MaterialPageRoute(
+          builder: (_) => const PaymentsScreen(),
+        );
+      case addAccountDetailsPage:
+        return MaterialPageRoute(
+          builder: (_) => AddAccountDetails(),
         );
       case welcomeScreen:
         return MaterialPageRoute(

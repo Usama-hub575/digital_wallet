@@ -1,6 +1,6 @@
 import 'package:digital_wallet/export.dart';
 
-Future<void> subscriptionBottomSheet(
+Future<void> transactionSuccessfulBottomSheet(
   BuildContext context,
 ) async {
   showModalBottomSheet(
@@ -27,14 +27,14 @@ Future<void> subscriptionBottomSheet(
                 children: [
                   verticalSpacer(20),
                   Text(
-                    "Apply Pay",
+                    "David John",
                     style: textStyles.semiBold.copyWith(
                       fontSize: 22.sp,
                     ),
                   ),
                   verticalSpacer(20),
                   Text(
-                    "POS Signature Purchase",
+                    "2******6125",
                     style: textStyles.medium.copyWith(
                       fontSize: 14.sp,
                       color: ColorName.textGrey,
@@ -80,13 +80,18 @@ Future<void> subscriptionBottomSheet(
                   ),
                   verticalSpacer(20),
                   transactionDetailsWidget(
-                    title: "Transaction ID",
-                    value: "14225055650",
+                    title: "Card Type",
+                    value: "Debit Card",
+                  ),
+                  verticalSpacer(10),
+                  Divider(
+                    thickness: 1,
+                    color: ColorName.textGrey.withOpacity(0.5),
                   ),
                   verticalSpacer(10),
                   transactionDetailsWidget(
-                    title: "Posted Date",
-                    value: "Sep 27, 2024",
+                    title: "Transfer Fee",
+                    value: "\$0.00USD",
                   ),
                 ],
               ),
@@ -94,7 +99,7 @@ Future<void> subscriptionBottomSheet(
                 top: -45,
                 child: Align(
                   alignment: Alignment.topCenter,
-                  child: Assets.png.apple.image(),
+                  child: Assets.png.dummy.image(),
                 ),
               ),
             ],

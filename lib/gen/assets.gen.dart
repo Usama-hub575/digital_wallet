@@ -48,6 +48,10 @@ class $AssetsPngGen {
   AssetGenImage get onboardingSendMoney =>
       const AssetGenImage('assets/png/onboarding_send_money.png');
 
+  /// File path: assets/png/transfer_successful.png
+  AssetGenImage get transferSuccessful =>
+      const AssetGenImage('assets/png/transfer_successful.png');
+
   /// File path: assets/png/welcome_logo.png
   AssetGenImage get welcomeLogo =>
       const AssetGenImage('assets/png/welcome_logo.png');
@@ -65,6 +69,7 @@ class $AssetsPngGen {
         onboardingEasyToUse,
         onboardingRequestMoney,
         onboardingSendMoney,
+        transferSuccessful,
         welcomeLogo
       ];
 }

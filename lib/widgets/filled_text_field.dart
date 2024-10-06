@@ -1,14 +1,13 @@
 import 'package:digital_wallet/export.dart';
 
-class GenericTextField extends StatelessWidget {
-  const GenericTextField({
+class FilledTextField extends StatelessWidget {
+  const FilledTextField({
     required this.controller,
     required this.hintText,
     this.obscureText = false,
     this.suffixIcon,
     this.validator,
     this.readOnly = true,
-    this.focusedBorderColor = ColorName.textGrey,
     super.key,
   });
 
@@ -18,18 +17,19 @@ class GenericTextField extends StatelessWidget {
   final Widget? suffixIcon;
   final bool obscureText;
   final bool? readOnly;
-  final Color focusedBorderColor;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      textAlign: TextAlign.center,
       controller: controller,
       obscureText: obscureText,
       validator: validator,
       enabled: readOnly,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       decoration: InputDecoration(
+        suffixIconColor: ColorName.textGrey,
+        filled: true,
+        fillColor: ColorName.textGrey.withOpacity(0.2),
         suffixIcon: suffixIcon,
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(
@@ -40,40 +40,36 @@ class GenericTextField extends StatelessWidget {
             width: 1,
           ),
         ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(
-            10.0,
-          ),
-          // Half rounded corners
-          borderSide: BorderSide(
-            color: focusedBorderColor.withOpacity(0.3),
-          ), // No border side
-        ),
         disabledBorder: OutlineInputBorder(
+          borderSide: BorderSide(
+            color: Colors.transparent,
+          ),
           borderRadius: BorderRadius.circular(
             10.0,
           ),
-          // Half rounded corners
-          borderSide: BorderSide(
-            color: ColorName.textGrey.withOpacity(0.3),
-          ), // No border side
         ),
         enabledBorder: OutlineInputBorder(
+          borderSide: BorderSide(
+            color: Colors.transparent,
+          ),
           borderRadius: BorderRadius.circular(
             10.0,
-          ),
-          // Half rounded corners
-          borderSide: BorderSide(
-            color: ColorName.textGrey.withOpacity(0.3),
           ), // No border side
         ),
         border: OutlineInputBorder(
+          borderSide: BorderSide(
+            color: Colors.transparent,
+          ),
           borderRadius: BorderRadius.circular(
             10.0,
           ),
-          // Half rounded corners
-          borderSide: const BorderSide(
-            color: ColorName.grey,
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide(
+            color: Colors.transparent,
+          ),
+          borderRadius: BorderRadius.circular(
+            10.0,
           ), // No border side
         ),
         hintText: hintText,

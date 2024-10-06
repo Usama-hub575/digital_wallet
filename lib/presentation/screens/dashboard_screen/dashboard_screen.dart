@@ -13,43 +13,43 @@ class _DashboardScreenState extends State<DashboardScreen> {
   @override
   void initState() {
     super.initState();
-    context.read<DashboardBloc>().add(
-          FullScreenLoading(),
-        );
-    context.read<DashboardBloc>().add(
-          GetProfile(),
-        );
-    if (mounted) {
-      if (context
-                  .read<DashboardBloc>()
-                  .state
-                  .getProfileResponseModel
-                  .emailVerfication ==
-              false &&
-          alertDialogShown == true) {
-        WidgetsBinding.instance.addPostFrameCallback(
-          (_) {
-            showAlertDialog(context);
-            alertDialogShown = true;
-          },
-        );
-      }
-      if (context
-              .read<DashboardBloc>()
-              .state
-              .getProfileResponseModel
-              .secretKeySet ==
-          false) {
-        WidgetsBinding.instance.addPostFrameCallback(
-          (_) {
-            showAlertDialog(
-              context,
-              emailVerified: false,
-            );
-          },
-        );
-      }
-    }
+    // context.read<DashboardBloc>().add(
+    //       FullScreenLoading(),
+    //     );
+    // context.read<DashboardBloc>().add(
+    //       GetProfile(),
+    //     );
+    // if (mounted) {
+    //   if (context
+    //               .read<DashboardBloc>()
+    //               .state
+    //               .getProfileResponseModel
+    //               .emailVerfication ==
+    //           false &&
+    //       alertDialogShown == true) {
+    //     WidgetsBinding.instance.addPostFrameCallback(
+    //       (_) {
+    //         showAlertDialog(context);
+    //         alertDialogShown = true;
+    //       },
+    //     );
+    //   }
+    //   if (context
+    //           .read<DashboardBloc>()
+    //           .state
+    //           .getProfileResponseModel
+    //           .secretKeySet ==
+    //       false) {
+    //     WidgetsBinding.instance.addPostFrameCallback(
+    //       (_) {
+    //         showAlertDialog(
+    //           context,
+    //           emailVerified: false,
+    //         );
+    //       },
+    //     );
+    //   }
+    // }
   }
 
   @override
@@ -161,7 +161,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     children: [
                       ActionsWidget(
                         onTap: () {
-                          sendMoneyDialog(context);
+                          Navigator.of(context, rootNavigator: true).pushNamed(
+                            AppRoutes.sendMoney,
+                          );
                         },
                         icon: Assets.svg.send,
                         title: "Send",
@@ -184,7 +186,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                 GetRequests(),
                               );
                           Navigator.of(context, rootNavigator: true).pushNamed(
-                            AppRoutes.pendingPaymentRequestsScreen,
+                            AppRoutes.paymentsScreen,
                           );
                         },
                         icon: Assets.svg.request,
@@ -244,6 +246,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     children: [
                       Expanded(
                         child: InkWell(
+                          splashColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          overlayColor: WidgetStatePropertyAll(
+                            Colors.transparent,
+                          ),
                           onTap: () => Navigator.of(context, rootNavigator: true)
                               .pushNamed(
                             AppRoutes.electricityScreen,

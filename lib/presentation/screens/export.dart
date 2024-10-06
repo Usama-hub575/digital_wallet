@@ -13,6 +13,8 @@ export 'qr_code_screen/export.dart';
 export 'profile_screen/export.dart';
 export 'statistics_screen/export.dart';
 export 'welcome_screen/export.dart';
+export 'transfer_successful_screen/export.dart';
+export 'payments_screen/export.dart';
 export 'onboarding_screen/export.dart';
 export 'pending_payment_requests/export.dart';
 export 'transaction_details_screen/export.dart';

@@ -16,14 +16,14 @@ class SignInScreen extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.symmetric(
             horizontal: 15.w,
-            vertical: 5.h,
+            vertical: 10.h,
           ),
           child: Form(
             key: loginFormKey,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                verticalSpacer(20),
+                verticalSpacer(40),
                 Text(
                   "Welcome !",
                   style: textStyles.semiBold.copyWith(

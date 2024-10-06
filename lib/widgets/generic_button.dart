@@ -7,7 +7,7 @@ class GenericButton extends StatelessWidget {
     this.onTap,
     this.height,
     this.width,
-    this.radius = 14,
+    this.radius = 7,
     this.buttonColor = ColorName.primaryColor,
     this.buttonTextColor = ColorName.pureWhite,
     this.fontWeight = FontWeight.w500,

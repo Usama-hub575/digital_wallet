@@ -85,10 +85,9 @@ class OnboardingScreen extends StatelessWidget {
                               color: ColorName.grey,
                             ),
                           ),
-                          const Spacer(),
+                          // const Spacer(),
                           Container(
                             margin: const EdgeInsets.only(
-                              bottom: 80,
                               top: 35,
                             ),
                             child: Row(

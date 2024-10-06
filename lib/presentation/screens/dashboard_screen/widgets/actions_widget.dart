@@ -15,6 +15,11 @@ class ActionsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      splashColor: Colors.transparent,
+      highlightColor: Colors.transparent,
+      overlayColor: WidgetStatePropertyAll(
+        Colors.transparent,
+      ),
       onTap: onTap,
       child: Container(
         height: 70.h,
