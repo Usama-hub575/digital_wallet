@@ -311,6 +311,9 @@ class $AssetsSvgGen {
   /// File path: assets/svg/support.svg
   String get support => 'assets/svg/support.svg';
 
+  /// File path: assets/svg/toggle_icon.svg
+  String get toggleIcon => 'assets/svg/toggle_icon.svg';
+
   /// File path: assets/svg/touch_id.svg
   String get touchId => 'assets/svg/touch_id.svg';
 
@@ -409,6 +412,7 @@ class $AssetsSvgGen {
         stats,
         successfulTick,
         support,
+        toggleIcon,
         touchId,
         transactionHistory,
         verfiyAccount,
